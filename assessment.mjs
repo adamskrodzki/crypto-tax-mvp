@@ -3,7 +3,7 @@ export const QUESTIONS = [
     id: "residency",
     short: "Rezydencja podatkowa",
     title: "Czy w 2026 roku jesteś polskim rezydentem podatkowym?",
-    description: "Nie chodzi wyłącznie o obywatelstwo ani miejsce zameldowania.",
+    description: "Chodzi o to, czy Polska jest krajem Twojej rezydencji podatkowej. Sam paszport ani meldunek o tym nie decydują. Jeśli nie masz pewności, wybierz „Nie wiem”.",
     why: "Rezydencja pomaga ustalić, czy typowe polskie zasady rozliczenia obejmują Twoją sytuację. Wątpliwości transgraniczne trzeba ocenić osobno.",
     kind: "single",
     options: [
@@ -34,17 +34,17 @@ export const QUESTIONS = [
   {
     id: "sources",
     short: "Źródła transakcji",
-    title: "Gdzie korzystałeś(-aś) z kryptowalut w 2026 roku?",
-    description: "Wybierz wszystkie miejsca, które dotyczyły Twojej aktywności.",
-    why: "Różne źródła oznaczają różne historie operacji. Dane z jednej giełdy zwykle łatwiej skompletować niż historię kilku giełd, portfeli, DEX-ów i transakcji poza nimi.",
+    title: "Z jakich miejsc i aplikacji korzystałeś(-aś) w 2026 roku?",
+    description: "Zaznacz wszystkie pasujące odpowiedzi. Podajemy przykłady, żeby łatwiej było je rozpoznać.",
+    why: "Dane z jednej giełdy zwykle łatwiej zebrać niż historię z kilku aplikacji i portfeli. Nazwy aplikacji pomagają nam zrozumieć, skąd mogą pochodzić Twoje transakcje.",
     kind: "multi",
     options: [
       ["cex", "Giełdy kryptowalut (np. Binance, Kraken, Coinbase)"],
-      ["wallet", "Własne portfele kryptowalutowe"],
-      ["defi", "Aplikacje DeFi lub zdecentralizowane giełdy (DEX)"],
-      ["exchange", "Kantory kryptowalut lub bitomaty"],
-      ["p2p", "Transakcje bezpośrednio z innymi osobami (P2P)"],
-      ["nftmarket", "Platformy obrotu NFT"],
+      ["wallet", "Własne portfele, czyli aplikacje lub urządzenia, w których sam trzymasz krypto (np. MetaMask, Trust Wallet, Ledger)"],
+      ["defi", "Aplikacje do wymiany, pożyczania lub zarabiania na krypto (DeFi / DEX), np. Uniswap, PancakeSwap, Aave"],
+      ["exchange", "Kantory krypto lub bitomaty (automaty do kupowania i sprzedawania krypto)"],
+      ["p2p", "Kupno lub sprzedaż krypto bezpośrednio od innej osoby (np. przez ogłoszenie lub od znajomego)"],
+      ["nftmarket", "Strony do kupowania lub sprzedawania NFT (np. OpenSea)"],
       ["other", "Inne miejsca lub nie pamiętam wszystkich źródeł"]
     ]
   },
@@ -52,16 +52,16 @@ export const QUESTIONS = [
     id: "special",
     short: "Nietypowe sytuacje",
     title: "Czy dotyczyły Cię któreś z poniższych sytuacji?",
-    description: "Nie musisz znać ich klasyfikacji podatkowej. Zaznaczenie operacji nie oznacza, że automatycznie podlega opodatkowaniu.",
-    why: "Część operacji wykracza poza zwykły zakup i sprzedaż na giełdzie. Mogą wymagać dodatkowych dokumentów i indywidualnej analizy.",
+    description: "Wybierz to, co robiłeś(-aś), nawet jeśli nie znasz nazw tych operacji. Zaznaczenie odpowiedzi nie oznacza automatycznie podatku.",
+    why: "Nie wszystkie działania z krypto rozlicza się tak samo jak zwykłe kupno i sprzedaż. Chcemy wiedzieć, czy trzeba coś dodatkowo sprawdzić.",
     kind: "multi",
     options: [
-      ["airdrop", "Airdropy, bonusy lub darmowe tokeny"],
-      ["staking", "Staking, lending, liquidity mining lub nagrody DeFi"],
-      ["mining", "Mining (kopanie kryptowalut)"],
-      ["nft", "Kupno, sprzedaż lub tworzenie NFT"],
-      ["derivatives", "Futures, perpetuals, margin trading lub dźwignia"],
-      ["bridge", "Przenoszenie tokenów przez mosty (bridges) lub wrapping"],
+      ["airdrop", "Dostałem(-am) krypto za darmo (np. airdrop lub bonus od aplikacji)"],
+      ["staking", "Otrzymywałem(-am) nagrody za trzymanie, pożyczanie lub udostępnianie krypto (staking, lending, pule płynności)"],
+      ["mining", "Wydobywałem(-am) kryptowaluty za pomocą komputera (mining / kopanie)"],
+      ["nft", "Kupowałem(-am), sprzedawałem(-am) lub tworzyłem(-am) NFT (np. cyfrowe obrazki lub przedmioty)"],
+      ["derivatives", "Handlowałem(-am) kontraktami na cenę krypto albo z pożyczonymi środkami (futures, perpetuals, margin / dźwignia)"],
+      ["bridge", "Przenosiłem(-am) krypto między sieciami (np. Ethereum → Arbitrum) albo zamieniałem(-am) ETH na wETH (bridge / wrapping)"],
       ["gift", "Darowizny lub dziedziczenie kryptowalut"],
       ["loss", "Utrata środków, scam, kradzież lub upadek giełdy"],
       ["other", "Inne nietypowe operacje"],
@@ -79,7 +79,7 @@ export const QUESTIONS = [
     options: [
       ["no", "Nie"],
       ["reported", "Tak, wykazywałem(-am) koszty w poprzednich PIT-38"],
-      ["unreported", "Tak, ale nie składałem(-am) wcześniej PIT-38"],
+      ["unreported", "Tak, ale nie składałem(-am) wcześniej PIT-38 (rocznej deklaracji podatkowej)"],
       ["unsure", "Tak, ale nie pamiętam, jak były rozliczane"],
       ["unknown", "Nie wiem / nie pamiętam"]
     ]
@@ -87,9 +87,9 @@ export const QUESTIONS = [
   {
     id: "records",
     short: "Dostępność danych",
-    title: "Czy masz dostęp do historii swoich transakcji kryptowalutowych?",
+    title: "Czy możesz znaleźć historię swoich operacji krypto?",
     description: "Uwzględnij również zakupy z poprzednich lat. Nie musisz teraz przesyłać dokumentów.",
-    why: "Brakujące dane utrudniają ustalenie przychodów i udokumentowanych kosztów, nawet przy niewielkiej liczbie operacji.",
+    why: "Jeśli brakuje informacji o tym, kiedy i za ile kupowałeś(-aś) lub sprzedawałeś(-aś) krypto, trudno poprawnie policzyć przychody i koszty.",
     kind: "single",
     options: [
       ["complete", "Tak, mam kompletną historię"],
@@ -168,7 +168,7 @@ export function assess(answers = {}) {
   if (sources.includes("nftmarket")) score += 2;
   if (sources.includes("other")) score += 1;
   if (sources.some((id) => ["wallet", "defi", "p2p", "nftmarket", "other"].includes(id))) {
-    add("sources", sources.includes("defi") ? "attention" : "info", "Historia z kilku źródeł", "Giełdy, portfele i aplikacje on-chain mogą pokazywać fragmenty tej samej operacji. Trzeba rozróżnić transfery własne od innych zdarzeń.", "Zrób listę giełd, adresów portfeli i aplikacji, z których korzystałeś(-aś).");
+    add("sources", sources.includes("defi") ? "attention" : "info", "Historia z kilku źródeł", "Giełdy i aplikacje do krypto mogą pokazywać różne części tej samej operacji. Trzeba rozróżnić transfery własne od innych zdarzeń.", "Zrób listę giełd, adresów portfeli i aplikacji, z których korzystałeś(-aś).");
   }
 
   const complexSpecial = ["staking", "mining", "nft", "derivatives", "loss"];
@@ -178,7 +178,7 @@ export function assess(answers = {}) {
   }
   if (special.some((id) => id !== "none")) {
     const labels = getLabels(QUESTIONS[3], special.filter((id) => id !== "none"));
-    add("special", "attention", "Operacje wymagające interpretacji", "Zaznaczone przez Ciebie zdarzenia (" + labels.join(", ").toLowerCase() + ") nie powinny być automatycznie rozliczane jak zwykłe transakcje spot. Charakter tokenów, kontraktów i nagród ma znaczenie.", "Przygotuj osobną historię tych operacji do weryfikacji ze specjalistą.");
+    add("special", "attention", "Operacje wymagające interpretacji", "Zaznaczone przez Ciebie zdarzenia (" + labels.join(", ").toLowerCase() + ") nie zawsze da się rozliczyć jak zwykłe kupno lub sprzedaż krypto. Charakter tokenów, kontraktów i nagród ma znaczenie.", "Zapisz te operacje osobno i pokaż ich historię specjaliście przed rozliczeniem.");
   }
   if (has(answers, "special", "loss")) {
     add("loss", "critical", "Utrata środków lub zdarzenie nadzwyczajne", "Kradzież, scam czy upadłość platformy nie przesądzają same o możliwości podatkowego odliczenia utraconych kwot. Potrzebne są okoliczności i dokumenty.", "Zabezpiecz dowody, korespondencję i potwierdzenia dotyczące zdarzenia.");

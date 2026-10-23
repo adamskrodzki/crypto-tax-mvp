@@ -77,9 +77,9 @@ function contextualTip(question) {
   if (question.id === "sources" && answers.activities?.includes("pay"))
     return "Wskazałeś(-aś) płatności kryptowalutą. Zastanów się także, z jakich portfeli lub aplikacji wychodziły środki.";
   if (question.id === "special" && answers.sources?.includes("defi"))
-    return "Korzystałeś(-aś) z DeFi. Zwróć szczególną uwagę na staking, lending, airdropy, mosty i wrapping — wszystkie opcje pozostają dostępne.";
+    return "Wskazałeś(-aś) aplikacje takie jak Uniswap lub Aave. Sprawdź, czy dostawałeś(-aś) nagrody, pożyczałeś(-aś) krypto albo przenosiłeś(-aś) je między sieciami.";
   if (question.id === "special" && answers.sources?.length === 1 && answers.sources[0] === "cex")
-    return "Korzystałeś(-aś) tylko z giełdy. Sprawdź, czy oprócz zwykłego zakupu i sprzedaży używałeś(-aś) np. kontraktów futures lub stakingu.";
+    return "Wskazałeś(-aś) tylko giełdy. Sprawdź, czy oprócz zwykłego kupna i sprzedaży korzystałeś(-aś) z kontraktów na cenę krypto lub otrzymywałeś(-aś) nagrody za trzymanie krypto.";
   if (question.id === "history" && answers.activities?.includes("none"))
     return "Ponieważ nie wskazano operacji w 2026 roku, pominęliśmy pytania o miejsca aktywności i nietypowe operacje z tego roku. Wcześniejsze zakupy nadal mogą być istotne.";
   return "";
