@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#152326">
+  <meta name="description" content="Darmowa, anonimowa ankieta pomagająca wstępnie ocenić złożoność rozliczenia kryptowalut za 2026 rok. Prototyp koncepcji.">
+  <meta property="og:title" content="KryptoPIT · Sprawdź złożoność rozliczenia 2026">
+  <meta property="og:description" content="6 pytań, wstępny raport, zero danych finansowych. Zobacz prototyp koncepcji.">
+  <meta property="og:type" content="website">
+  <title>KryptoPIT — sprawdź złożoność rozliczenia za 2026</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.mjs" type="module"></script>
+</head>
+<body>
+  <div class="top-strip">
+    <span class="top-strip__light"></span>
+    Prototyp koncepcji · Nie jest usługą rozliczania podatku
+  </div>
+  <header class="site-header wrap">
+    <a href="#start" id="brand-link" class="brand" aria-label="KryptoPIT — strona główna">
+      <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      <span>Krypto<span class="brand__accent">PIT</span><span class="brand__dot">.</span></span>
+    </a>
+    <div class="header-right">
+      <span class="year-chip">Rozliczenie za <strong>2026</strong></span>
+      <button class="button button--small button--dark" type="button" data-action="start">Rozpocznij <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+
+  <main>
+    <div id="landing-screen">
+      <section id="start" class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <div class="eyebrow"><span class="eyebrow__line"></span> Twój PIT od kryptowalut · 2026</div>
+          <h1 id="hero-title">Zanim rozliczysz krypto, <em>sprawdź, jak trudna</em> jest Twoja sytuacja.</h1>
+          <p class="hero__lead">Giełda, portfel, DeFi, NFT? Odpowiedz na maksymalnie 6 prostych pytań. Pokażemy Ci, co może wymagać uwagi przy rozliczeniu kryptowalut w Polsce.</p>
+          <div class="hero__actions">
+            <button class="button button--primary button--large" type="button" data-action="start">Sprawdź swoją sytuację <span aria-hidden="true">→</span></button>
+            <button class="button button--plain" type="button" data-action="example">Zobacz przykładowy raport <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="hero__assurances" aria-label="Informacje o ankiecie">
+            <span><span class="tick" aria-hidden="true">✓</span> 3 minuty</span>
+            <span><span class="tick" aria-hidden="true">✓</span> Bez konta</span>
+            <span><span class="tick" aria-hidden="true">✓</span> Bez kwot i dokumentów</span>
+          </div>
+        </div>
+        <div class="hero__visual" aria-label="Ilustracja przykładowego wyniku ankiety">
+          <div class="orbit orbit--one" aria-hidden="true"></div>
+          <div class="orbit orbit--two" aria-hidden="true"></div>
+          <div class="preview-card">
+            <div class="preview-card__top">
+              <span class="preview-card__eyebrow"><span class="preview-card__dot"></span> PRZYKŁADOWY WYNIK</span>
+              <span class="preview-card__year">2026</span>
+            </div>
+            <div class="preview-card__title">Twój profil aktywności</div>
+            <div class="preview-tags">
+              <span>Giełdy</span><span>Portfele</span><span>DeFi</span><span>NFT</span>
+            </div>
+            <div class="preview-card__divider"></div>
+            <div class="preview-card__label">Wstępna ocena złożoności</div>
+            <div class="preview-card__status"><span class="status-dot"></span> Wysoka</div>
+            <p class="preview-card__note">Kilka typów operacji wymaga dokładniejszej analizy.</p>
+            <div class="preview-card__bottom">
+              <span>Co dalej?</span>
+              <span class="preview-card__arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+          <div class="float-label float-label--top"><span class="float-label__icon">◎</span> Bez udostępniania kont</div>
+          <div class="float-label float-label--bottom"><span class="float-label__icon">↗</span> Konkretne następne kroki</div>
+        </div>
+      </section>
+
+      <section class="metrics wrap" aria-label="Najważniejsze cechy">
+        <div><strong>06</strong><span>pytań maksymalnie</span></div>
+        <div><strong>0 zł</strong><span>koszt sprawdzenia</span></div>
+        <div><strong>1</strong><span>raport z dalszymi krokami</span></div>
+        <div class="metrics__foot">Bez obietnicy wyliczenia podatku.<br>Bez fałszywej precyzji.</div>
+      </section>
+
+      <section id="how-it-works" class="how section-space">
+        <div class="wrap">
+          <div class="section-heading">
+            <div><span class="section-kicker">JAK TO DZIAŁA</span><h2>Najpierw zrozumieć.<br><span>Potem rozliczać.</span></h2></div>
+            <p>Nie każda osoba, która kupiła kryptowaluty, potrzebuje tego samego produktu. Zaczynamy od rozpoznania sytuacji.</p>
+          </div>
+          <div class="steps-grid">
+            <article class="step-card"><span class="step-card__index">01 / OPISZ</span><div class="step-card__symbol" aria-hidden="true">☷</div><h3>Odpowiadasz na pytania</h3><p>Gdzie handlowałeś, jakie operacje wykonywałeś i czy masz historię transakcji. Każde pytanie można pominąć.</p></article>
+            <article class="step-card"><span class="step-card__index">02 / OTRZYMAJ</span><div class="step-card__symbol" aria-hidden="true">≋</div><h3>Dostajesz raport</h3><p>Wstępny poziom złożoności, lista możliwych ryzyk oraz wskazówki, jakie dane warto zebrać.</p></article>
+            <article class="step-card"><span class="step-card__index">03 / ZDECYDUJ</span><div class="step-card__symbol" aria-hidden="true">↗</div><h3>Wiesz, co dalej</h3><p>Być może wystarczy uporządkować dane z jednej giełdy. Być może potrzebujesz analizy wielu portfeli i specjalisty.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="idea" class="idea section-space">
+        <div class="wrap idea__layout">
+          <div>
+            <span class="section-kicker section-kicker--light">CO WŁAŚCIWIE BUDUJEMY?</span>
+            <h2>To test pomysłu<br>na usługę, <em>nie gotowy program podatkowy.</em></h2>
+            <p class="idea__body">Chcemy zacząć od bardzo prostego, darmowego narzędzia. Pomoże użytkownikowi zrozumieć własną sytuację, a nam sprawdzić, czy istnieje zapotrzebowanie na automatyczne lub wspierane przez księgowych rozliczanie krypto.</p>
+            <button class="button button--light" type="button" data-action="example">Przejdź do przykładowego wyniku <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="idea__questions">
+            <div class="idea__question"><span>01</span><p>Czy ludzie w ogóle chcą sprawdzić złożoność rozliczenia?</p></div>
+            <div class="idea__question"><span>02</span><p>Jakie sytuacje dominują: jedna giełda czy także DeFi, NFT i portfele?</p></div>
+            <div class="idea__question"><span>03</span><p>Za jaką dalszą pomoc byliby skłonni zapłacić?</p></div>
+            <div class="idea__fineprint">To są pytania biznesowe do sprawdzenia, nie wnioski o rynku.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="roadmap section-space">
+        <div class="wrap">
+          <div class="section-heading section-heading--tight">
+            <div><span class="section-kicker">KIERUNEK ROZWOJU</span><h2>Mały pierwszy krok.<br><span>Większy produkt później.</span></h2></div>
+          </div>
+          <div class="roadmap__grid">
+            <article class="roadmap__item roadmap__item--active"><span class="roadmap__tag">ETAP 1 · TEN PROTOTYP</span><h3>Anonimowa diagnoza</h3><p>Ankieta i orientacyjny raport HTML. Bez importowania danych i bez rozliczania podatku.</p></article>
+            <article class="roadmap__item"><span class="roadmap__tag">ETAP 2 · HIPOTEZA</span><h3>Raport z aktywności</h3><p>Opcjonalne podłączenie giełd przez integratora (np. Kryptos Connect), wykrycie źródeł i braków w historii.</p></article>
+            <article class="roadmap__item"><span class="roadmap__tag">ETAP 3 · DECYZJA</span><h3>Płatne rozliczenie lub ekspert</h3><p>Automatyczne wsparcie prostych przypadków lub przekazanie trudniejszych do specjalisty — jeśli popyt to uzasadni.</p></article>
+          </div>
+          <div class="roadmap__note"><span class="roadmap__note-dot"></span> Integracja Kryptos, analiza kont, zapis e-maili i rozliczanie PIT-38 <strong>nie są częścią tego prototypu</strong>.</div>
+        </div>
+      </section>
+
+      <section class="final-cta wrap">
+        <div><span class="section-kicker">SPRAWDŹ SAM</span><h2>Zobacz, jaki raport<br>otrzymałby użytkownik.</h2><p>Przejdź krótką ankietę lub otwórz gotowy przykład.</p></div>
+        <div class="final-cta__buttons"><button class="button button--primary button--large" type="button" data-action="start">Rozpocznij ankietę <span aria-hidden="true">→</span></button><button class="button button--outline" type="button" data-action="example">Przykładowy wynik</button></div>
+      </section>
+    </div>
+
+    <section id="questionnaire-screen" class="survey wrap" hidden aria-labelledby="question-title">
+      <div class="survey__back"><button class="back-link" type="button" id="quit-survey">← Wróć do strony głównej</button><div class="survey__top-right"><span>ANKIETA · ROK 2026</span><button type="button" class="back-link" id="reset-survey">Zacznij od nowa ↻</button></div></div>
+      <div class="survey__grid">
+        <div class="survey__primary">
+          <div class="survey__progress-head"><span id="step-label">PYTANIE 1 Z 6</span><span id="step-percent">17%</span></div>
+          <div class="progress-track" role="progressbar" id="step-progress" aria-label="Postęp ankiety" aria-valuemin="0" aria-valuemax="6" aria-valuenow="1"><div id="progress-fill"></div></div>
+          <div class="question-surface">
+            <span class="question-surface__eyebrow" id="question-short">REZYDENCJA PODATKOWA</span>
+            <h1 id="question-title"></h1>
+            <p class="question-description" id="question-description"></p>
+            <form id="question-form" novalidate>
+              <fieldset class="options-fieldset" id="question-options"><legend class="visually-hidden">Wybierz odpowiedź</legend></fieldset>
+            </form>
+            <div class="survey__controls"><button class="button button--outline" id="prev-question" type="button">← Wstecz</button><div class="survey__controls-right"><button class="button button--plain" id="skip-question" type="button">Pomiń pytanie</button><button class="button button--primary" id="next-question" type="button">Dalej <span aria-hidden="true">→</span></button></div></div>
+          </div>
+        </div>
+        <aside class="survey__aside">
+          <div class="aside-top"><span class="aside-icon" aria-hidden="true">?</span><h2>Dlaczego pytamy?</h2><p id="question-why"></p></div>
+          <div class="aside-divider"></div>
+          <div class="aside-bottom"><span class="aside-check" aria-hidden="true">✓</span><div><strong>Twoja prywatność</strong><p>Odpowiedzi pozostają w tej karcie przeglądarki. Niczego nie wysyłamy ani nie zapisujemy na serwerze.</p></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="report-screen" class="report-screen" hidden aria-labelledby="report-title">
+      <div class="wrap report-toolbar"><button type="button" class="back-link" id="edit-answers">← Wróć do odpowiedzi</button><span id="report-mode" class="report-mode">WSTĘPNA OCENA · 2026</span></div>
+      <div class="wrap">
+        <div id="report-content" aria-live="polite"></div>
+        <div class="report-actions">
+          <button type="button" class="button button--primary" id="download-report">Pobierz raport HTML <span aria-hidden="true">↓</span></button>
+          <button type="button" class="button button--outline" id="print-report">Drukuj / Zapisz jako PDF</button>
+          <button type="button" class="button button--plain" id="restart-survey">Wypełnij ponownie ↻</button>
+        </div>
+        <section class="signup" aria-labelledby="signup-title">
+          <div><span class="signup__tag">WIZJA PRZYSZŁEJ USŁUGI</span><h2 id="signup-title">Chcesz wiedzieć, kiedy ruszymy?</h2><p>Docelowo użytkownik mógłby zostawić e-mail i otrzymać informację o imporcie transakcji lub pomocy w PIT-38.</p></div>
+          <form id="email-form" class="signup__form">
+            <label for="email">Twój adres e-mail</label>
+            <div class="signup__row"><input id="email" name="email" type="email" placeholder="twoj@email.pl" autocomplete="email" required><button class="button button--dark" type="submit">Powiadom mnie →</button></div>
+            <p class="signup__disclaimer"><strong>Makieta:</strong> adres nie będzie zapisany ani wysłany. Formularz jest wyłącznie demonstracją pomysłu.</p>
+            <p id="email-feedback" class="signup__feedback" role="status" aria-live="polite" hidden></p>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer__inner"><span class="brand brand--footer"><span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span> Krypto<span class="brand__accent">PIT</span><span class="brand__dot">.</span></span><p>Demo koncepcji · Brak porad podatkowych i automatycznego rozliczania · 2026</p><a href="https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-kryptowalut" target="_blank" rel="noopener noreferrer">Informacje Ministerstwa Finansów ↗</a></div></footer>
+</body>
+</html>
