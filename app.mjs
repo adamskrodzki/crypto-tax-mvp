@@ -178,7 +178,7 @@ function buildReport(currentAnswers, result, example) {
     '<h2 class="report-subhead">Sugerowane następne kroki</h2><ol class="next-steps">' + priorities.map((item) => "<li>" + escapeHtml(item) + "</li>").join("") + "</ol>" +
     '<h2 class="report-subhead">Twoje odpowiedzi</h2><p class="report-lead">Podsumowanie pomaga wrócić do sprawy później albo omówić ją z księgowym.</p>' +
     '<dl class="answer-list">' + rows + "</dl>" +
-    '<div class="report-disclaimer"><strong>Ważne:</strong> Wynik jest demonstracyjną oceną orientacyjną, opartą wyłącznie na odpowiedziach w ankiecie. Nie weryfikuje transakcji, wartości, dokumentów ani wszystkich wyjątków prawa podatkowego. Nie służy do wyliczania lub składania PIT-38. Aktualne zasady sprawdź w ' +
+    '<div class="report-disclaimer"><strong>Ważne:</strong> Wynik jest wstępną oceną opartą wyłącznie na Twoich odpowiedziach. Nie weryfikuje transakcji, wartości, dokumentów ani wszystkich wyjątków prawa podatkowego. Nie służy do wyliczania lub składania PIT-38. Aktualne zasady sprawdź w ' +
     '<a href="' + SOURCE_URL + '" target="_blank" rel="noopener noreferrer">oficjalnym serwisie Ministerstwa Finansów</a>. Przed złożeniem deklaracji skonsultuj wątpliwości z uprawnionym specjalistą.</div>' +
     "</div></article>";
 }
@@ -230,6 +230,6 @@ byId("email-form").addEventListener("submit", (event) => {
   event.preventDefault();
   const feedback = byId("email-feedback");
   feedback.hidden = false;
-  feedback.textContent = "To tylko makieta. Adres nie został zapisany ani wysłany — w przyszłej wersji działałaby tu lista oczekujących.";
+  feedback.textContent = "Ten formularz jeszcze nie działa. Adres nie został zapisany ani wysłany.";
   byId("email").value = "";
 });
