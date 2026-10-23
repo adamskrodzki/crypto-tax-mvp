@@ -133,11 +133,10 @@
           <button type="button" class="button button--plain" id="restart-survey">Wypełnij ponownie ↻</button>
         </div>
         <section class="signup" aria-labelledby="signup-title">
-          <div><span class="signup__tag">POWIADOMIENIE O STARCIE · DEMO</span><h2 id="signup-title">Chcesz wiedzieć, kiedy ruszymy?</h2><p>Planujemy możliwość połączenia giełd i pomoc w przygotowaniu PIT-38. Na razie powiadomienia nie są uruchomione.</p></div>
+          <div><span class="signup__tag" id="contact-kicker"></span><h2 id="signup-title"></h2><p id="signup-description"></p></div>
           <form id="email-form" class="signup__form">
-            <label for="email">Twój adres e-mail</label>
-            <div class="signup__row"><input id="email" name="email" type="email" placeholder="twoj@email.pl" autocomplete="email" required><button class="button button--dark" type="submit">Powiadom mnie →</button></div>
-            <p class="signup__disclaimer"><strong>Wersja demonstracyjna:</strong> adres nie zostanie zapisany ani wysłany.</p>
+            <label for="email">Zostaw adres e-mail, jeśli chcesz porozmawiać o swoim rozliczeniu</label>
+            <div class="signup__row"><input id="email" name="email" type="email" placeholder="twoj@email.pl" autocomplete="email" required><button class="button button--dark" id="contact-button" type="submit">Poproś o kontakt →</button></div>
             <p id="email-feedback" class="signup__feedback" role="status" aria-live="polite" hidden></p>
           </form>
         </section>

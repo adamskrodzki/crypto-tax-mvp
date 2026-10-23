@@ -134,8 +134,53 @@ function showExample() {
   isExample = true;
   showReport();
 }
+function contactCopy(result) {
+  if (result.scope.level !== "standard") {
+    return {
+      kicker: "POMOC W ROZLICZENIU",
+      title: "Nie masz pewności, jak rozliczyć krypto w Polsce?",
+      description: "Twoja rezydencja podatkowa może wymagać osobnego sprawdzenia. Warto wyjaśnić tę kwestię, zanim zaczniesz przygotowywać deklarację.",
+      button: "Chcę skonsultować sytuację →"
+    };
+  }
+  if (result.complexity.level === "high") {
+    return {
+      kicker: "MOŻEMY POMÓC",
+      title: "Wygląda na to, że możesz potrzebować pomocy.",
+      description: "W Twoich odpowiedziach pojawiły się operacje lub braki w danych, które warto przeanalizować indywidualnie przed rozliczeniem.",
+      button: "Chcę uzyskać pomoc →"
+    };
+  }
+  if (result.complexity.level === "medium") {
+    return {
+      kicker: "POMOC W ROZLICZENIU",
+      title: "Kilka elementów warto jeszcze sprawdzić.",
+      description: "Twoje rozliczenie może wymagać dodatkowego uporządkowania danych. Pomoc w zebraniu historii i sprawdzeniu operacji może ułatwić przygotowanie PIT-38.",
+      button: "Chcę uzyskać pomoc →"
+    };
+  }
+  if (result.complexity.level === "unknown") {
+    return {
+      kicker: "POMOC W OCENIE",
+      title: "Brakuje kilku informacji o Twojej sytuacji.",
+      description: "Możesz wrócić do pominiętych pytań albo poprosić o pomoc w ustaleniu, jakie dane będą potrzebne do rozliczenia.",
+      button: "Chcę zapytać o rozliczenie →"
+    };
+  }
+  return {
+    kicker: "POMOC W ROZLICZENIU",
+    title: "Twoja sytuacja wygląda na stosunkowo prostą.",
+    description: "To dobry punkt wyjścia. Jeśli chcesz, możemy pomóc uporządkować historię transakcji i przygotować się do rozliczenia.",
+    button: "Chcę uprościć rozliczenie →"
+  };
+}
 function showReport() {
   const result = assess(answers);
+  const contact = contactCopy(result);
+  byId("contact-kicker").textContent = contact.kicker;
+  byId("signup-title").textContent = contact.title;
+  byId("signup-description").textContent = contact.description;
+  byId("contact-button").textContent = contact.button;
   reportMarkup = buildReport(answers, result, isExample);
   byId("report-content").innerHTML = reportMarkup;
   byId("report-mode").textContent = isExample ? "PRZYKŁADOWY RAPORT · DANE DEMONSTRACYJNE" : "TWÓJ WSTĘPNY RAPORT · 2026";
@@ -230,6 +275,6 @@ byId("email-form").addEventListener("submit", (event) => {
   event.preventDefault();
   const feedback = byId("email-feedback");
   feedback.hidden = false;
-  feedback.textContent = "Ten formularz jeszcze nie działa. Adres nie został zapisany ani wysłany.";
+  feedback.textContent = "Nie możemy jeszcze przyjąć zgłoszenia. Twój adres e-mail nie został zapisany ani wysłany.";
   byId("email").value = "";
 });
