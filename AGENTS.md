@@ -1,23 +1,23 @@
 # AGENTS.md
 
-## Scope
+## Project and business context
 
-- Build static mockups and write concept documentation for a Polish cryptocurrency PIT service. The accounting firm will own the product and take professional responsibility for the settlements its accountants approve.
-- Simulate the taxpayer and accountant workflows with fictional data. Keep live imports, tax calculations, payments, identity verification, and filing out of the prototype.
+Crypto Tax MVP explores a Polish PIT settlement service limited to cryptocurrency activity. The accounting firm will own the application and provide the service. An accountant reviews and approves each settlement, and the firm takes professional responsibility for the result. A customer is buying a settlement handled by the firm. A downloadable report for self-filing is a different product.
 
-## How to use the existing mockups
+The current repository contains static mockups and concept documentation. Imports, calculations, payments, identity checks, and filing are simulated wherever they appear in a demo.
 
-- **[`working/mockup-szefa/`](working/mockup-szefa/) is an early, unapproved proposal with known UX problems.** Its taxpayer wizard requires plan payment and KYC submission before the taxpayer can add sources. That puts cost and friction before the taxpayer can get an estimate based on their data. Its transaction-count pricing also differs from the agreed direction. Use these files to discuss alternatives. Follow the rules below when designing a new flow.
-- [`archive/rejected-mockup/`](archive/rejected-mockup/) is the rejected prototype. Use it for historical reference.
+## Current product assumptions
 
-## Rules for new mockups
+The main UX challenge is giving taxpayers a useful first assessment before asking them for much effort or incurring costs for the firm. The concept identifies the number and types of sources early. CSV and direct exchange API imports are free, while paid aggregators such as Kryptos.io are available through a paid plan. Taxpayers can also explain activity missing from imports, such as card payments or withdrawals through exchange offices.
 
-- Ask early how many sources the taxpayer has and what kinds they are. Offer free CSV and direct exchange API imports. Put paid aggregators such as Kryptos.io behind a paid plan. Allow supplementary evidence such as card payments or withdrawals through exchange offices.
-- Recommend an initial plan based on the estimated tax amount and the accountant time the case is likely to require. Show material gaps in the estimate. Use transaction count only as a possible signal of complexity.
-- Let taxpayers fill gaps in rounds. Reassess after each round and send the case to the accountant when it appears ready. The accountant can request clarification or approve the settlement.
-- Require KYC/AML after the taxpayer chooses an initial plan and before final approval. Keep it out of initial source discovery and free imports.
-- Label open decisions as proposals in mockups and documentation. These include making the estimated tax amount the main pricing factor, letting the accountant initiate KYC from the dashboard, defining insurance and included time limits, and offering paid extra consultation.
+The agreed pricing factors are the estimated tax amount, which informs the firm's potential liability, and the manual work the accountant expects to spend on the case. Transaction count may help assess complexity. The system uses the available data to suggest an initial plan and flag gaps. As taxpayers add evidence, it reassesses the case and prepares it for accountant review. The accountant can ask for clarification or approve the settlement. The point of the automation is to reduce the accountant's manual work.
 
-## Verification
+KYC/AML is required for the firm's service and must be complete before final approval. It adds friction for the taxpayer and costs the firm money. The intended flow places it after initial plan selection and leaves source discovery and free imports available earlier.
 
-- When changing a clickable mockup, open the affected HTML in a browser and walk through the changed path with its demo data.
+## Existing mockups
+
+**[`working/mockup-szefa/`](working/mockup-szefa/) is an early, unapproved proposal with known UX problems.** Its taxpayer wizard requires payment and KYC submission before the taxpayer can add sources. The taxpayer therefore faces both barriers before getting an assessment based on their data. It also uses transaction-count tiers, which do not reflect the agreed pricing factors. The files are material for discussing alternatives. [`archive/rejected-mockup/`](archive/rejected-mockup/) holds a separate, rejected prototype for historical reference.
+
+## Open questions
+
+Estimated tax may be the primary pricing factor. The plans could specify which checks they include, the amount of professional liability coverage, and how much accountant time is included. Whether the accountant should trigger KYC from the dashboard, and how to handle unexpectedly complex cases, are still open. Selling an additional consultation package is one option to discuss with the accountant.
