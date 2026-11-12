@@ -1,10 +1,14 @@
 # AGENTS.md
 
+## Repository scope
+
+This repository is limited to product ideation, mockups, and concept documentation. It exists to explore and communicate how the taxpayer and accountant workflows could work. Building the full application is outside its scope.
+
+Mockups can be interactive and use fictional data. Any data import, tax calculation, payment, KYC/AML check, or tax filing shown in a mockup is simulated.
+
 ## Project and business context
 
 Crypto Tax MVP explores a Polish PIT settlement service limited to cryptocurrency activity. The accounting firm will own the application and provide the service. An accountant reviews and approves each settlement, and the firm takes professional responsibility for the result. A customer is buying a settlement handled by the firm. A downloadable report for self-filing is a different product.
-
-The current repository contains static mockups and concept documentation. Imports, calculations, payments, identity checks, and filing are simulated wherever they appear in a demo.
 
 ## Current product assumptions
 
