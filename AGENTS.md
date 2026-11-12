@@ -1,24 +1,23 @@
-# Crypto Tax MVP
+# AGENTS.md
 
-## Product goal
+## Scope
 
-The product helps taxpayers in Poland settle their cryptocurrency PIT. The accounting firm will own the application, provide the tax settlement service, and take professional responsibility for the settlements it approves. Design for an accountant to review and sign off on the case. The workflow should result in a settlement approved by the firm.
+- Build static mockups and write concept documentation for a Polish cryptocurrency PIT service. The accounting firm will own the product and take professional responsibility for the settlements its accountants approve.
+- Simulate the taxpayer and accountant workflows with fictional data. Keep live imports, tax calculations, payments, identity verification, and filing out of the prototype.
 
-## Repository scope
+## How to use the existing mockups
 
-This repository is for mockups and concept documentation. Use static screens and simulated data and interactions to explore the taxpayer and accountant workflows. Production imports, tax calculations, payments, identity verification, and filing are outside the current repository scope.
+- **[`working/mockup-szefa/`](working/mockup-szefa/) is an early, unapproved proposal with known UX problems.** Its taxpayer wizard requires plan payment and KYC submission before the taxpayer can add sources. That puts cost and friction before the taxpayer can get an estimate based on their data. Its transaction-count pricing also differs from the agreed direction. Use these files to discuss alternatives. Follow the rules below when designing a new flow.
+- [`archive/rejected-mockup/`](archive/rejected-mockup/) is the rejected prototype. Use it for historical reference.
 
-`working/mockup-szefa/` contains working mockups for discussion. `archive/rejected-mockup/` contains the rejected prototype for reference. Treat both as design references. The product decisions in this file take precedence over assumptions shown in the mockups.
+## Rules for new mockups
 
-## Taxpayer and accountant workflow
+- Ask early how many sources the taxpayer has and what kinds they are. Offer free CSV and direct exchange API imports. Put paid aggregators such as Kryptos.io behind a paid plan. Allow supplementary evidence such as card payments or withdrawals through exchange offices.
+- Recommend an initial plan based on the estimated tax amount and the accountant time the case is likely to require. Show material gaps in the estimate. Use transaction count only as a possible signal of complexity.
+- Let taxpayers fill gaps in rounds. Reassess after each round and send the case to the accountant when it appears ready. The accountant can request clarification or approve the settlement.
+- Require KYC/AML after the taxpayer chooses an initial plan and before final approval. Keep it out of initial source discovery and free imports.
+- Label open decisions as proposals in mockups and documentation. These include making the estimated tax amount the main pricing factor, letting the accountant initiate KYC from the dashboard, defining insurance and included time limits, and offering paid extra consultation.
 
-1. Keep the initial steps easy. Find out how many sources the taxpayer has and what kinds they are before asking for a full import. Offer free CSV imports and direct exchange connections via API keys. Reserve paid third-party aggregators such as Kryptos.io for a paid plan. Let taxpayers add information the imports may miss, such as card payments and withdrawals through exchange offices.
-2. Use the available data to estimate the tax amount, identify transaction types and gaps, and estimate the manual work the accountant will need. Recommend an initial plan based on those estimates. Make it clear when the available data is incomplete.
-3. Let the taxpayer add or clarify data in rounds. The system should identify what is missing and repeat the assessment as new evidence arrives. When the case appears ready, send it to the accountant's workspace. The accountant can accept it or send it back for clarification. Automate the preparation and checks that save the accountant time.
-4. KYC/AML is mandatory for the firm's service and must be completed before final approval. It adds friction and costs the firm money. Have the taxpayer choose an initial plan before starting verification. An accountant-triggered request from the dashboard is one option for deciding when to start it.
+## Verification
 
-## Pricing and open decisions
-
-- Base the recommended plan on estimated tax exposure and expected accountant time. Use transaction count only as a possible signal of complexity. The working assumption is that estimated tax exposure will be the main factor in the initial recommendation.
-- A plan may specify the KYC/AML check, the amount of professional liability coverage, and the included accountant time. Plan limits and terms are open.
-- If the case turns out to require more work than the plan covers, offering an additional consultation package is a proposal to discuss with the accountant. The trigger, terms, and any repricing process are open.
+- When changing a clickable mockup, open the affected HTML in a browser and walk through the changed path with its demo data.
