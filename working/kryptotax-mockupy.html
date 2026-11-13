@@ -1,0 +1,1652 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101c34">
+<title>KryptoTax — rozliczenie kryptowalut</title>
+<style>
+:root{--ink:#17243a;--sub:#738099;--line:#e4e9f1;--canvas:#f5f7fb;--nav:#101c34;--nav2:#1c2c4a;--purple:#555ce2;--purple2:#edf0ff;--green:#087c61;--greenbg:#e5f6ef;--amber:#9d6b19;--amberbg:#fff3dc;--red:#b84358;--redbg:#ffedf0}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#e8edf6}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.42}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #abb1ff;outline-offset:2px}#app{min-height:100vh}.shell{min-height:100vh;display:grid;grid-template-columns:232px minmax(0,1fr)}.sidebar{background:var(--nav);color:white;padding:24px 13px;display:flex;flex-direction:column;gap:31px}.logo{display:flex;gap:10px;align-items:center;padding:3px 12px}.logo-symbol{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:#7179fc;font-size:22px;font-weight:900}.logo-text{font-size:20px;font-weight:850;letter-spacing:-.9px;line-height:1.1}.logo-text small{display:block;color:#a5b2ce;font-size:9px;font-weight:750;letter-spacing:1.5px;margin-top:5px}.nav-label{font-size:10px;color:#8495b2;padding-left:13px;letter-spacing:1.5px;font-weight:800;margin:0 0 9px}.navigation{display:flex;flex-direction:column;gap:3px}.navigation button{width:100%;background:transparent;color:#b1c0d5;border:0;padding:12px 13px;text-align:left;font-size:12px;font-weight:660;display:flex;align-items:center;gap:11px;border-radius:9px}.navigation button:hover{background:#243452;color:white}.navigation button.active{background:#334469;color:white}.nav-icon{width:20px;text-align:center;font-size:17px;font-weight:400}.count{margin-left:auto;border-radius:10px;font-size:10px;background:#364765;padding:3px 6px}.side-panel-link{margin-top:16px;padding-top:14px;border-top:1px solid #293751}.other-link{display:block;color:#e7e9ff;text-decoration:none;font-weight:750;border:1px solid #465474;border-radius:8px;padding:10px 9px;font-size:11px;line-height:1.5}.other-link:hover{background:#2b3b5e}.side-hint{font-size:9px;line-height:1.6;color:#94a5bf;margin-top:9px}.side-bottom{margin-top:auto;border-top:1px solid #293751;padding:16px 12px 0;color:#93a3bf;font-size:10px;line-height:1.7}.main{background:var(--canvas);min-width:0}.top{height:74px;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 33px;border-bottom:1px solid var(--line)}.breadcrumb{font-size:12px;color:#78869a}.breadcrumb strong{color:#24334c}.head-right{display:flex;align-items:center;gap:11px}.avatar{height:31px;width:31px;display:grid;place-items:center;background:#e8eafe;border-radius:50%;color:#5c57a2;font-size:10px;font-weight:850}.demo-strip{background:#fff9e9;border-bottom:1px solid #f0e8d0;color:#876523;font-size:11px;padding:10px 33px}.content{padding:30px 34px 55px;max-width:1200px;margin:auto}.pagehead{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px}.eyebrow{color:#5762cd;font-size:10px;font-weight:820;letter-spacing:1.35px;text-transform:uppercase;margin:0 0 8px}.pagehead h1{font-weight:840;font-size:28px;line-height:1.17;letter-spacing:-1.25px;margin:0 0 7px}.pagehead p{margin:0;font-size:12px;color:var(--sub);line-height:1.65}.pill{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;padding:6px 10px;border-radius:50px;background:#edf1f7;color:#637189;font-weight:750;font-size:10px}.pill.green{background:var(--greenbg);color:var(--green)}.pill.amber{background:var(--amberbg);color:var(--amber)}.pill.red{background:var(--redbg);color:var(--red)}.pill.purple{background:var(--purple2);color:#545ec8}.btn{border:1px solid transparent;min-height:39px;display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:10px 14px;border-radius:9px;line-height:1.25;font-size:11px;font-weight:780;text-align:center;background:#edf0f7;color:#43506a}.btn:hover:not(:disabled){filter:brightness(.97)}.btn.primary{background:var(--purple);color:#fff}.btn.secondary{border-color:#ccd1f4;background:#fff;color:#4c55c7}.btn.dark{background:#1b2a49;color:white}.btn.small{min-height:30px;padding:7px 11px;font-size:10px}.buttons{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.card{background:white;border:1px solid var(--line);border-radius:13px;padding:20px;min-width:0}.cardhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}.card h2{font-size:16px;letter-spacing:-.35px;line-height:1.3;margin:0}.card h3{font-size:12px;margin:0;line-height:1.5}.card p{font-size:11px;line-height:1.65;color:var(--sub);margin:5px 0 0}.muted{color:var(--sub)}.fine{font-size:10px;color:#8290a7}.bold{font-weight:800}.grid{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}.equal{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stack{display:flex;flex-direction:column;gap:16px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:17px}.stat{border:1px solid var(--line);border-radius:12px;background:#fff;padding:18px}.stat-label{font-size:10px;color:#8593a7;font-weight:600}.stat-value{font-size:25px;font-weight:840;letter-spacing:-.9px;margin:7px 0 4px}.stat-caption{font-size:10px;color:#8693a6}.hero{background:linear-gradient(110deg,#1c2a50,#293b6c);color:white;border-radius:14px;padding:26px;margin-bottom:18px;display:flex;gap:18px;align-items:center;justify-content:space-between;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:230px;height:230px;border:28px solid #ffffff0a;border-radius:50%;right:-70px;top:-115px;pointer-events:none}.hero h2{font-size:21px;line-height:1.25;margin:4px 0 8px;font-weight:830;letter-spacing:-.6px;color:white}.hero p{font-size:12px;line-height:1.65;color:#c5d0e6;max-width:550px;margin:0}.hero .tag{font-size:10px;color:#b8c4f8;letter-spacing:1.4px;font-weight:830}.hero .btn{position:relative;z-index:1;background:#fff;color:#3545ad;flex-shrink:0}.step{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid #edf0f5}.step:last-child{border:0;padding-bottom:0}.stepdot{border-radius:50%;height:28px;width:28px;flex-shrink:0;display:grid;place-items:center;background:#eaedff;color:#5362ca;font-weight:800;font-size:11px}.stepdot.done{background:#e5f5ee;color:#16866b}.stepbody{flex:1}.step .btn{align-self:center}.line{border-bottom:1px solid #eef1f6;padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}.line:last-child{border:0}.source{display:flex;gap:12px;align-items:center;border-bottom:1px solid #edf0f5;padding:13px 0}.source:last-child{border:0}.sourceIcon{width:39px;height:39px;flex:0 0 39px;border-radius:11px;background:#eff1ff;color:#525ad2;display:grid;place-items:center;font-weight:830;font-size:17px}.source b{font-size:12px}.source .pill{margin-left:auto}.source small{display:block;color:#8a98ae;font-size:10px;margin-top:4px}.note{background:#eff1ff;color:#5962a5;border-radius:9px;padding:13px 15px;font-size:11px;line-height:1.65;margin:15px 0}.note.good{background:#eaf8f0;color:#157959}.note.warn{background:#fff6e5;color:#916921}.timeline{border-left:1px solid #d9e1ee;margin-left:7px;padding-left:18px}.event{position:relative;padding:0 0 21px 12px}.event:before{content:"";position:absolute;left:-23px;top:3px;border:2px solid white;width:9px;height:9px;border-radius:50%;background:#abb5eb}.event:last-child{padding-bottom:0}.event b{font-size:11px}.event p{font-size:10px;color:#8996a9;margin-top:4px;line-height:1.6}.progress{height:7px;border-radius:10px;background:#e9edf5;overflow:hidden;margin:13px 0}.progress span{background:#626de7;display:block;height:100%;border-radius:10px}.exception{border:1px solid var(--line);border-radius:13px;background:white;padding:19px;margin-bottom:15px}.exception-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.exception h2{font-size:16px;margin:3px 0 7px}.exception p{font-size:11px;line-height:1.65;color:#7b889e;margin:0}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px;align-items:center}.filemark{padding:8px 10px;background:#f1f4fb;color:#65738f;border-radius:7px;font-size:10px}.box{background:#f8fafd;border:1px solid #e9edf4;border-radius:9px;padding:14px;margin-top:14px}.box label{font-size:10px;color:#8795a8;display:block;margin-bottom:7px}textarea,select,input[type=text]{border:1px solid #d7deeb;background:#fff;border-radius:8px;color:#2b3a51;padding:10px 12px;font-size:12px;width:100%;max-width:100%}textarea{resize:vertical;min-height:100px;line-height:1.5}select{width:auto;min-width:200px}input[type=checkbox]{accent-color:#585fe1}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;min-width:560px;text-align:left}th{background:#f8fafd;text-transform:uppercase;letter-spacing:.5px;color:#8492a6;font-size:9px;font-weight:800}td{font-size:11px;color:#39475f}th,td{padding:13px 11px;border-bottom:1px solid #edf0f5}tbody tr:last-child td{border:0}.right{text-align:right}.docrow{display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #edf0f5}.docrow:last-child{border:0}.docicon{font-size:18px;background:#edf0ff;color:#6269cb;padding:10px;border-radius:9px}.docrow h3{margin:0}.docrow .btn{margin-left:auto}.amount{font-size:36px;font-weight:860;letter-spacing:-1.7px;margin:5px 0 7px}.bars{margin-top:14px}.bars label{display:block;color:#8090a3;font-size:10px;margin-top:14px}.bars .progress{margin:7px 0}.mono{font-variant-numeric:tabular-nums}.modalback{position:fixed;inset:0;z-index:80;background:#0e1837a8;display:flex;align-items:center;justify-content:center;padding:18px}.modal{background:white;border-radius:14px;width:min(500px,100%);padding:25px;box-shadow:0 30px 90px #0d1c384f;max-height:90vh;overflow-y:auto}.modal h2{font-size:20px;letter-spacing:-.6px;margin:0 0 8px}.modal p{font-size:12px;color:#78869b;line-height:1.65}.modal .paper{background:#f8fafc;border:1px solid #e7ecf4;border-radius:9px;margin:15px 0;padding:20px}.modalbuttons{display:flex;justify-content:flex-end;margin-top:16px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#182743;color:#fff;z-index:90;border-radius:9px;padding:12px 17px;font-size:11px;box-shadow:0 10px 38px #0d18383b;max-width:90%;text-align:center}.hidden{display:none!important}.status-intro{display:flex;align-items:center;justify-content:space-between;gap:12px}.status-intro b{font-size:14px}.fake-upload{margin-top:12px;display:none}.checkline{display:flex;gap:10px;align-items:flex-start;margin-top:17px;font-size:11px;color:#34445d;line-height:1.6}.smallcaps{font-size:10px;color:#8793a6;text-transform:uppercase;letter-spacing:1px;font-weight:780}.mt16{margin-top:16px}.mt20{margin-top:20px}
+.choice-list{display:flex;flex-direction:column;gap:9px;margin:17px 0}.choice{display:flex;align-items:center;gap:10px;padding:13px;border:1px solid var(--line);border-radius:9px;background:#f9fafe;cursor:pointer;font-size:12px;line-height:1.5}.choice:has(input:checked){border-color:#8e96e9;background:#f0f2ff;font-weight:720}.choice input{width:17px;height:17px;flex:0 0 17px}
+@media(max-width:850px){.shell{grid-template-columns:1fr}.sidebar{padding:12px;gap:8px}.logo{padding:2px 10px}.nav-label{display:none}.side-bottom{padding:7px 10px 2px;border:0;font-size:9px}.side-panel-link{margin-top:5px;padding-top:7px}.side-hint{display:none}.navigation{flex-direction:row;overflow:auto}.navigation button{width:auto;white-space:nowrap;flex-shrink:0;padding:10px 12px}.nav-icon{width:auto}.top{padding:0 18px;height:62px}.demo-strip{padding:10px 18px}.content{padding:23px 17px 36px}}
+@media(max-width:600px){.breadcrumb{display:none}.pagehead{flex-wrap:wrap}.pagehead h1{font-size:24px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:last-child{grid-column:span 2}.grid,.equal{grid-template-columns:1fr}.hero{flex-direction:column;align-items:stretch;padding:22px}.hero .btn{align-self:flex-start}.exception-top{flex-direction:column}.head-right{width:100%;justify-content:space-between}.avatar{display:none}.source .pill{font-size:9px}.card{padding:16px}.logo-text{font-size:18px}}
+
+/* Client wizard: the five-step journey replaces the dashboard navigation. */
+:root{--canvas:#f7f8fc;--purple:#5755d9;--purple2:#efefff}
+body{background:var(--canvas)}.wizard-shell{grid-template-columns:258px minmax(0,1fr)}
+.sidebar{padding:29px 18px 22px;gap:26px;background:#142139}.logo{color:white;text-decoration:none;padding:0 9px}.logo-text small{font-size:8px;letter-spacing:1.1px;color:#97a9c7}.logo-symbol{background:#7574ef}
+.side-case{padding:0 12px 21px;border-bottom:1px solid #ffffff14}.side-case>span{font-size:11px;color:#9eacc4}.side-case strong{display:flex;align-items:center;gap:10px;font-size:22px;letter-spacing:-.6px;margin:9px 0 8px}.side-case strong span{font-size:12px;font-weight:650;letter-spacing:0;padding:5px 9px;border:1px solid #ffffff26;border-radius:6px}.side-case small{font-size:10px;color:#a1afc6}.nav-label{font-size:9px;letter-spacing:1.6px;color:#8497b5;padding-left:12px;margin-bottom:12px}
+.wizard-nav ol{padding:0;margin:0;list-style:none}.wizard-nav li{position:relative}.wizard-nav li:not(:last-child):after{content:'';position:absolute;top:48px;bottom:-8px;left:29px;width:1px;background:#3a4961;pointer-events:none}.wizard-nav-step{position:relative;width:100%;display:flex;align-items:center;gap:12px;padding:13px 12px;text-align:left;background:transparent;border:1px solid transparent;border-radius:10px;color:#aebbd1;margin-bottom:9px;min-height:66px}.wizard-nav-step:hover{background:#ffffff08;color:white}.wizard-nav-step.active{background:#333e64;border-color:#505c89;color:white}.wizard-number{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:50%;border:1px solid #536079;color:#b5c1d5;font-size:12px;font-weight:750;background:#142139;z-index:1}.is-done .wizard-number{background:#203f43;border-color:#37605d;color:#91d5bc}.active .wizard-number{background:#8c8af5;color:#fff;border-color:#8c8af5}.wizard-nav-copy strong{display:block;font-size:12px;font-weight:680}.wizard-nav-copy small{display:block;font-size:10px;color:#91a2bf;margin-top:6px}.active .wizard-nav-copy small{color:#bfc7e6}.current-dot{height:5px;width:5px;border-radius:50%;background:#b2acff;margin-left:auto}.side-tools{border-top:1px solid #ffffff14;padding-top:21px}.navigation{gap:3px}.navigation button{padding:10px 12px;font-size:11px}.side-bottom{padding:18px 10px 0;border-color:#ffffff14}.advisor-mini{display:flex;gap:10px;align-items:center;margin-bottom:17px}.advisor-avatar{display:grid;place-items:center;width:32px;height:32px;background:#31435e;color:#d9e2f2;font-size:10px;font-weight:700;border-radius:50%}.advisor-mini strong{display:block;font-size:11px;color:#d3ddec}.advisor-mini span:not(.advisor-avatar){display:block;font-size:9px;color:#8c9fbc;margin-top:4px}.other-link{font-size:10px;font-weight:600;background:#ffffff04;padding:9px 11px;border-color:#ffffff23}.side-hint{font-size:8px}
+.top{height:77px;padding:0 38px}.breadcrumb{font-size:11px}.breadcrumb span{padding:0 10px;color:#bec6d5}.head-right{gap:16px}.save-state{font-size:10px;color:#839189}.save-state>span{color:#22846c;padding-right:5px}.top .btn{background:transparent;color:#8793a7;font-size:9px;border:1px solid #e9edf4;min-height:28px}.top .avatar{background:#f1effa;color:#6a5f99}.demo-strip{display:flex;gap:9px;align-items:center;background:#faf7ef;color:#8c7b54;border-color:#ece7db;font-size:10px;padding:10px 38px;line-height:1.5}.demo-badge{font-size:8px;letter-spacing:.8px;border:1px solid #dbd0b4;border-radius:4px;padding:1px 4px;font-weight:800;flex-shrink:0}
+.content{padding:33px 38px 28px;max-width:1220px}.wizard-meta{display:flex;justify-content:space-between;align-items:center}.wizard-meta .eyebrow{font-size:9px;letter-spacing:1.5px;margin:0}.wizard-count{color:#929aaf;font-size:11px}.wizard-count strong{color:#5d5cc0}.wizard-track{display:flex;gap:5px;margin:13px 0 27px}.wizard-track span{height:4px;background:#e3e6ef;border-radius:4px;flex:1}.wizard-track .filled{background:#7470e4}.wizard-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:26px}.wizard-heading h1{font-size:30px;font-weight:760;letter-spacing:-1.1px;line-height:1.23;margin:0 0 11px;outline:none}.wizard-heading p{font-size:12px;color:#7d899e;line-height:1.8;margin:0;max-width:640px}.year-tag{background:#fff;border:1px solid #e1e5ef;border-radius:8px;padding:9px 11px;font-size:10px;white-space:nowrap;display:flex;gap:9px;color:#8591a7;line-height:1.3}.year-tag strong{font-weight:700;color:#4e5b74}.welcome-note{border:1px solid #e3e3f7;border-radius:12px;background:#efeffb;padding:17px 20px;display:flex;gap:14px;align-items:center;margin-bottom:22px}.welcome-icon{height:34px;width:34px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:22px;color:#7470cf;flex:0 0 34px}.welcome-note strong{font-size:12px;color:#4c4b85;font-weight:720}.welcome-note p{margin:5px 0 0;font-size:11px;color:#80809f;line-height:1.7}.wizard-body>.grid{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:20px}.wizard-body .card{padding:23px;border-radius:13px;box-shadow:0 3px 8px #26355902}.card h2{font-size:15px;font-weight:730}.cardhead{gap:12px}.card p,.exception p{line-height:1.8}.note{font-size:11px;font-weight:400}.btn{min-height:41px;font-size:11px;border-radius:8px;padding:11px 15px;font-weight:720}.btn.primary{box-shadow:0 3px 5px #5755d912}.btn.secondary{border-color:#dedff0;color:#6364a4}.btn.small{min-height:30px;font-size:10px;padding:7px 10px}.choice{padding:15px 13px;background:#fff;transition:background .15s,border-color .15s}.choice:has(input:checked){background:#f5f4ff;border-color:#a29de6}.source small,.docrow p{overflow-wrap:anywhere}.source{padding:16px 0}.sourceIcon{background:#f3f3fb;border:1px solid #eaeaf7;border-radius:11px}.exception{padding:23px}.exception .eyebrow{font-size:9px}.exception h2{font-size:17px;letter-spacing:-.3px}.box{background:#f9faff}.wizard-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:25px;padding-top:23px;border-top:1px solid #e1e5ef}.wizard-footer-next{display:flex;gap:18px;align-items:center}.next-caption{font-size:10px;color:#8a95a9}.wizard-footer .btn{min-height:44px;padding:12px 19px}.start-label{font-size:11px;color:#8995a8}.wizard-reassurance{display:flex;justify-content:space-between;gap:14px;font-size:9px;line-height:1.6;color:#98a1b3;margin-top:17px}.main-footnote{text-align:center;color:#a5adbc;font-size:9px;padding:8px 20px 26px}.return-to-wizard{display:flex;align-items:center;gap:14px;margin-bottom:23px}.return-to-wizard>span{font-size:10px;color:#8a95a8}
+.summary-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:20px;align-items:start}.summary-intro{margin-bottom:7px!important}.summary-row{display:flex;align-items:center;gap:12px;padding:21px 0;border-bottom:1px solid #edf0f6}.summary-check{display:grid;place-items:center;align-self:flex-start;margin-top:1px;height:26px;width:26px;flex:0 0 26px;border:1px solid #eee0bc;background:#fff8e8;color:#9d7d39;border-radius:50%;font-size:11px;font-weight:750}.summary-check.done{background:#eaf6ef;color:#26836a;border-color:#d6eadd}.summary-copy{flex:1;min-width:0}.summary-copy h3{font-size:12px}.summary-copy p{font-size:10px;overflow-wrap:anywhere}.summary-row .btn{max-width:127px}.summary-add-note{display:flex;gap:10px;color:#9098ac;font-size:10px;line-height:1.8;padding-top:19px}.summary-add-note>span{font-size:19px;color:#8384b0}.handoff-card{background:#f0effb;border-color:#e0def4!important}.handoff-card>.eyebrow{font-size:8px;letter-spacing:1.3px}.handoff-icon{height:44px;width:44px;background:#e4e1f8;border:1px solid #dbd7f4;color:#6e67c4;border-radius:13px;display:grid;place-items:center;font-size:23px;margin:22px 0 18px}.handoff-card h2{font-size:20px;letter-spacing:-.6px;line-height:1.4;max-width:240px}.handoff-card p{margin-top:12px;color:#7c7b99;font-size:11px}.handoff-card>.btn{width:100%;margin-top:22px;font-size:11px}.handoff-card>.btn:disabled{opacity:1;background:#dcd9ee;color:#8b86a9;box-shadow:none}.handoff-card .handoff-caption{display:block;color:#9390a8;font-size:9px;line-height:1.8;margin-top:11px}.handoff-card>.btn.small{margin-top:13px;background:transparent;border-color:#d3d0ea}.result-details{border:1px solid #e2e6ef;border-radius:12px;background:white;margin-top:22px;overflow:hidden}.result-details>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:21px 23px;cursor:pointer;list-style:none}.result-details>summary::-webkit-details-marker{display:none}.result-details>summary strong{display:block;font-size:12px;font-weight:700}.result-details>summary small{display:block;color:#99a1b2;font-size:10px;margin-top:5px;line-height:1.6}.result-peek{font-size:18px;letter-spacing:-.5px;font-weight:750;white-space:nowrap;color:#62678b}.result-peek>span{margin-left:15px;color:#969ab4;font-size:18px}.result-details-body{padding:0 23px 23px}.result-details[open]>summary{border-bottom:1px solid #edf0f6;margin-bottom:23px}.result-details .stats{gap:9px}.result-details .stat{padding:14px}.result-details .stat-value{font-size:21px}
+@media(min-width:1100px){.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto}.main{min-height:100vh}}
+@media(max-width:1100px){.wizard-shell{grid-template-columns:225px minmax(0,1fr)}.sidebar{padding:24px 12px}.top{padding:0 25px}.content{padding:28px 25px}.demo-strip{padding:10px 25px}.save-state{display:none}.wizard-heading h1{font-size:27px}.wizard-body>.grid{grid-template-columns:1fr}.wizard-body>.grid>.card+ .card{background:#fcfcfe}.summary-layout{grid-template-columns:1fr}.handoff-card h2{max-width:none}.handoff-card .handoff-icon{display:none}.handoff-card h2{margin-top:13px}.handoff-card>.btn{max-width:320px}.next-caption{display:none}}
+@media(max-width:850px){.wizard-shell{grid-template-columns:1fr}.sidebar{padding:18px 20px;gap:18px}.sidebar>.logo{padding:0}.logo-text{font-size:20px}.logo-text small{font-size:7px}.side-case,.side-bottom,.journey>.nav-label,.side-tools>.nav-label{display:none}.journey{min-width:0}.wizard-nav ol{display:flex;gap:5px}.wizard-nav li{flex:1;min-width:0}.wizard-nav li:not(:last-child):after{display:none}.wizard-nav-step{flex-direction:column;justify-content:center;gap:8px;padding:10px 4px;margin:0;min-height:78px}.wizard-nav-copy strong{font-size:10px;line-height:1.4;text-align:center}.wizard-nav-copy small,.current-dot{display:none}.wizard-number{width:25px;height:25px;flex:0 0 25px;font-size:10px}.side-tools{border-top:1px solid #ffffff14;padding-top:11px}.navigation{gap:15px;justify-content:center;overflow:visible}.navigation button{font-size:10px;padding:4px 6px;gap:7px}.nav-icon{font-size:15px}.top{height:59px}.breadcrumb{display:block;font-size:10px}.head-right{width:auto;gap:12px}.top .avatar{display:none}.demo-strip{font-size:9px}.content{padding:25px 21px}.wizard-track{margin-bottom:24px}.wizard-heading h1{font-size:26px}.wizard-heading{gap:16px}.wizard-body>.grid{grid-template-columns:1.2fr 1fr}.wizard-body .card{padding:19px}.wizard-footer{margin-top:22px}.welcome-note{padding:15px 17px}.wizard-reassurance{font-size:9px}.summary-layout{grid-template-columns:1.45fr 1fr}.summary-row{flex-wrap:wrap;gap:9px}.summary-row .btn{margin-left:35px}.handoff-card h2{font-size:19px}.handoff-card>.eyebrow{font-size:8px}.result-details-body{padding:0 16px 16px}}
+@media(max-width:650px){.sidebar{padding:17px 14px;gap:16px}.wizard-nav-step{min-height:76px;padding:9px 1px}.wizard-nav-copy strong{font-size:9px}.navigation{gap:13px}.top{padding:0 19px}.top .breadcrumb{font-size:9px}.breadcrumb span{padding:0 5px}.demo-strip{padding:9px 19px;align-items:flex-start}.content{padding:24px 17px}.wizard-heading{margin-bottom:23px}.wizard-heading h1{font-size:25px;letter-spacing:-.8px;line-height:1.25}.wizard-heading p{font-size:11px}.year-tag{display:none}.wizard-track{margin:12px 0 22px}.wizard-meta .eyebrow{font-size:8px}.wizard-count{font-size:10px}.welcome-note{gap:11px;padding:14px}.welcome-note strong{font-size:11px}.welcome-note p{font-size:10px}.welcome-icon{width:29px;height:29px;flex-basis:29px;font-size:19px}.wizard-body>.grid,.summary-layout{grid-template-columns:1fr}.wizard-body .card,.exception{padding:18px}.wizard-footer{gap:10px;align-items:stretch}.wizard-footer-back{display:flex;align-items:center}.wizard-footer .btn{font-size:10px;padding:12px;min-height:43px}.wizard-footer-next{justify-content:flex-end}.start-label{font-size:10px}.wizard-reassurance{flex-direction:column;gap:4px;font-size:8px}.summary-row{flex-wrap:nowrap;padding:17px 0}.summary-row .btn{margin:0;max-width:100px;font-size:9px;padding:7px 9px}.summary-copy p{font-size:10px}.summary-card .cardhead{align-items:flex-start}.summary-card .cardhead h2{font-size:14px}.summary-card .pill{font-size:9px}.handoff-card>.btn{max-width:none}.result-details>summary{padding:17px;align-items:flex-start}.result-peek{font-size:16px}.result-peek>span{margin-left:6px}.result-details>summary small{font-size:9px}.result-details .grid{grid-template-columns:1fr}.return-to-wizard{align-items:flex-start;flex-direction:column;gap:9px}.choice{font-size:11px}.source .pill{padding:5px 7px;font-size:8px}.source b{font-size:11px}.source small{font-size:9px;line-height:1.6}.source{gap:9px}.sourceIcon{width:33px;height:33px;flex-basis:33px;font-size:15px}.main-footnote{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+
+.year-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:start}.year-options{display:flex;flex-direction:column;gap:11px;margin:23px 0}.year-choice{display:flex;align-items:center;gap:13px;cursor:pointer;border:1px solid #e0e4ef;border-radius:10px;padding:18px 15px;background:#fff}.year-choice.selected{border-color:#9590e4;background:#f7f6ff;box-shadow:0 0 0 1px #a6a0ee15}.year-choice input{accent-color:var(--purple);width:17px;height:17px;margin:0}.year-choice strong{font-size:23px;letter-spacing:-.5px;display:block}.year-choice small{display:block;color:#8a91a7;font-size:10px;margin-top:4px}.year-recommended{margin-left:auto;font-size:8px;padding:6px 8px;border-radius:5px;background:#edebfc;color:#827bc2;line-height:1.5;text-align:center}.year-other-label{display:block;font-size:10px;color:#7b879d;margin-bottom:9px}.year-card select{width:100%;font-size:11px}.year-current{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #edf0f6;margin-top:22px;padding-top:20px;font-size:11px;color:#8995a8}.year-current strong{color:#5e5b9e}.year-help{background:#f0effb;border-color:#e4e1f5}.year-help>.eyebrow{font-size:8px}.year-help h2{font-size:24px;letter-spacing:-.7px;margin:20px 0 13px;line-height:1.3}.year-help .note{background:#e6e3f7;color:#84809e;font-size:10px}.prior-year-warning{font-size:9px;color:#a47b2e;margin-top:5px}
+@media(max-width:1100px){.year-layout{grid-template-columns:1fr}.year-help h2 br{display:none}.year-help h2{font-size:20px;margin:13px 0}.year-help .note{margin-bottom:0}.wizard-nav-step{padding-top:11px;padding-bottom:11px;min-height:61px}.wizard-nav li:not(:last-child):after{top:46px}}
+@media(max-width:850px){.year-layout{grid-template-columns:1.3fr 1fr}.wizard-nav-step{min-height:80px}.wizard-nav li:not(:last-child):after{display:none}.wizard-nav-copy strong{font-size:9px}.year-choice{padding:15px 12px}.year-recommended{font-size:7px}}
+@media(max-width:650px){.year-layout{grid-template-columns:1fr}.year-choice strong{font-size:21px}.year-choice small{font-size:9px}.year-current{font-size:10px}.wizard-nav-copy strong{font-size:8px}.year-recommended{font-size:7px;padding:5px}.year-options{gap:10px}}
+
+
+/* Shared form, source, transaction and advisor workspace additions. */
+input[type=search],input[type=date],input[type=number]{width:100%;min-width:0;border:1px solid #d7deeb;border-radius:8px;background:#fff;padding:11px 12px;color:#2b3a51;font-size:12px;min-height:41px}input:disabled,select:disabled,textarea:disabled{background:#f5f6fa;color:#858ea0}input[type=radio],input[type=checkbox]{accent-color:var(--purple)}.field-label{display:block;font-size:10px;font-weight:650;color:#7c889e;margin-bottom:8px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px}.form-field{display:flex;flex-direction:column;gap:8px;min-width:0;font-size:11px;color:#7b879b}.form-field>span{font-size:10px;font-weight:650}.form-field input,.form-field select{width:100%;min-width:0;min-height:42px}.form-field input:focus,.form-field select:focus{border-color:#a5a0eb}.source-copy{flex:1;min-width:0}.source-copy small,.source-copy p{overflow-wrap:anywhere;line-height:1.7}.text-link{font-size:10px;line-height:1.7;color:#7670bd;display:inline-block;margin-top:17px}.note-text{font-size:12px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}.mb20{margin-bottom:20px}.plain-checks{list-style:none;padding:0;margin:19px 0;font-size:12px;color:#6d7b92}.plain-checks li{padding:10px 0;line-height:1.7}.plain-checks li:before{content:'✓';color:#359379;margin-right:10px}.empty-state{text-align:center;padding:47px 22px;color:#8c97aa}.empty-state>span{display:inline-grid;place-items:center;width:50px;height:50px;margin-bottom:16px;border-radius:14px;background:#f0effb;color:#8a83cf;font-size:24px}.empty-state h2,.empty-state h3{color:#55627b;margin:0 0 9px!important}.empty-state p{max-width:400px;margin:0 auto 20px!important;font-size:12px}.empty-state.compact{padding:25px 12px}.empty-state.compact>span{width:38px;height:38px;font-size:22px}.empty-state.compact p{font-size:11px;margin-bottom:7px!important}.explain-list{padding-left:18px;margin:20px 0;font-size:11px;color:#66758f}.explain-list li{padding:0 0 20px 9px;line-height:1.7}.explain-list p{font-size:11px}.explain-list li:last-child{padding-bottom:0}
+.wizard-nav-step{min-height:56px;padding:9px 12px;margin-bottom:7px}.wizard-nav li:not(:last-child):after{top:43px;bottom:-7px}.sidebar{gap:22px}.wizard-nav-copy strong{font-size:11px}.wizard-nav-copy small{font-size:9px}.wizard-number{width:29px;height:29px;flex-basis:29px}.wizard-nav li:not(:last-child):after{left:27px}.journey{min-width:0}.wizard-footer-next{min-width:0}.wizard-footer .btn{white-space:normal}.wizard-heading{margin-bottom:25px}.wizard-heading h1{font-weight:750}
+.plan-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.plan-card{position:relative;display:flex;flex-direction:column;border:1px solid #e0e4ee;border-radius:12px;background:white;padding:21px 18px;cursor:pointer;min-width:0}.plan-card.selected{border-color:#8f89e6;box-shadow:0 0 0 1px #a29be41c;background:#fbfaff}.plan-card>input{position:absolute;right:15px;top:17px;width:15px;height:15px;margin:0}.plan-volume{font-size:29px;letter-spacing:-1px;font-weight:780;color:#303d59;margin-top:5px}.plan-unit{font-size:10px;color:#8a95a9;margin:3px 0 24px}.plan-card>strong{font-size:18px;letter-spacing:-.5px;line-height:1.4;min-height:51px}.plan-card:last-child>strong{font-size:16px}.plan-desc{font-size:10px;line-height:1.8;color:#8a94a8;margin:11px 0 23px;flex:1}.plan-select{display:block;text-align:center;border-radius:7px;padding:9px 7px;background:#f3f4f9;font-size:10px;font-weight:700;color:#858aa6}.selected .plan-select{background:#edebff;color:#6d64c2}.payment-amount{font-size:32px;letter-spacing:-1px;font-weight:750;margin:24px 0}.payment-amount small{font-size:16px;color:#8c93aa;letter-spacing:0}.payment-receipt{padding:17px 0;font-size:11px;color:#7a879e}.payment-receipt>strong{font-size:28px;color:#506478}.payment-receipt .line b{color:#56637a;overflow-wrap:anywhere;text-align:right}.plan-grid+.equal{align-items:start}
+.kyc-stages{display:flex;gap:9px;margin-bottom:20px}.kyc-stages button{display:flex;align-items:center;gap:9px;border:1px solid #e0e4ef;border-radius:8px;background:white;color:#949cb0;font-size:11px;padding:12px 14px;flex:1;font-weight:650;text-align:left}.kyc-stages button>span{display:grid;place-items:center;border-radius:50%;height:23px;width:23px;flex:0 0 23px;background:#f0f1f8;font-size:10px}.kyc-stages button.active{border-color:#a9a2e8;background:#f5f3ff;color:#6961b8}.kyc-stages button.active>span{background:#8179d9;color:#fff}.kyc-layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:20px;align-items:start}.kyc-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:25px;padding-top:22px;border-top:1px solid #ecedf4}.kyc-help{background:#f0effb;border-color:#e3e0f5!important}.kyc-help h2{font-size:22px;letter-spacing:-.6px;margin:18px 0 12px}.kyc-help p{color:#83809d}.kyc-help .note{background:#e8e5f8;color:#85809d}.identity-overview .line{font-size:11px;color:#8a94a7}.identity-overview b{color:#56627b;text-align:right;overflow-wrap:anywhere}.identity-overview .pill{white-space:normal;text-align:center}.document-upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:22px}.upload-tile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:132px;border:1px dashed #cfcde2;border-radius:10px;background:#fbfaff;text-align:center;padding:18px 12px;cursor:pointer;min-width:0;overflow:hidden}.upload-tile:hover{background:#f5f3ff;border-color:#9890d9}.upload-tile:focus-within{outline:3px solid #bcb6f0;outline-offset:2px}.upload-tile>strong{font-size:11px;font-weight:700;color:#716aa3}.upload-tile>span:not(.upload-symbol){font-size:9px;color:#a09ab2;line-height:1.7;overflow-wrap:anywhere;max-width:100%}.upload-tile input,.upload-button input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.upload-symbol{font-size:24px;color:#a19ac9;line-height:1.2}.inline-upload{margin-top:17px;min-height:84px;padding:15px}.upload-button{position:relative;overflow:hidden;cursor:pointer}.source-workspace{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:start}.upload-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.other-import>.note{margin-bottom:0;font-size:10px}.other-import input[type=text]{font-size:11px}.source-workspace .source{flex-wrap:wrap}.source-workspace .source .btn{margin-left:48px}.source-workspace .source .pill{font-size:9px;padding:5px 8px}.source-workspace .source-copy{min-width:130px}.import-source .source-copy{min-width:100px}.exchange-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:22px}.exchange-card{position:relative;display:grid;grid-template-columns:39px minmax(0,1fr);gap:3px 11px;border:1px solid #e5e8f1;border-radius:10px;padding:17px;align-items:center;background:#fff}.exchange-mark{width:36px;height:36px;border-radius:10px;background:color-mix(in srgb,var(--exchange-color) 12%,white);color:var(--exchange-color);font-size:20px;font-weight:800;display:grid;place-items:center;grid-row:span 2}.exchange-card>strong{font-size:12px;overflow-wrap:anywhere}.exchange-card>small{font-size:9px;color:#99a0b1;line-height:1.6}.exchange-card>.btn{grid-column:span 2;margin-top:14px;width:100%;font-size:10px}
+.tx-workspace{padding:22px!important}.tx-toolbar{display:flex;align-items:flex-end;justify-content:space-between;gap:25px;margin-bottom:21px}.tx-search{flex:1;min-width:0;max-width:470px}.tx-search input{font-size:11px}.tx-view-switch{display:flex;flex-shrink:0;border:1px solid #e0e3ef;background:#f7f8fc;border-radius:8px;padding:3px;gap:3px}.tx-view-switch button{border:0;background:transparent;color:#9b9eb3;font-size:10px;padding:9px 13px;border-radius:6px;font-weight:700}.tx-view-switch button.active{background:#fff;color:#6f69bd;box-shadow:0 1px 5px #28375112}.tx-filters{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:0 0 20px;padding-bottom:21px;border-bottom:1px solid #eef0f6}.filter-field{display:flex;flex-direction:column;gap:8px;min-width:0;font-size:10px;color:#8a94a9}.filter-field>span{font-size:9px;font-weight:650}.filter-field select{width:100%;min-width:0;font-size:10px;padding:9px 10px;min-height:37px}.tx-results-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px;color:#9a9fb1;margin:0 0 16px}.tx-results-head strong{color:#676384}.tx-table{min-width:730px}.tx-table td,.tx-table th{padding:15px 12px;font-size:10px}.tx-table th{font-size:8px}.tx-table td strong{font-size:11px}.tx-table td small,.clients-table small,.calculations-table small{display:block;font-size:9px;line-height:1.7;color:#99a1b2;margin-top:4px}.group-count{display:inline-grid;place-items:center;background:#eeecfa;color:#7871b3;font-size:12px;font-weight:750;min-width:37px;height:28px;border-radius:6px;padding:0 7px}.pagination{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-top:20px;margin-top:12px;border-top:1px solid #edf0f5;font-size:10px;color:#8f99ac}.pagination>label{display:flex;align-items:center;gap:8px}.pagination select{min-width:0;width:auto;padding:6px 8px;font-size:10px}.pagination>div{display:flex;align-items:center;gap:12px}.pagination .btn{min-width:30px}.table-caption{font-size:9px;line-height:1.8;color:#a0a8b7;margin:15px 0 0}
+.advisor-content{max-width:1550px}.advisor-shell .sidebar .navigation{gap:5px}.advisor-shell .sidebar .navigation button{font-size:11px;padding:12px}.advisor-shell .side-case strong{font-size:20px}.advisor-metrics{display:flex;gap:35px;flex-wrap:wrap;margin:25px 0 25px}.advisor-metrics>div{display:flex;align-items:baseline;gap:9px}.advisor-metrics strong{font-size:25px;letter-spacing:-.7px;font-weight:760}.advisor-metrics span{font-size:10px;color:#909aad}.client-table-card{padding:0!important;overflow:hidden}.client-table-toolbar{display:flex;align-items:flex-end;gap:25px;justify-content:space-between;padding:22px}.client-table-toolbar .filter-field{min-width:170px}.clients-table{min-width:980px}.clients-table th,.clients-table td{padding:18px 16px}.clients-table th{font-size:8px;background:#f8f9fd}.clients-table td{font-size:10px}.clients-table td:nth-child(1){min-width:230px}.clients-table td:nth-child(3){min-width:160px}.clients-table td:nth-child(5){max-width:210px;line-height:1.7}.client-row:hover{background:#fdfcff}.client-expand{display:flex;align-items:center;gap:12px;text-align:left;border:0;padding:0;background:transparent;color:var(--ink);font-size:12px;cursor:pointer}.client-expand strong{font-size:12px}.expand-arrow{color:#9a94bd;font-size:20px;line-height:1}.table-avatar{height:31px;width:31px;flex:0 0 31px;display:grid;place-items:center;border-radius:9px;background:#eeecfa;color:#8b81b9;font-size:10px;font-weight:750}.expanded-client>td{padding:0 16px 20px 43px!important;background:#f6f7fc}.client-calculations{border:1px solid #e2e5ef;border-radius:9px;background:white;padding:0;overflow:hidden}.nested-heading{display:flex;gap:12px;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e9edf4;font-size:11px}.nested-heading>span{font-size:9px;color:#a1a7b9}.calculations-table{min-width:850px}.calculations-table th,.calculations-table td{padding:14px 18px;font-size:10px}.calculations-table th{background:#fbfbfe;font-size:8px}.calculations-table td:nth-child(1){min-width:170px}.calculations-table td:nth-child(3){min-width:70px}.calculations-table td:nth-child(5){min-width:135px}.case-workspace{padding:20px;background:#f8f8fd;border-top:1px solid #e8eaf3}.case-workspace-head{display:flex;align-items:center;justify-content:space-between;gap:20px}.case-workspace-head h2{font-size:14px}.case-workspace-head p{font-size:10px;margin-top:4px;color:#969db1}.case-quick-actions{display:flex;gap:8px;margin-top:18px}.task-filter{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:10px;color:#9099ae;margin:18px 0 12px}.task-filter>label{display:flex;align-items:center;gap:10px}.task-filter select{width:auto;min-width:120px;font-size:10px;padding:7px 9px}.problems-table{min-width:730px;border:1px solid #e6e8f2;border-radius:8px;background:white}.problems-table th,.problems-table td{padding:14px 12px;font-size:10px}.problems-table th{font-size:8px;white-space:nowrap}.problems-table td:first-child{min-width:190px;max-width:340px;overflow-wrap:anywhere;line-height:1.7}.problems-table td:nth-child(2){min-width:90px}.problems-table .pill{font-size:8px}.task-detail-row>td{background:#fcfcff;padding:21px!important}.task-detail h3{font-size:13px;margin-bottom:9px}.task-detail p{font-size:10px;color:#8a93a7;line-height:1.8;margin-bottom:12px}.task-detail>.note{font-size:10px}.task-detail-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px}.task-detail-grid>section{min-width:0}.task-detail .line{font-size:10px;color:#8a94a6}.task-detail .line strong{color:#55617a;text-align:right;max-width:60%;overflow-wrap:anywhere}.task-detail .checkline{font-size:10px}.task-detail .form-field{max-width:340px}.identity-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;margin-top:20px}.identity-data-grid>div{display:flex;flex-direction:column;gap:5px;font-size:10px}.identity-data-grid>div>span{font-size:9px;color:#9a9fb2}.identity-data-grid strong{color:#5a6378;overflow-wrap:anywhere}.import-preview{grid-template-columns:repeat(3,minmax(0,1fr))}.advisor-content .grid>.card{align-self:start}.advisor-content .result-details-body .stats{grid-template-columns:1fr}.advisor-content .hero{padding:20px}.advisor-content .hero .amount{font-size:30px}.advisor-content .stats{grid-template-columns:1fr}.advisor-content .stat{padding:12px}.advisor-content .stat-value{font-size:22px}
+@media(max-width:1250px){.plan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.plan-card{padding:19px}.plan-unit{margin-bottom:16px}.plan-card>strong{min-height:0}.plan-desc{margin-bottom:15px}.kyc-layout{grid-template-columns:1fr}.kyc-help{display:none}.exchange-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.exchange-card{grid-template-columns:30px minmax(0,1fr);padding:13px;gap:3px 8px}.exchange-mark{width:29px;height:29px;font-size:17px}.exchange-card strong{font-size:11px}.exchange-card small{font-size:8px}.tx-filters{grid-template-columns:repeat(3,minmax(0,1fr))}.advisor-metrics{gap:25px}.source-workspace{grid-template-columns:1fr}.source-workspace .source-copy{min-width:0}.source-workspace .source{flex-wrap:nowrap}.source-workspace .source .btn{margin-left:0}.other-import .upload-options{grid-template-columns:1fr 1fr}.other-import>.note{max-width:750px}}
+@media(max-width:850px){.sidebar{gap:16px;padding:18px 17px}.wizard-nav ol{display:flex;gap:7px;overflow-x:auto;padding:0 0 6px;scrollbar-width:thin;scrollbar-color:#53617c transparent}.wizard-nav li{flex:0 0 89px;min-width:0}.wizard-nav-step{min-height:79px;gap:8px;padding:9px 3px;flex-direction:column;margin:0}.wizard-nav-copy strong{font-size:9px}.wizard-nav li:not(:last-child):after{display:none}.wizard-number{width:25px;height:25px;flex-basis:25px}.wizard-nav-copy small{display:none}.plan-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.plan-card{padding:17px 12px}.plan-card>strong{font-size:16px;min-height:46px}.plan-card:last-child>strong{font-size:14px}.plan-card .plan-volume{font-size:25px}.plan-card .plan-select{font-size:9px}.source-workspace{grid-template-columns:1fr 1fr;gap:15px}.source-workspace .source{flex-wrap:wrap}.source-workspace .source-copy{min-width:110px}.source-workspace .source .btn{margin-left:47px}.exchange-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.kyc-layout{grid-template-columns:1fr}.tx-toolbar{gap:18px}.pagination{flex-wrap:wrap}.advisor-shell .sidebar>.side-case{display:none}.advisor-shell .sidebar .navigation{flex-direction:row;overflow-x:auto;justify-content:flex-start;gap:10px}.advisor-shell .sidebar .navigation button{flex-shrink:0;white-space:nowrap;padding:8px;font-size:10px}.advisor-shell .sidebar>.side-bottom{display:none}.advisor-metrics{gap:22px}.advisor-metrics strong{font-size:22px}.advisor-metrics span{font-size:9px}}
+@media(max-width:650px){.plan-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.plan-card{padding:18px 13px}.plan-card>strong{min-height:0;font-size:17px}.plan-card:last-child>strong{font-size:14px}.plan-card .plan-volume{font-size:26px}.plan-card .plan-select{font-size:9px;padding:9px 5px}.plan-desc{font-size:9px}.payment-amount{font-size:28px}.form-grid{gap:16px 12px}.form-field{font-size:10px}.form-field input,.form-field select{font-size:11px;padding:10px}.kyc-stages{gap:6px}.kyc-stages button{font-size:9px;gap:6px;padding:10px 7px}.kyc-stages button>span{width:19px;height:19px;flex-basis:19px;font-size:9px}.kyc-actions{gap:8px;justify-content:space-between}.kyc-actions .btn{font-size:10px;padding:11px 12px}.document-upload-grid{gap:11px}.source-workspace{grid-template-columns:1fr}.source-workspace .source{flex-wrap:nowrap}.source-workspace .source-copy{min-width:0}.source-workspace .source .btn{margin-left:0;font-size:8px}.exchange-grid{grid-template-columns:1fr 1fr;gap:10px}.exchange-card{padding:13px 11px}.exchange-card>strong{font-size:10px}.exchange-card small{font-size:8px}.exchange-card>.btn{font-size:9px}.source .source-copy small{font-size:9px}.source .pill{white-space:normal;max-width:83px;text-align:center;line-height:1.5}.upload-tile{padding:16px 10px;min-height:119px}.upload-tile>strong{font-size:10px}.upload-tile>span:not(.upload-symbol){font-size:8px}.upload-options{gap:10px}.tx-toolbar{flex-direction:column;align-items:stretch;gap:15px}.tx-view-switch{align-self:flex-start}.tx-filters{grid-template-columns:1fr 1fr;gap:13px 11px}.tx-workspace{padding:16px!important}.tx-results-head{font-size:10px}.tx-results-head .btn{font-size:9px}.pagination{font-size:9px;gap:15px 9px}.pagination>div{width:100%;justify-content:flex-end;gap:12px}.table-caption{font-size:8px}.wizard-footer{gap:10px}.wizard-footer-back{flex-shrink:0}.wizard-footer-next{flex:1;justify-content:flex-end}.wizard-footer .btn{font-size:10px;padding:11px 12px;line-height:1.6}.start-label{display:none}.client-table-toolbar{flex-direction:column;align-items:stretch;gap:15px;padding:17px}.client-table-toolbar .tx-search{max-width:none}.advisor-metrics{display:grid;grid-template-columns:1fr 1fr;gap:19px 15px}.advisor-metrics>div{gap:7px}.advisor-metrics strong{font-size:23px}.advisor-metrics span{font-size:9px}.task-detail-grid{grid-template-columns:1fr}.import-preview{grid-template-columns:1fr 1fr}.summary-row .btn{max-width:88px;font-size:8px}.summary-copy h3{font-size:11px}.summary-copy p{font-size:9px}.summary-check{width:23px;height:23px;flex-basis:23px;font-size:10px}.summary-row{gap:9px}.result-peek{font-size:15px}.identity-overview .line{font-size:10px}.identity-overview b{max-width:60%}.wizard-heading h1{font-size:25px}.advisor-shell .navigation .count{font-size:8px}.advisor-shell .side-tools{display:none}}
+@media(max-width:370px){.form-grid{grid-template-columns:1fr}.document-upload-grid{grid-template-columns:1fr 1fr}.plan-card>strong{font-size:15px}.plan-card:last-child>strong{font-size:13px}.kyc-stages button{flex-direction:column;font-size:9px}.summary-row .btn{max-width:75px;padding:7px 6px}.summary-row{gap:7px}.summary-copy h3{font-size:10px}.source-workspace .source{flex-wrap:wrap}.source-workspace .source-copy{min-width:100px}.source-workspace .source .btn{margin-left:43px}}
+
+
+.sidebar{min-width:0}.table-scroll{max-width:100%}
+@media(max-width:850px){.wizard-shell{grid-template-columns:minmax(0,1fr)}.wizard-nav{min-width:0;max-width:100%}.wizard-nav ol{width:100%;max-width:100%}.side-tools{min-width:0}.navigation{max-width:100%}}
+
+.billing-usage{display:flex;align-items:center;gap:22px;padding:17px 20px;background:#fff;border:1px solid #e1e6ee;border-radius:11px;margin-bottom:21px}.billing-usage>div:first-child{min-width:0}.billing-usage strong{font-size:16px;letter-spacing:-.4px;display:block}.billing-usage strong>span{font-size:11px;font-weight:500;color:#8791a5;letter-spacing:0}.billing-usage small{display:block;color:#929bad;font-size:9px;margin-top:6px;line-height:1.7}.billing-meter{height:5px;min-width:50px;max-width:200px;flex:1;background:#edf0f6;border-radius:9px;overflow:hidden;margin-left:auto}.billing-meter>span{display:block;height:100%;background:#69ad92;border-radius:9px}.billing-card{border:1px solid #e8d3a7;border-radius:13px;padding:23px;background:#fffcf5;margin-bottom:23px}.billing-heading{display:flex;gap:13px;align-items:flex-start}.billing-alert-icon{display:grid;place-items:center;width:35px;height:35px;flex:0 0 35px;background:#fbefd7;border:1px solid #f0dfbc;color:#b58a3b;border-radius:10px;font-size:21px}.billing-heading>div{flex:1;min-width:0}.billing-heading .eyebrow{color:#ac873f;font-size:8px;letter-spacing:1.2px;margin:0 0 7px}.billing-heading h2{font-size:18px;letter-spacing:-.4px;line-height:1.4;margin:0 0 8px;font-weight:730}.billing-heading p{font-size:11px;line-height:1.8;color:#9a8a6b;margin:0}.billing-heading>.pill{margin-left:auto;font-size:9px}.billing-numbers{display:grid;grid-template-columns:1.15fr 1fr 1fr 1fr;gap:15px;margin:22px 0;padding:18px 0;border-top:1px solid #eee3cf;border-bottom:1px solid #eee3cf}.billing-numbers>div>span{display:block;font-size:9px;color:#a2947b;margin-bottom:7px}.billing-numbers strong{font-size:15px;letter-spacing:-.4px;font-weight:720;line-height:1.6}.billing-numbers>div:first-child strong{font-size:12px;letter-spacing:0}.billing-due strong{color:#9a6a22;font-size:22px;line-height:1.25}.billing-actions{display:flex;align-items:center;gap:20px}.billing-actions .btn{flex-shrink:0}.billing-actions>p{font-size:10px;line-height:1.8;color:#9a8e75;margin:0;max-width:480px}.billing-count-note{display:block;font-size:8px;color:#b2a58c;line-height:1.8;margin-top:15px}.payment-ledger{margin-top:20px;border:1px solid #e8ebf3;border-radius:9px;background:#fafbfe;padding:4px 14px}.payment-ledger>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 16px;padding:13px 0;border-bottom:1px solid #e8ecf3;font-size:10px}.payment-ledger>div:last-child{border:0}.payment-ledger span{color:#8791a6;line-height:1.7}.payment-ledger strong{color:#59677e;font-size:11px;white-space:nowrap}.payment-ledger small{grid-column:span 2;color:#a6aec0;font-size:8px;overflow-wrap:anywhere}.payment-ledger .ledger-total strong{color:#5f5ac2}.upgrade-path{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#f3f2fc;border:1px solid #e5e2f7;border-radius:9px;padding:16px;font-size:11px;margin-top:18px}.upgrade-path>span{color:#9293af}.upgrade-path>strong{color:#6861af;text-align:right}.upgrade-breakdown{font-size:11px;margin:20px 0;color:#8791a6}.upgrade-breakdown .line strong{color:#56617a}.upgrade-total{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:20px 0 0}.upgrade-total span{font-size:12px;color:#5c6780}.upgrade-total strong{font-size:29px;letter-spacing:-1px;color:#5d57c2}.upgrade-payer{padding:12px;border:1px solid #e6e9f0;border-radius:7px;font-size:12px;background:#f9fafc;color:#64728c}.upgrade-submit{width:100%;margin-top:15px}.advisor-billing{margin-bottom:0}.task-detail .billing-heading h2{font-size:15px}.task-detail .billing-numbers{grid-template-columns:1fr 1fr}.task-detail .billing-actions{flex-direction:column;align-items:flex-start}.task-detail .billing-card{padding:18px}.billing-state-small{font-size:9px!important;color:#a28144!important;font-weight:650}.summary-billing-blocked .handoff-icon{background:#f4e6c7;color:#b58b45;border-color:#ebd7ac}.summary-billing-blocked{background:#fff8e9!important;border-color:#eddfc0!important}.summary-billing-blocked>.eyebrow{color:#a68b50}.summary-billing-blocked h2{color:#77643e}
+@media(max-width:1100px){.billing-heading>.pill{display:none}.billing-numbers{gap:10px}.billing-actions{align-items:flex-start;flex-direction:column;gap:12px}.billing-card{padding:20px}.billing-usage{gap:15px}}
+@media(max-width:650px){.billing-card{padding:18px;margin-bottom:20px}.billing-heading{gap:10px}.billing-alert-icon{width:28px;height:28px;flex-basis:28px;border-radius:8px;font-size:18px}.billing-heading h2{font-size:16px}.billing-heading p{font-size:10px}.billing-numbers{grid-template-columns:1fr 1fr;gap:20px 13px;margin:18px 0;padding:17px 0}.billing-numbers strong{font-size:14px}.billing-due strong{font-size:21px}.billing-actions{gap:12px;align-items:stretch}.billing-actions .btn{font-size:10px;padding:12px 10px}.billing-actions>p{font-size:9px}.billing-usage{padding:15px;gap:12px;flex-wrap:wrap}.billing-usage>div:first-child{flex:1}.billing-usage>.pill{font-size:8px}.billing-meter{display:none}.billing-usage strong{font-size:15px}.billing-usage small{font-size:8px}.upgrade-total strong{font-size:25px}.upgrade-path{font-size:10px;padding:13px;gap:9px}.payment-ledger>div{font-size:9px}.payment-ledger strong{font-size:10px}}
+
+
+.top .btn.test-data-button{color:#7473b0;border-color:#e1dff4;background:#f8f7fd;font-size:9px;font-weight:650;white-space:nowrap}.v2-shell .top .btn.test-data-button{color:#6e8b6b;border-color:#dfe8da;background:#f8fbf4}
+@media(max-width:650px){.top:has(.test-data-button) .breadcrumb{display:none}.top:has(.test-data-button) .head-right{width:100%;justify-content:flex-end;gap:9px}.top .btn.test-data-button{font-size:8px;padding:7px 9px}.top:has(.test-data-button){padding-left:17px;padding-right:17px}}
+
+
+/* Switchable product-workshop layer, separate from the client interface. */
+.ux-review-toolbar{display:flex;justify-content:space-between;align-items:center;gap:17px;padding:12px 15px;border:1px dashed #c7b9e1;border-radius:9px;background:#f8f5fe;margin-bottom:23px;color:#85709d}.ux-review-toolbar>div:first-child{min-width:0}.ux-review-toolbar label{display:flex;align-items:center;gap:8px;font-size:10px;line-height:1.6;cursor:pointer;color:#78608f}.ux-review-toolbar input{accent-color:#9c7dbb;width:14px;height:14px;margin:0;flex:0 0 14px}.ux-review-toolbar label>strong{color:#78608f!important;font-size:10px;font-weight:700}.ux-review-toolbar>div:first-child>span{display:block;font-size:8px;color:#b6a6c6;margin:4px 0 0 22px;line-height:1.6}.ux-review-toolbar>div:last-child{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.ux-screen-count{font-size:8px;color:#a58eb8;margin-right:6px}.ux-review-toolbar .btn.secondary,.ux-review-board .btn.secondary,.ux-decision-catalog .btn.secondary{background:#fff!important;color:#9476b0!important;border-color:#dfd3ee!important;font-size:9px!important;padding:8px 10px!important;min-height:29px}.ux-review-board{margin:0 0 21px;border:1px dashed #cfc0e1;border-radius:10px;background:#fcfaff;min-width:0}.ux-board-disclosure>summary{display:flex;gap:11px;align-items:center;list-style:none;cursor:pointer;padding:14px 16px}.ux-board-disclosure>summary::-webkit-details-marker,.ux-decision>summary::-webkit-details-marker{display:none}.ux-board-icon{display:grid;place-items:center;flex:0 0 25px;width:25px;height:25px;border-radius:7px;border:1px solid #e0d4ee;background:#f4edf9;color:#ad92c2;font-weight:700;font-size:13px}.ux-board-disclosure>summary>div{flex:1;min-width:0}.ux-board-disclosure>summary strong{display:block;font-size:11px;line-height:1.6;color:#8d6ea6!important;font-weight:650}.ux-board-disclosure>summary small{display:block;font-size:8px;line-height:1.7;color:#b9a3cd;margin-top:3px}.ux-board-open{font-size:8px;color:#b19ac5;white-space:nowrap}.ux-board-body{padding:0 16px 16px;border-top:1px dashed #e4d9ee}.ux-board-disclosure[open]>summary{margin-bottom:14px}.ux-board-body .ux-scenario-picker{margin:14px 0}.ux-decision{border:1px solid #e4dbee;border-radius:8px;background:#fff;overflow:hidden;margin-bottom:9px}.ux-decision:last-child{margin-bottom:0}.ux-decision>summary{display:flex;gap:9px;align-items:center;padding:13px;cursor:pointer;list-style:none}.ux-question-number{flex:0 0 30px;background:#f5f0fa;color:#ae8cc6;border:1px solid #e8dcef;border-radius:5px;font-size:8px;padding:5px;text-align:center;font-weight:750}.ux-decision>summary>strong{font-size:11px;line-height:1.7;color:#7d638f!important;font-weight:650;flex:1;min-width:0}.ux-decision-status{font-size:7px;border:1px solid #e8ddef;background:#faf6fd;color:#b49bc8;border-radius:10px;padding:4px 7px;white-space:nowrap}.ux-decision-status.discussed{color:#78a28c;background:#eff8f2;border-color:#d7ecdf}.ux-chevron{color:#b7a0ca;font-size:14px}.ux-decision[open]>summary{border-bottom:1px solid #eee6f4;background:#fcf9fe}.ux-decision-body{padding:16px}.ux-decision-body>div>span{display:block;font-size:7px;letter-spacing:1px;font-weight:750;margin-bottom:6px;color:#b69acb}.ux-current{background:#f7f4fb;border-radius:6px;padding:12px 14px;margin-bottom:16px}.ux-decision-body p{font-size:10px!important;line-height:1.9!important;color:#9b87a9!important;margin:0!important}.ux-questions{margin-bottom:17px}.ux-questions ul{padding-left:17px;margin:8px 0 0;color:#a28caf;font-size:10px;line-height:1.95}.ux-questions li{padding:3px 0 3px 3px}.ux-variant{border-left:2px solid #d7c5e6;padding-left:12px;margin-bottom:18px}.ux-note-preview{margin:0 0 20px}.ux-note-label{display:block;font-size:9px;color:#b39ac4;margin:17px 0 8px}.ux-decision textarea{min-height:80px;width:100%;font-size:10px!important;line-height:1.8;border-color:#e3d9ed!important;background:#fefcff!important;color:#8c739f!important;resize:vertical}.ux-decision textarea::placeholder{color:#c6b3d4!important}.ux-discussed-label{display:flex;align-items:center;gap:8px;margin-top:11px;font-size:9px;line-height:1.7;color:#ad93bf}.ux-discussed-label input{accent-color:#b99dce;width:13px;height:13px;margin:0}.ux-note-caveat{font-size:8px;color:#c8b4d5;display:block;line-height:1.8;margin-top:9px}.ux-question-mark{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;border:1px dashed #b89acc;border-radius:5px;background:#faf3ff;color:#ae8ac4;font-size:8px;font-weight:750;line-height:1.3;min-height:24px;padding:5px 7px;margin:7px 0;cursor:pointer;flex-shrink:0}.ux-question-mark:hover{background:#f2e6fc;border-color:#a77bbf}.ux-review-enabled .kyc-actions{flex-wrap:wrap}.ux-scenario-picker{padding:15px;border:1px solid #e4d7ef;border-radius:8px;background:#fcf9ff;margin:0 0 21px}.ux-scenario-picker>span{display:block;font-size:7px;color:#b194c6;letter-spacing:1px;font-weight:750;margin-bottom:10px}.ux-scenario-picker>div{display:flex;flex-wrap:wrap;gap:7px}.ux-scenario-picker button{font-size:9px;line-height:1.6;font-weight:650;padding:8px 11px;border:1px solid #e2d4ec;background:#fff;border-radius:6px;color:#ae8cc3;cursor:pointer}.ux-scenario-picker button.selected{background:#a17eb9;border-color:#a17eb9;color:#fff}.ux-preview-label{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border:1px solid #d6c3e5;border-radius:9px;background:#f6edfe;margin-bottom:18px}.ux-preview-label strong{font-size:12px;color:#a27bb9!important}.ux-preview-label p{font-size:10px;line-height:1.8;color:#b99bcd;margin:6px 0 0}.ux-preview-label .btn{flex-shrink:0}.ux-decision-catalog>p{font-size:11px;color:#a18ab0}.modalback:has(.ux-decision-catalog) .modal{width:min(840px,100%)}
+.ux-wait-card{--wait-accent:#6e66ce;--wait-pale:#f0effb;background:#fff;border:1px solid #e0e5ed;border-radius:14px;padding:25px;margin-bottom:21px;min-width:0}.v2-shell .ux-wait-card{--wait-accent:#5b8971;--wait-pale:#eef5ec;border-color:#dee8d8}.ux-wait-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;padding-bottom:20px;border-bottom:1px solid #edf0f5}.ux-wait-top .eyebrow{font-size:8px;letter-spacing:1.35px;color:var(--wait-accent);margin:0 0 7px}.ux-wait-top small{font-size:10px;color:#a7b0bf;line-height:1.7}.ux-wait-top .pill{font-size:9px}.ux-wait-main{text-align:center;padding:31px 20px 28px}.ux-wait-illustration{width:64px;height:64px;margin:0 auto 23px;border:1px solid color-mix(in srgb,var(--wait-accent) 18%,white);background:var(--wait-pale);border-radius:20px;display:grid;place-items:center;font-size:35px;color:var(--wait-accent)}.ux-wait-main h2{font-size:27px;font-weight:730;line-height:1.3;letter-spacing:-.7px;margin:0 0 15px;color:#405066}.ux-wait-main>p{font-size:12px;color:#8d99aa;line-height:1.95;max-width:630px;margin:0 auto}.ux-wait-reasons{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:21px auto 0;max-width:670px}.ux-wait-reasons>span:first-child{display:block;flex:0 0 100%;font-size:9px;color:#aeb7c7;margin-bottom:5px}.ux-reason-tag{font-size:9px;line-height:1.7;color:#9a9bb7;border:1px solid #e6e6f1;background:#fafafe;border-radius:6px;padding:6px 9px}.ux-case-stages{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;margin:0;padding:25px 0;border-top:1px solid #edf0f5;border-bottom:1px solid #edf0f5}.ux-case-stages li{display:flex;align-items:flex-start;gap:10px;min-width:0}.ux-case-stages li>span{width:25px;height:25px;flex:0 0 25px;border-radius:50%;display:grid;place-items:center;background:#fafbfe;border:1px solid #e3e8f1;color:#b1bacb;font-size:10px;font-weight:700}.ux-case-stages li>div{min-width:0}.ux-case-stages strong{display:block;font-size:10px;line-height:1.7;color:#a6afbf;font-weight:650}.ux-case-stages small{display:block;font-size:8px;line-height:1.8;color:#c0c7d3;margin-top:4px}.ux-case-stages .done>span{border-color:#d8e9df;background:#edf6f0;color:#76a98c}.ux-case-stages .done strong{color:#90a79d}.ux-case-stages .active>span{background:var(--wait-accent);border-color:var(--wait-accent);color:white;box-shadow:0 0 0 4px var(--wait-pale)}.ux-case-stages .active strong{color:var(--wait-accent)}.ux-case-stages .active small{color:#aaa8c0}.ux-wait-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:21px}.ux-wait-bottom>p{font-size:10px;color:#acb5c4;line-height:1.9;margin:0;max-width:390px}.ux-wait-bottom>div{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}.ux-wait-bottom .btn{font-size:10px}.ux-wait-loader{display:block;width:28px;height:28px;border:3px solid color-mix(in srgb,var(--wait-accent) 18%,white);border-top-color:var(--wait-accent);border-radius:50%;animation:ux-wait-spin 1.2s linear infinite}.ux-wait-more{--wait-accent:#b29962;--wait-pale:#faf5e8}.ux-wait-ready{--wait-accent:#68a183;--wait-pale:#edf7f0}.ux-client-request{border:1px solid #eddfbf;background:#fffcf5;border-radius:9px;margin:24px auto 0;padding:19px;max-width:530px;text-align:left}.ux-client-request>strong{font-size:12px;line-height:1.7;color:#ad996d}.ux-client-request>p{font-size:11px;line-height:1.9;color:#c0b398;margin:9px 0 15px}.ux-client-request .btn{font-size:10px}.ux-submitted-data{border:1px solid #e1e6ed;border-radius:11px;background:#fff;margin:20px 0;overflow:hidden}.ux-submitted-data>summary{font-size:11px;color:#a2a9be;line-height:1.8;padding:18px 20px;cursor:pointer}.ux-submitted-data>div{padding:18px;border-top:1px solid #edf0f5;background:#f9fafe}.ux-submitted-data .summary-layout{grid-template-columns:1.4fr 1fr}.ux-submitted-data .summary-card{padding:18px}.ux-submitted-data .summary-row{flex-wrap:wrap}.ux-submitted-data .summary-row .btn{margin-left:36px}.ux-submitted-data .summary-copy{min-width:140px}.ux-submitted-data .handoff-card h2{font-size:20px}.v2-shell .ux-wait-main h2{font-size:27px!important}.v2-shell .ux-wait-main>p{font-size:12px!important;line-height:1.95!important;color:#8f9f89!important}.v2-shell .ux-case-stages strong{color:#a5b19c!important}.v2-shell .ux-case-stages .active strong{color:#6f9278!important}.v2-shell .ux-case-stages .done strong{color:#92a68c!important}.v2-shell .ux-reason-tag{color:#9fb192;border-color:#e7eddf;background:#fbfcf7}.v2-shell .ux-wait-reasons>span:first-child{color:#bdc8b4}.v2-shell .ux-wait-bottom>p{color:#a8b69a}.v2-shell .ux-case-stages small{color:#bdcbb1}.v2-shell .ux-review-toolbar label>strong,.v2-shell .ux-board-disclosure>summary strong,.v2-shell .ux-decision>summary>strong{color:#8a669e!important}.v2-shell .ux-preview-label strong{color:#966fae!important}.v2-shell .ux-decision p{color:#9a82aa!important}
+/* Explicitly readable annotation text even on the light workshop background. */
+.ux-review-toolbar label>strong,.ux-board-disclosure>summary strong,.ux-decision>summary>strong{color:#77518e!important}.ux-decision-body p,.ux-questions ul{color:#806a8e!important}.ux-decision-body>div>span{color:#9c81ad}.ux-note-label,.ux-discussed-label{color:#9c7eae}.ux-note-caveat{color:#b09bbd}.ux-board-disclosure>summary small{color:#a992b8}.ux-wait-main>p{color:#7c889b}.ux-case-stages strong{color:#929fb0}.ux-case-stages small{color:#a5afbf}.ux-wait-bottom>p{color:#95a0b2}
+@keyframes ux-wait-spin{to{transform:rotate(360deg)}}
+@media(max-width:1250px){.ux-review-toolbar{align-items:flex-start;flex-wrap:wrap}.ux-review-toolbar>div:last-child{justify-content:flex-start}.ux-case-stages{gap:14px}.ux-wait-main{padding:28px 10px}.ux-wait-main h2{font-size:25px}.ux-wait-bottom{flex-direction:column;align-items:stretch;gap:16px}.ux-wait-bottom>p{max-width:none}.ux-wait-bottom>div{justify-content:flex-start}.ux-submitted-data .summary-layout{grid-template-columns:1fr}}
+@media(max-width:850px){.ux-screen-count{display:none}.ux-review-toolbar{gap:11px;padding:12px}.ux-case-stages{grid-template-columns:1fr 1fr;gap:23px}.ux-wait-top small{font-size:9px}.ux-wait-main h2{font-size:24px}.ux-wait-main>p{font-size:11px}.ux-wait-card{padding:22px}.ux-preview-label{align-items:flex-start;flex-direction:column}}
+@media(max-width:650px){.ux-review-toolbar{margin-bottom:20px}.ux-review-toolbar>div:last-child{gap:6px}.ux-review-toolbar label>strong{font-size:9px}.ux-review-toolbar>div:first-child>span{font-size:7px}.ux-review-toolbar .btn.secondary{font-size:8px!important;padding:7px 9px!important}.ux-board-disclosure>summary{padding:12px;gap:9px;align-items:flex-start}.ux-board-disclosure>summary strong{font-size:10px}.ux-board-disclosure>summary small{font-size:7px}.ux-board-open{display:none}.ux-board-icon{width:22px;height:22px;flex-basis:22px;font-size:11px}.ux-board-body{padding:0 11px 11px}.ux-decision>summary{gap:7px;padding:11px 10px}.ux-decision>summary>strong{font-size:10px}.ux-decision-status{display:none}.ux-question-number{flex-basis:27px;font-size:7px;padding:4px}.ux-decision-body{padding:13px 11px}.ux-decision-body p,.ux-questions ul{font-size:9px!important;line-height:1.95!important}.ux-note-caveat{font-size:7px}.ux-decision textarea{font-size:10px!important}.ux-scenario-picker{padding:12px}.ux-scenario-picker button{font-size:8px;padding:7px 9px}.ux-preview-label{padding:15px}.ux-preview-label strong{font-size:11px}.ux-preview-label p{font-size:9px}.ux-wait-card{padding:18px;border-radius:11px}.ux-wait-top{gap:12px;flex-wrap:wrap;padding-bottom:17px}.ux-wait-top .eyebrow{font-size:7px}.ux-wait-top .pill{font-size:8px}.ux-wait-top small{font-size:8px}.ux-wait-main{padding:25px 0}.ux-wait-illustration{width:55px;height:55px;border-radius:17px;margin-bottom:20px;font-size:30px}.ux-wait-main h2,.v2-shell .ux-wait-main h2{font-size:23px!important;letter-spacing:-.6px;line-height:1.35}.ux-wait-main>p,.v2-shell .ux-wait-main>p{font-size:10px!important;line-height:1.95!important}.ux-case-stages{grid-template-columns:1fr;gap:21px;padding:23px 0}.ux-case-stages strong{font-size:11px}.ux-case-stages small{font-size:9px}.ux-case-stages li>span{width:26px;height:26px;flex-basis:26px;font-size:10px}.ux-wait-reasons{gap:7px;margin-top:19px}.ux-reason-tag{font-size:8px;padding:5px 8px}.ux-wait-reasons>span:first-child{font-size:8px}.ux-wait-bottom{padding-top:18px;gap:14px}.ux-wait-bottom>p{font-size:9px}.ux-wait-bottom .btn{font-size:9px;padding:11px}.ux-client-request{padding:15px}.ux-client-request>strong{font-size:11px}.ux-client-request>p{font-size:10px}.ux-submitted-data>summary{font-size:10px;padding:15px}.ux-submitted-data>div{padding:10px}.ux-submitted-data .summary-card{padding:13px}.ux-submitted-data .summary-copy{min-width:95px}.ux-question-mark{font-size:7px;min-height:23px;padding:5px 6px}.modalback:has(.ux-decision-catalog) .modal{padding:19px}}
+@media(prefers-reduced-motion:reduce){.ux-wait-loader{animation:none}}
+
+
+.ux-wait-top .eyebrow{display:block}.ux-preview-active .sidebar .journey{opacity:.55}
+
+.mc-workspace-switcher{margin-bottom:25px}.mc-client-switcher{padding:20px;background:#fff;border:1px solid #e0e5f0;border-radius:12px}.mc-switcher-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:17px}.mc-switcher-heading>div>span{display:block;font-size:8px;font-weight:750;letter-spacing:1.3px;color:#9b9dba;margin-bottom:8px}.mc-switcher-heading h2{font-size:16px;letter-spacing:-.35px;line-height:1.5;margin:0;font-weight:730;color:#48536b}.mc-switcher-heading>.btn{font-size:8px;flex-shrink:0}.mc-scenario-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.mc-scenario-card{text-align:left;padding:16px 14px;background:#fff;border:1px solid #e3e6f0;border-radius:9px;cursor:pointer;min-width:0;display:flex;flex-direction:column;color:#56627b}.mc-scenario-card:hover{background:#fafaff;border-color:#c7c8eb}.mc-scenario-card.selected{border-color:#a5a0e5;box-shadow:0 0 0 1px #dad6f333;background:#f9f8ff}.mc-card-top{display:flex;align-items:center;gap:10px;margin-bottom:16px}.mc-card-avatar{display:grid;place-items:center;flex:0 0 31px;height:31px;width:31px;border-radius:9px;background:#edeaf8;color:#9490ba;font-size:10px;font-weight:750}.mc-card-top>span:nth-child(2){flex:1;min-width:0}.mc-card-top strong{display:block;font-size:11px;line-height:1.6;font-weight:750;color:#4d5670;overflow-wrap:anywhere}.mc-card-top small{display:block;font-size:8px;color:#a3a8bd;margin-top:4px;line-height:1.7}.mc-card-index{font-size:9px;color:#c7c9d8;align-self:flex-start}.mc-card-theme{font-size:12px;font-weight:750;color:#6f6e9e;line-height:1.5;display:block;margin-bottom:6px}.mc-card-desc{font-size:9px;line-height:1.9;color:#a4a9bf;display:block;margin-bottom:17px;flex:1}.mc-card-status{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}.mc-card-status .pill{font-size:8px;padding:5px 7px;line-height:1.5;white-space:normal}.mc-card-status>span:last-child{font-size:8px;font-weight:650;white-space:nowrap;color:#a19ec2}.mc-switcher-note{font-size:8px;line-height:1.9;margin:16px 0 0;color:#b5b9ca}.mc-mobile-picker{display:none}.mc-admin-context{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:15px 18px;border:1px solid #e0e4ef;background:#fff;border-radius:9px}.mc-admin-context>div{flex:1;min-width:0}.mc-admin-context>div>span{font-size:7px;letter-spacing:1.3px;color:#a3aac0;display:block;margin-bottom:7px;font-weight:750}.mc-admin-context strong{font-size:11px;font-weight:700;color:#75819a;line-height:1.7}.mc-admin-context label{display:flex;flex-direction:column;gap:7px;min-width:210px}.mc-admin-context label>span{font-size:8px;color:#abb3c7}.mc-admin-context select{width:100%;min-width:0;font-size:10px;padding:8px 10px}.mc-selected-row>td:first-child{box-shadow:inset 3px 0 #a6a0e9}.mc-selected-row{background:#fcfbff}.mc-clients-table{min-width:1050px}.mc-clients-table td:nth-child(4){min-width:150px}.mc-clients-table td:nth-child(5){min-width:175px}.mc-clients-table .calculations-table td:nth-child(5){min-width:115px}.mc-table-result-count{font-size:9px;line-height:1.7;padding:15px 20px;color:#a8b0c4;background:#fdfdff;border-top:1px solid #eef0f6}.mc-all-tasks{min-width:850px}.mc-all-tasks th{font-size:8px}.mc-all-tasks td{font-size:10px;line-height:1.7}.mc-all-tasks td:first-child{min-width:170px}.mc-all-tasks td:nth-child(2){min-width:280px}.mc-all-tasks strong{font-size:10px;font-weight:700}.mc-all-tasks small{display:block;font-size:8px;line-height:1.8;color:#a5aec2;margin-top:5px}.mc-all-tasks .pill{font-size:8px}.mc-case-selected-name{font-size:10px;color:#929ab0}
+@media(max-width:1100px){.mc-switcher-heading{align-items:flex-start}.mc-scenario-cards{gap:9px}.mc-scenario-card{padding:14px 11px}.mc-card-top{gap:7px}.mc-card-top strong{font-size:10px}.mc-card-top small{font-size:7px}.mc-card-avatar{height:26px;width:26px;flex-basis:26px;font-size:9px}.mc-card-index{display:none}.mc-card-theme{font-size:11px}.mc-card-desc{font-size:8px}.mc-card-status{align-items:flex-start;flex-direction:column}.mc-card-status>span:last-child{font-size:7px}.mc-admin-context{flex-wrap:wrap}.mc-admin-context label{min-width:180px}}
+@media(max-width:650px){.mc-workspace-switcher{margin-bottom:21px}.mc-client-switcher{padding:16px}.mc-switcher-heading{gap:10px;flex-wrap:wrap;margin-bottom:15px}.mc-switcher-heading h2{font-size:14px;line-height:1.5}.mc-switcher-heading>div>span{font-size:7px}.mc-switcher-heading>.btn{font-size:8px;padding:7px 9px}.mc-scenario-cards{display:none}.mc-mobile-picker{display:flex;flex-direction:column;gap:8px;font-size:9px;color:#a3acc0}.mc-mobile-picker>span{font-size:8px}.mc-mobile-picker select{width:100%;min-width:0;font-size:10px;padding:10px 11px}.mc-switcher-note{font-size:7px;margin-top:13px}.mc-admin-context{padding:14px;gap:13px}.mc-admin-context>div{flex:0 0 100%}.mc-admin-context strong{font-size:10px}.mc-admin-context label{flex:1;min-width:0}.mc-admin-context>div>span{font-size:7px}.mc-admin-context>.btn{font-size:8px;padding:8px}.mc-table-result-count{font-size:8px;padding:13px 16px}.top:has(.test-data-button) .btn{font-size:8px}.top:has(.test-data-button) .head-right{gap:7px}}
+
+
+/* The annotation drawer is editorial chrome outside the mock application. */
+.ux-editor-launcher{position:fixed;right:0;top:42vh;z-index:121;display:flex;align-items:center;gap:10px;writing-mode:vertical-rl;padding:13px 10px;border:1px solid #d7b351;border-right:0;border-radius:10px 0 0 10px;background:#fff8df;color:#715a20;box-shadow:-4px 3px 18px #392d1515;cursor:pointer;font-size:9px;font-weight:800;letter-spacing:.9px;line-height:1.5;min-width:36px}.ux-editor-launcher[hidden]{display:none}.ux-editor-launcher-icon{display:grid;place-items:center;writing-mode:horizontal-tb;height:20px;width:20px;border:1px solid #d8b559;border-radius:50%;font-size:12px}.ux-editor-launcher b{writing-mode:horizontal-tb;font-size:9px;background:#f0deaa;color:#8a6e2c;border-radius:5px;padding:3px 5px}.ux-editor-open{overflow:hidden}.ux-editor-backdrop{position:fixed;inset:0;background:#1020363d;z-index:129;backdrop-filter:blur(1px)}.ux-editor-drawer{position:fixed;right:0;top:0;bottom:0;width:min(500px,100vw);z-index:130;background:#fcfbf6;border-left:3px solid #d9b85f;box-shadow:-15px 0 70px #19223433;display:flex;flex-direction:column;color:#4e4b44;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transform:translateX(100%);transition:transform .22s ease-out}.ux-editor-drawer.is-open{transform:translateX(0)}.ux-editor-header{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:23px 24px 20px;border-bottom:1px solid #ebe5d6;background:#fffef9}.ux-editor-header>div>span{display:block;letter-spacing:1.5px;color:#ad9b70;font-size:8px;font-weight:800;margin-bottom:9px}.ux-editor-header h2{font-size:22px;letter-spacing:-.7px;font-weight:750;line-height:1.2;margin:0;color:#5e5745}.ux-editor-header>button{border:1px solid #e6dcc1;background:#fffaf0;color:#a48c54;width:32px;height:32px;border-radius:7px;font-size:22px;cursor:pointer}.ux-editor-not-product{padding:16px 24px;background:#fff4ce;border-bottom:1px solid #eaddb2}.ux-editor-not-product strong{display:block;font-size:9px;font-weight:850;letter-spacing:.65px;color:#8b702a;line-height:1.7}.ux-editor-not-product p{font-size:10px;line-height:1.8;color:#af9b69;margin:7px 0 0}.ux-editor-tabs{display:flex;gap:5px;padding:13px 19px;border-bottom:1px solid #ebe5d7;background:#fcfaf3}.ux-editor-tabs>button{border:1px solid transparent;border-radius:6px;background:transparent;font-size:10px;padding:9px 11px;color:#aaa083;font-weight:650;cursor:pointer;flex:1;white-space:nowrap}.ux-editor-tabs>button.selected{border-color:#e6d6a6;background:white;color:#9a8240}.ux-editor-body{padding:22px;overflow-y:auto;overscroll-behavior:contain;flex:1;min-height:0}.ux-editor-intro{margin:0 0 21px}.ux-editor-intro h3{font-size:13px;font-weight:750;color:#79705a;line-height:1.6;margin:0 0 8px}.ux-editor-intro p{font-size:10px;line-height:1.9;color:#ada28b;margin:0}.ux-editor-drawer .ux-decision{border-color:#e8e1d2;background:#fffdfa;margin-bottom:11px}.ux-editor-drawer .ux-decision>summary{padding:14px 12px}.ux-editor-drawer .ux-decision>summary>strong{color:#8b7b58!important;font-size:11px}.ux-editor-drawer .ux-question-number{color:#b4a06d;border-color:#eee3c9;background:#fbf5e6}.ux-editor-drawer .ux-decision-status{color:#bfaa75;border-color:#eee1bf;background:#fff9e8;font-size:7px}.ux-editor-drawer .ux-decision[open]>summary{background:#fffcf3;border-color:#eee5cf}.ux-editor-drawer .ux-current{background:#f7f3e9}.ux-editor-drawer .ux-decision-body>div>span{color:#b8a77f}.ux-editor-drawer .ux-decision-body p,.ux-editor-drawer .ux-questions ul{color:#9f9176!important;font-size:10px!important;line-height:1.9!important}.ux-editor-drawer .ux-variant{border-color:#e4d4a9}.ux-editor-drawer .ux-note-label,.ux-editor-drawer .ux-discussed-label{color:#b2a27f}.ux-editor-drawer .ux-decision textarea{border-color:#e8dfca!important;background:#fffef9!important;color:#9b8b68!important}.ux-editor-drawer .ux-decision textarea::placeholder{color:#c6baa0!important}.ux-editor-drawer .ux-discussed-label input{accent-color:#b29b64}.ux-editor-drawer .ux-note-caveat{color:#c6b999}.ux-editor-drawer .ux-note-preview .btn{font-size:9px;color:#aa955f!important;border-color:#e9dbb7!important;background:#fffdf7!important;box-shadow:none}.ux-editor-drawer .ux-scenario-picker{background:#fffdf6;border-color:#e9dfc9;padding:16px}.ux-editor-drawer .ux-scenario-picker>span{color:#b5a173}.ux-editor-drawer .ux-scenario-picker>div{flex-direction:column}.ux-editor-drawer .ux-scenario-picker button{font-size:11px;text-align:left;padding:13px 14px;background:#fff;border-color:#e7dbc0;color:#a99463}.ux-editor-drawer .ux-scenario-picker button.selected{background:#c0a66d;border-color:#c0a66d;color:white}.ux-editor-footer{padding:15px 23px;border-top:1px solid #eae3d2;background:#fcf9ef;font-size:8px;line-height:1.9;color:#baa985}.ux-editor-preview-badge{position:fixed;bottom:18px;left:18px;z-index:122;display:flex;align-items:center;gap:13px;padding:13px 15px;border:1px dashed #c8a95e;border-radius:8px;background:#fff8df;box-shadow:0 6px 30px #2f26121a;max-width:calc(100vw - 80px)}.ux-editor-preview-badge>div>span{font-size:6px;letter-spacing:1px;font-weight:800;color:#b49b5f;display:block;margin-bottom:6px}.ux-editor-preview-badge strong{font-size:10px;color:#89703a;display:block;line-height:1.6}.ux-editor-preview-badge>button{font-size:8px;line-height:1.7;font-weight:650;color:#b2995f;border:1px solid #e3d0a0;border-radius:5px;padding:7px 9px;background:#fffdf4;cursor:pointer}.modalback{z-index:150}.ux-editor-launcher:focus-visible,.ux-editor-drawer button:focus-visible,.ux-editor-drawer summary:focus-visible,.ux-editor-preview-badge button:focus-visible{outline:3px solid #d7bf7e;outline-offset:2px}.ux-editor-drawer .ux-decision-status.discussed{color:#7ea28c;border-color:#dbe9df;background:#f4faf5}
+@media(max-width:650px){.ux-editor-launcher{padding:10px 7px;font-size:8px;min-width:31px;gap:8px;border-radius:8px 0 0 8px}.ux-editor-launcher-icon{height:18px;width:18px;font-size:11px}.ux-editor-drawer{width:100vw;border-left-width:2px}.ux-editor-header{padding:19px 18px 17px}.ux-editor-header h2{font-size:21px}.ux-editor-not-product{padding:14px 18px}.ux-editor-not-product strong{font-size:8px}.ux-editor-not-product p{font-size:9px}.ux-editor-tabs{padding:11px 13px;gap:3px}.ux-editor-tabs>button{font-size:9px;padding:9px 7px}.ux-editor-body{padding:18px 14px}.ux-editor-intro p{font-size:9px}.ux-editor-footer{padding:13px 18px;font-size:7px}.ux-editor-preview-badge{left:10px;bottom:10px;right:44px;max-width:none;padding:11px 12px;gap:8px;flex-wrap:wrap}.ux-editor-preview-badge>div{flex:0 0 100%}.ux-editor-preview-badge strong{font-size:10px}.ux-editor-preview-badge>button{font-size:8px;flex:1}.ux-editor-drawer .ux-decision-status{display:inline-block;font-size:6px}.ux-editor-drawer .ux-decision>summary>strong{font-size:10px}.ux-editor-drawer .ux-decision-body p,.ux-editor-drawer .ux-questions ul{font-size:9px!important}.ux-editor-drawer .ux-note-caveat{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.ux-editor-drawer{transition:none}}
+
+
+.plan-overage{display:block;font-size:9px;font-weight:650;line-height:1.85;color:#9f8c59;background:#fcf8ec;border:1px solid #efe5c9;border-radius:6px;padding:8px;margin:-8px 0 17px}.pricing-example{padding:17px 20px;margin:20px 0;border:1px solid #e3e6f0;border-radius:10px;background:#fafbff}.pricing-example>span{display:block;font-size:8px;font-weight:750;letter-spacing:1px;color:#a1a6c1;margin-bottom:12px}.pricing-example>div{display:flex;align-items:center;gap:25px}.pricing-example p{font-size:10px;color:#a0a6ba;line-height:1.8;margin:0}.pricing-example strong{font-size:11px;font-weight:750;color:#787c9c}.pricing-example>div>span{font-size:20px;color:#b5b7ce}.pricing-example>div>b{margin-left:auto;background:#eef4ed;color:#91ab85;font-size:10px;padding:8px 11px;border-radius:6px;line-height:1.7}.pricing-example>small{display:block;font-size:8px;color:#b1b8ca;line-height:1.9;margin-top:14px}.overage-comparison{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:22px 0}.overage-option{display:flex;flex-direction:column;padding:19px;border:1px solid #e9decb;border-radius:9px;background:#fffefb;min-width:0}.overage-option.best{border-color:#b8c9a5;background:#f9fcf3}.overage-option-label{font-size:7px;letter-spacing:1px;font-weight:750;color:#b8aa8d;line-height:1.8;display:block;margin-bottom:12px}.overage-option.best .overage-option-label{color:#a0b489}.overage-option h3{font-size:15px;font-weight:750;letter-spacing:-.3px;color:#9f8f6f;margin:0 0 9px;line-height:1.5}.overage-option.best h3{color:#8ea774}.overage-formula{font-size:10px;color:#b5a78c;line-height:1.9;min-height:39px}.overage-option-amount{border-top:1px solid #efe6d8;border-bottom:1px solid #efe6d8;padding:16px 0;margin:13px 0}.overage-option-amount>span{font-size:9px;color:#b7ab94;display:block;margin-bottom:8px}.overage-option-amount>strong{font-size:26px;font-weight:780;letter-spacing:-1px;color:#b29150;line-height:1.2}.overage-option.best .overage-option-amount{border-color:#e3ecd8}.overage-option.best .overage-option-amount>strong{color:#89a86b}.overage-option>p{font-size:9px!important;line-height:1.9!important;color:#b6aa92!important;margin:0 0 16px!important}.overage-option>p strong{font-size:10px;color:#a09379}.overage-saving{font-size:9px;line-height:1.9;font-weight:650;padding:10px;border:1px solid #dde9cf;background:#eff6e7;color:#9ab37f;border-radius:6px;margin:0 0 16px}.overage-option>.btn{margin-top:auto;width:100%;font-size:10px;padding:12px 9px}.overage-option>.btn.primary{background:#92ab6f}.overage-billing .billing-actions>p{max-width:none}.overage-billing .billing-heading .pill{white-space:normal;text-align:center;line-height:1.7}.v2-plan-option .plan-overage{font-size:8px!important;line-height:1.8!important;border:0;background:none;padding:0;margin:5px 0 0;color:#a18d58!important}.v2-shell .overage-option h3{color:#9b8860!important}.v2-shell .overage-option.best h3{color:#6c8a4b!important}.v2-shell .overage-option-amount>strong{color:#a98b4f!important}.v2-shell .overage-option.best .overage-option-amount>strong{color:#6f934f!important}.v2-shell .overage-option>p{color:#a79673!important}.v2-shell .overage-option.best>.btn.primary{background:#66894d}.v2-shell .pricing-example{border-color:#e0e8d5;background:#f8fbf3}.v2-shell .pricing-example p{color:#8a9e75!important}.v2-shell .pricing-example>div>b{background:#edf5e2;color:#76975c}.v2-shell .pricing-example>small{color:#a9b997}.v2-shell .plan-overage{background:#f8faee;border-color:#e9eed6;color:#a29c6a}.payment-ledger small{overflow-wrap:anywhere}
+@media(max-width:1100px){.overage-option{padding:16px}.overage-option-amount>strong{font-size:24px}.overage-option h3{font-size:14px}.pricing-example>div{gap:17px;flex-wrap:wrap}.pricing-example>div>b{margin-left:0}.pricing-example strong{font-size:10px}}
+@media(max-width:650px){.overage-comparison{grid-template-columns:1fr;gap:13px;margin:18px 0}.overage-option{padding:17px}.overage-option-amount{padding:15px 0;margin:12px 0}.overage-option-amount>strong{font-size:26px}.overage-formula{min-height:0;font-size:10px}.overage-option-label{font-size:7px}.overage-option>.btn{font-size:10px}.overage-saving{font-size:9px}.pricing-example{padding:15px;margin:18px 0}.pricing-example>div{gap:13px}.pricing-example>div>span{font-size:17px}.pricing-example>div>b{flex:0 0 100%;font-size:9px;text-align:center}.pricing-example p{font-size:9px}.pricing-example strong{font-size:10px}.pricing-example>small{font-size:7px}.plan-overage{font-size:8px;line-height:1.8;padding:7px}.v2-plan-option .plan-overage{font-size:7px!important}}
+
+
+.overage-option>.btn.primary{background:#557b43}.v2-shell .overage-option.best>.btn.primary{background:#50763e}.overage-option-amount>strong{color:#98702a}.overage-option.best .overage-option-amount>strong{color:#678a47}.overage-option-label{color:#9c8862}.overage-formula{color:#9c8763}.overage-option>p{color:#9f8d6a!important}.overage-saving{color:#759550}.plan-overage{color:#997d3c}.ux-editor-drawer .ux-decision-body p,.ux-editor-drawer .ux-questions ul{color:#857457!important}.ux-editor-intro p{color:#9c8d70}.ux-editor-drawer .ux-decision>summary>strong{color:#7f6b43!important}.ux-editor-drawer .ux-scenario-picker button.selected{background:#95793e;border-color:#95793e}.ux-editor-not-product p{color:#a68b51}
+
+
+/* Adapted from the source, wizard, transaction and advisor layouts of KryptoTax. */
+:root{--sub:#586984;--purple:#4d54c8}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid #5860d5;outline-offset:3px}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.presentation{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px 14px;padding:7px 20px;border-bottom:1px solid #dde4ee;background:#eaf0f8;color:#435674;font-size:12px}
+.presentation-controls{display:flex;gap:5px 7px;align-items:center;flex-wrap:wrap}
+.presentation-controls button,.presentation-controls select{font:inherit;border:1px solid #cfd9e8;border-radius:7px;padding:4px 7px;background:#f8faff;color:#32466a}
+.presentation-controls button[aria-pressed=true]{background:#dae2fc;border-color:#adbbeb;font-weight:700}
+.presentation-controls label{display:flex;gap:5px;align-items:center}
+#app .shell{min-height:calc(100vh - 42px);grid-template-columns:218px minmax(0,1fr)}
+#app .sidebar{height:calc(100vh - 42px);min-width:0}
+#app .content{width:100%;max-width:1210px;margin:auto;padding:23px clamp(14px,3vw,34px) 40px}
+#app .wizard-heading h1{font-size:clamp(26px,4vw,37px);line-height:1.15;letter-spacing:-.035em}
+#app .top{position:static;min-height:56px;padding:12px 24px}
+#app .main,#app .content,#app .wizard-body,.kt-grid>*,.kt-source-layout>*{min-width:0}
+#app .card{box-shadow:0 2px 9px #18284508;border:1px solid var(--line)}
+#app .wizard-nav-step:disabled{cursor:default;opacity:.7}
+#app .logo-text small{color:#b4c3e6}
+#app .wizard-intro{margin-bottom:17px}
+#app .source{display:flex;align-items:center;gap:11px}
+#app .source>div{min-width:0}
+#app .source>button{margin-left:auto;flex:none}
+#app .source .pill{width:max-content}
+#app .src-state{display:flex;flex-wrap:wrap;align-items:center;gap:5px 8px}
+#app .source.active{border-color:#aeb9ed;background:#f6f7ff}
+#app .sourceIcon{display:grid;place-items:center;min-width:34px;min-height:34px;color:#3e489f;background:#eaedff;font-size:12px;font-weight:750}
+#app .source-copy{flex:1}
+#app .source-copy b,#app .source-copy small{display:block}
+#app .source-copy small{color:var(--sub);margin-top:2px}
+#app .eyebrow{letter-spacing:.075em}
+#app .note,.kt-dialog .note{line-height:1.5}
+#app fieldset,.kt-dialog fieldset{border:0;margin:0;padding:0;min-width:0}
+#app fieldset legend,.kt-dialog fieldset legend{font-size:14px;font-weight:700;padding:0;margin-bottom:8px}
+.kt-group{border-top:1px solid var(--line);padding:13px 0}
+.kt-group:first-of-type{margin-top:15px}
+.kt-options{display:flex;align-items:stretch;gap:7px;flex-wrap:wrap}
+.kt-check{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:9px;padding:8px 11px;color:var(--ink);background:#fff}
+.kt-check:has(input:checked){background:#eff1ff;border-color:#aeb9ed}
+.kt-check input{flex:none;width:16px;height:16px;margin:2px 0 0;accent-color:var(--purple)}
+.kt-check strong,.kt-check small{display:block}
+.kt-check small{color:var(--sub);margin-top:3px}
+.kt-stack>*+*{margin-top:11px}
+.kt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;align-items:start}
+.kt-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kt-source-layout{display:grid;grid-template-columns:minmax(285px,.9fr) minmax(0,1.25fr);gap:14px;align-items:start}
+.kt-method{border:1px solid var(--line);padding:13px;border-radius:11px}
+.kt-method p,.kt-copy p{color:var(--sub);margin:5px 0}
+.kt-method h3,.kt-copy h3,.kt-group h3{margin:0 0 6px;font-size:15px}
+.kt-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kt-field{display:block;font-size:13px;font-weight:700;margin:9px 0 6px}
+.kt-field span{display:block;margin-bottom:5px}
+#app .kt-field input:not([type=checkbox]):not([type=radio]),#app .kt-field select,#app .kt-field textarea,
+.kt-dialog input:not([type=radio]),.kt-dialog textarea,.kt-dialog select{max-width:100%;width:100%;font:inherit;border:1px solid #cbd5e4;border-radius:8px;padding:8px 10px;background:#fff;color:var(--ink)}
+#app input[type=file],.kt-dialog input[type=file]{font-size:12px;padding:6px;max-width:100%}
+.kt-field textarea,.kt-dialog textarea{resize:vertical}
+.kt-field small,.kt-muted{font-size:12px;color:var(--sub);font-weight:500}
+.kt-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.kt-rule{margin:14px 0;border:0;border-top:1px solid var(--line)}
+.kt-kv{display:grid;gap:0;margin:6px 0}
+.kt-kv>div{display:grid;grid-template-columns:minmax(112px,.8fr) minmax(0,1.2fr);gap:9px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+.kt-kv>div:last-child{border-bottom:0}
+.kt-kv dt{color:var(--sub)}
+.kt-kv dd{margin:0;overflow-wrap:anywhere;text-align:right}
+.kt-asset{font-variant-numeric:tabular-nums;white-space:nowrap}
+.kt-hash{font-family:ui-monospace,monospace;overflow-wrap:anywhere;font-size:12px}
+.kt-error{color:#9a3329;font-size:13px;margin-top:8px}
+.kt-tabs{display:flex;gap:7px;align-items:center;overflow:auto;padding:0 0 11px}
+.kt-tabs button{white-space:nowrap}
+.kt-tabs button[aria-current=page]{background:var(--purple2);border-color:#b4beef;color:var(--purple)}
+.kt-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:15px}
+.kt-title h1{margin:4px 0 5px;line-height:1.12}
+.kt-title p{margin:0;color:var(--sub)}
+.kt-task-list button{width:100%;text-align:left;white-space:normal;justify-content:flex-start;display:block;margin-bottom:7px}
+.kt-task-list button[aria-pressed=true]{border-color:#aeb9ed;background:#eff1ff}
+.kt-task-list button small{display:block;color:var(--sub);margin:4px 0}
+.kt-task-layout{display:grid;grid-template-columns:minmax(230px,.7fr) minmax(0,1.4fr);gap:13px;align-items:start}
+.kt-task-layout>*{min-width:0}
+.kt-line{display:flex;justify-content:space-between;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px solid var(--line)}
+.kt-line:last-child{border-bottom:0}
+.kt-dialog{max-height:calc(100dvh - 28px);width:min(630px,calc(100vw - 28px));border:1px solid var(--line);border-radius:14px;padding:0;color:var(--ink);box-shadow:0 18px 65px #131f3766;overflow:auto}
+.kt-dialog::backdrop{background:#121c34a3}
+.kt-dialog-inner{padding:19px}
+.kt-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:11px}
+.kt-dialog-head h2{font-size:21px;margin:0}
+.kt-dialog p{color:var(--sub)}
+.kt-dialog .paper{background:#f8faff;border-radius:11px;padding:12px;border:1px solid var(--line)}
+.kt-dialog .kt-check+.kt-check{margin-top:7px}
+.kt-price{font-size:27px;letter-spacing:-.025em;font-weight:750}
+.kt-state-tag{margin:0 0 6px}
+.kt-wrap{overflow-wrap:anywhere}
+.kt-client-tabs{margin-top:14px}
+.kt-reply{border-left:2px solid #cfd8f8;padding:0 0 0 10px;margin-top:9px;overflow-wrap:anywhere}
+.kt-reply p{white-space:pre-wrap;margin:3px 0}
+.kt-hero{background:#eef1ff;color:#243768;border:1px solid #dbe0fa;border-radius:12px;padding:14px}
+.kt-hero h2{margin:0 0 5px}
+.kt-hero p{margin:0;color:#425579}
+.kt-clean{margin:7px 0;padding-left:18px}
+.kt-clean li+li{margin-top:4px}
+.kt-pack{font-size:14px}
+.kt-pack .kt-price{margin:5px 0}
+.kt-result td small{display:block;color:var(--sub)}
+.kt-disclosure{margin-top:8px}
+.kt-disclosure summary{cursor:pointer;font-weight:700;color:var(--purple)}
+@media(max-width:1000px){#app .shell{grid-template-columns:185px minmax(0,1fr)}.kt-source-layout,.kt-task-layout{grid-template-columns:1fr}}
+@media(max-width:760px){
+ #app .shell{display:block}
+ #app .sidebar{position:static;height:auto;max-width:none;padding:9px 12px}
+ #app .sidebar .logo{margin:0 0 7px}
+ #app .sidebar .side-case,#app .sidebar .side-bottom{display:none}
+ #app .wizard-nav ol{display:flex;overflow:auto;padding-bottom:3px}
+ #app .wizard-nav li{flex:none}
+ #app .wizard-nav-step{padding:6px;min-width:auto}
+ #app .wizard-nav-copy small,#app .wizard-nav-step .current-dot{display:none}
+ #app .side-tools,#app .nav-label{display:none}
+ #app .sidebar .navigation{display:flex;overflow:auto;gap:5px}
+ #app .sidebar .navigation button{width:auto;white-space:nowrap}
+ #app .top{padding:8px 12px}
+ #app .content{padding:15px 11px 32px}
+ .presentation{padding:5px 11px}
+ .kt-grid.three{grid-template-columns:1fr}
+}
+@media(max-width:495px){.kt-grid,.kt-fields{grid-template-columns:1fr}.kt-title{flex-wrap:wrap}.kt-kv>div{grid-template-columns:1fr;gap:3px}.kt-kv dd{text-align:left}.presentation-controls label{flex-wrap:wrap}}
+
+#app .kt-pack.selected{border-color:#aeb9ed;background:#f9faff}
+</style>
+</head>
+<body>
+<div class="presentation" aria-label="Sterowanie makietą">
+  <span>Makieta · fikcyjne dane, wyliczenia i ceny</span>
+  <div class="presentation-controls">
+    <button type="button" data-action="role-client" aria-pressed="true">Portal klienta</button>
+    <button type="button" data-action="role-advisor" aria-pressed="false">Panel księgowej</button>
+    <label id="presentation-case-label">Scenariusz <select id="presentation-case"></select></label>
+    <button type="button" id="presentation-sample" data-action="sample" hidden>Wstaw dane przykładowe</button>
+    <button type="button" data-action="reset">Przywróć dane</button>
+  </div>
+</div>
+<div id="app"></div>
+<dialog id="dialog" class="kt-dialog" aria-labelledby="dialog-title"></dialog>
+<div id="feedback" role="status" class="visually-hidden"></div>
+<script>
+"use strict";
+const safe=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const money=n=>new Intl.NumberFormat('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2}).format(Number(n)||0);
+const button=(text,action,style='primary',disabled=false)=>`<button type="button" class="btn ${style}" data-action="${safe(action)}" ${disabled?'disabled':''}>${text}</button>`;
+const pill=(text,color='purple')=>`<span class="pill ${color}">${safe(text)}</span>`;
+const cardhead=(title,right='')=>`<div class="cardhead"><h2>${title}</h2>${right}</div>`;
+const stat=(title,value,caption)=>`<div class="stat"><div class="stat-label">${title}</div><div class="stat-value mono">${value}</div><div class="stat-caption">${caption}</div></div>`;
+function filterSelect(id,label,values,current){return `<label class="filter-field"><span>${label}</span><select id="${id}"><option value="all">Wszystkie</option>${values.map(v=>`<option value="${safe(v)}" ${v===current?'selected':''}>${safe(v)}</option>`).join('')}</select></label>`}
+const STORAGE = "kryptotax-boss-derived-v2";
+const YEARS = [2025,2024];
+const IMPORT_PRICE = 79;
+const GROUPS = [
+  {id:"exchange",name:"Giełdy",description:"Wybierz giełdy, z których korzystałeś."},
+  {id:"wallet",name:"Własne portfele",description:"Wybierz sieci, na których masz historię."},
+  {id:"other",name:"Inne źródła",description:"Dodaj operacje, których brakuje w eksporcie giełdy."}
+];
+const SOURCES = [
+  {id:"binance",name:"Binance",group:"exchange",icon:"B"},
+  {id:"coinbase",name:"Coinbase",group:"exchange",icon:"C"},
+  {id:"kraken",name:"Kraken",group:"exchange",icon:"K"},
+  {id:"ethereum",name:"Ethereum",group:"wallet",icon:"ETH"},
+  {id:"bitcoin",name:"Bitcoin",group:"wallet",icon:"BTC"},
+  {id:"cash",name:"Kantor lub bitomat",group:"other",icon:"PLN"},
+  {id:"card",name:"Płatności kartą krypto",group:"other",icon:"K"}
+];
+const source = id => SOURCES.find(item=>item.id===id);
+const NETWORKS = {
+  ethereum:{
+    asset:"ETH", exchange:"coinbase", day:"06-18", time:"12:42:18", qty:"0,4000",
+    address:"0x7b36c6a0d4b4a9b19d11b7ea2cdd790bfac84061",
+    from:"0x22aa86ea9f6d82d83f64dc3d194c66bfb20e1797",
+    hash:"0x3fc701bd1cc8ca0f4ec6251d6aaa12f37dd79315b584e6e2d5f194f7abc0",
+    pattern:/^0x[0-9a-fA-F]{40}$/
+  },
+  bitcoin:{
+    asset:"BTC",exchange:"binance",day:"07-05",time:"09:14:32",qty:"0,0120",
+    address:"1LBkX4RBQ3kweMGUDvjXuw7i2tAw36YwtX",
+    from:"15CPH4uUe53h2jYpxWPBrwsasw2G1fu3pk",
+    hash:"638fac999fc389b28ca94d6ed2be32767638df657aa16bc946d53fec11df",
+    pattern:/^[13][1-9A-HJ-NP-Za-km-z]{25,34}$|^bc1[0-9a-z]{25,87}$/
+  }
+};
+const app = document.querySelector("#app");
+const dialog = document.querySelector("#dialog");
+const today = () => new Date().toISOString();
+const dateLabel = value => value ? value.slice(0,10).split("-").reverse().join(".") : "—";
+const cash = n => money(n)+" zł";
+const rounded = n => Math.round(n*100)/100;
+const caseRef = c => "KT-"+c.year+"-"+c.number;
+const nameInitials = name => name.split(" ").map(part=>part[0]).slice(0,2).join("");
+const fields = rows => '<dl class="kt-kv">'+rows.map(([label,value])=>'<div><dt>'+label+'</dt><dd>'+value+'</dd></div>').join("")+'</dl>';
+const note = (text,style="") => '<div class="note '+style+'">'+text+'</div>';
+const submit = (label,style="primary") => '<button type="submit" class="btn '+style+'">'+label+'</button>';
+const error = '<p class="kt-error" role="alert" hidden></p>';
+const report = (title,body) => `<section class="card kt-copy">${cardhead(title)}${body}</section>`;
+function baseCase(id,name,number,year=2025) {
+  return {id,name,number,year,stage:"setup",selected:[],imports:{},priorAnswer:"",
+    prior:null,work:{},events:[],charges:[],plan:null,paid:null,verified:false,sent:"",approved:""};
+}
+function op(sourceId,id,date,kind,description,amountPLN,effect) {
+  return {sourceId,id,date,kind,description,amountPLN,effect};
+}
+function transferOp(c,network,isWallet) {
+  const n=NETWORKS[network];
+  const day=c.year+"-"+n.day;
+  const id=network==="ethereum"?"ETH":"BTC";
+  const transfer=op(isWallet?network:n.exchange,
+    isWallet?"PORT-"+id+"-01":n.exchange.toUpperCase()+"-"+id+"-04",
+    day,isWallet?"Wpływ "+n.asset:"Wypłata "+n.asset,
+    isWallet?"Wpływ na wskazany portfel":"Wypłata na adres blockchain",null,"outside");
+  return {...transfer,network,asset:n.asset,quantity:n.qty,from:n.from,to:n.address,
+    hash:n.hash+c.year,time:n.time,direction:isWallet?"in":"out"};
+}
+function exchangeRows(c,id) {
+  const key={coinbase:"CB",binance:"BN",kraken:"KR"}[id];
+  const values={
+    coinbase:[["03-04","Zakup BTC",4800,"cost"],["04-11","Zakup ETH",5500,"cost"],["08-13","Sprzedaż BTC",15600,"income"]],
+    binance:[["02-06","Zakup BTC",7100,"cost"],["08-11","Sprzedaż BTC",12300,"income"]],
+    kraken:[["02-08","Zakup BTC",2400,"cost"],["04-25","Zakup ETH",2800,"cost"],["10-02","Sprzedaż BTC i ETH",9200,"income"]]
+  }[id];
+  const rows=values.map(([day,kind,amount,effect],index)=>op(id,key+"-00"+(index+1),c.year+"-"+day,kind,
+    effect==="income"?"Wymiana na PLN":"Zakup z salda PLN",amount,effect));
+  if(id==="coinbase") rows.push(transferOp(c,"ethereum",false));
+  if(id==="binance") rows.push(transferOp(c,"bitcoin",false));
+  return rows;
+}
+function imported(c,id,method,file="",address="") {
+  const network=NETWORKS[id];
+  const known=network && equalAddress(id,address,network.address);
+  return {
+    method,file,address,period:"01.01–31.12."+c.year,
+    rows:network ? (known ? [transferOp(c,id,true)] : []) : exchangeRows(c,id)
+  };
+}
+function equalAddress(network,a,b) {
+  if(network==="ethereum") return a?.toLowerCase()===b?.toLowerCase();
+  return a===b;
+}
+function ledger(c) {
+  return c.selected.flatMap(id=>c.imports[id]?.rows??[]).sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
+}
+function pairedWith(c,row,rows=ledger(c)) {
+  if(!row.network || !equalAddress(row.network,c.imports[row.network]?.address,row.to)) return null;
+  return rows.find(other=>other.id!==row.id && other.sourceId!==row.sourceId &&
+    other.network===row.network && other.hash===row.hash && other.direction!==row.direction &&
+    other.quantity===row.quantity && other.asset===row.asset &&
+    equalAddress(row.network,other.to,row.to) && equalAddress(row.network,other.from,row.from));
+}
+function taskType(c,row,rows) {
+  return row.issue || (row.network && !pairedWith(c,row,rows) ? "transfer" : "");
+}
+const getWork = (c,id) => c.work[id]??{intake:null,questions:[],decision:null};
+const ensureWork = (c,id) => c.work[id]??=( {intake:null,questions:[],decision:null} );
+const lastQuestion = (c,id) => getWork(c,id).questions.at(-1);
+const waiting = (c,id) => Boolean(lastQuestion(c,id) && !lastQuestion(c,id).reply);
+function workItems(c) {
+  const rows=ledger(c);
+  const tasks=rows.flatMap(row=>{
+    const type=taskType(c,row,rows);
+    return type ? [{...row,issue:type}] : [];
+  });
+  if(c.prior && c.priorAnswer!=="no" && c.prior.choice!=="none") {
+    tasks.push({id:"PIT-"+(c.year-1),issue:"prior",kind:"Koszty z wcześniejszego PIT-38",amountPLN:c.prior.amount});
+  }
+  return tasks;
+}
+const findTask = (c,id) => workItems(c).find(item=>item.id===id);
+const unresolved = c => workItems(c).filter(item=>!getWork(c,item.id).decision);
+const readyToWork = c => unresolved(c).filter(item=>!waiting(c,item.id));
+const nextIntake = c => workItems(c).find(item=>item.issue!=="prior" && !getWork(c,item.id).intake);
+const missingSources = c => c.selected.filter(id=>!c.imports[id]?.rows.length && !c.imports[id]?.noOps);
+const hasHistory = c => ledger(c).length>0;
+const canPrepare = c => hasHistory(c) && !missingSources(c).length;
+const canQuote = c => canPrepare(c) && !nextIntake(c) && (c.priorAnswer==="no" || c.prior);
+const canApprove = c => Boolean(c.sent && c.paid && c.verified && canPrepare(c) && !unresolved(c).length);
+function spec(c,item) {
+  if(item.issue==="cash") return {
+    title:"Ustalenie, czy wypłata była osobną wymianą",
+    reason:"Dokument wypłaty pokazuje datę i kwotę gotówki. Do ustalenia pozostaje, czy środki pochodzą z osobnej wymiany.",
+    question:"Skąd pochodziły środki wypłacone w kantorze?",
+    options:[["sale","Wymieniłem kryptowaluty na gotówkę w kantorze"],["balance","Odebrałem środki po wcześniejszej sprzedaży"],["unknown","Nie wiem"]],
+    request:"Czy kantor wymienił kryptowaluty na gotówkę przy tej wypłacie? Dołącz potwierdzenie wymiany lub podaj jej numer.",
+    outcomes:[["income","Ujmij udokumentowaną wymianę"],["outside","Potwierdź wypłatę wcześniej ujętych środków"]]
+  };
+  if(item.issue==="card") return {
+    title:"Ustalenie źródła środków na płatność kartą",
+    reason:"Potwierdzenie płatności zawiera kwotę w PLN. Brakuje informacji, czy karta pobrała saldo w PLN, czy przy płatności nastąpiła osobna wymiana kryptowalut.",
+    question:"Z jakiego salda opłacono tę transakcję?",
+    options:[["crypto","Przy płatności wymieniono kryptowaluty"],["fiat","Płatność zeszła z salda w walucie tradycyjnej"],["unknown","Nie wiem"]],
+    request:"Dołącz potwierdzenie obciążenia salda przez wystawcę karty. Jeśli przy płatności była wymiana kryptowalut, podaj jej identyfikator.",
+    outcomes:[["income","Ujmij potwierdzoną odrębną wymianę"],["outside","Potwierdź płatność z salda PLN lub wcześniej ujętą wymianę"]]
+  };
+  if(item.issue==="prior") return {
+    title:"Ustalenie kosztów z wcześniejszego rozliczenia",
+    reason:"Sprawdź wcześniejszy PIT-38 i potwierdź kwotę kosztów do uwzględnienia w bieżącym rozliczeniu.",
+    request:"Czy masz ostatni PIT-38 z rozliczeniem kryptowalut? Dołącz go i wskaż kwotę kosztów do sprawdzenia.",
+    outcomes:[["cost","Potwierdź udokumentowaną kwotę kosztów"],["outside","Zamknij sprawdzenie bez doliczania kosztów"]]
+  };
+  const suggested = item.direction==="out" ? source(item.network).name : source(NETWORKS[item.network].exchange).name;
+  return {
+    title:"Ustalenie drugiego źródła transferu",
+    reason:"Import zawiera transfer na "+source(item.network).name+". Nie znaleziono odpowiadającego zapisu w dodanych źródłach.",
+    question:item.direction==="out"?"Czy adres odbiorcy należy do Ciebie?":"Skąd przyszedł ten transfer na Twój portfel?",
+    options:[["own",item.direction==="out"?"To mój portfel":"Z innego mojego portfela lub giełdy"],
+      ["other","Transfer z udziałem innej osoby lub podmiotu"],["unknown","Nie wiem"]],
+    request:"Wskaż, do kogo należał drugi adres w tej transakcji, i dołącz potwierdzenie z historii drugiego źródła, jeśli je masz.",
+    outcomes:[["outside","Udokumentuj transfer bez odrębnej wymiany"],["income","Ujmij odrębną wymianę z potwierdzoną wartością"]],
+    suggested
+  };
+}
+function pendingEffect(item,decision) {
+  if(decision) return {kind:decision.code,value:decision.amountPLN??item.amountPLN??0};
+  if(item.issue) return {kind:"pending",value:item.amountPLN??0};
+  return {kind:item.effect,value:item.amountPLN??0};
+}
+function calculation(c) {
+  const rows=ledger(c);
+  const tasks=workItems(c);
+  const extras={income:0,cost:0};
+  const totals={income:0,cost:0};
+  for(const row of [...rows,...tasks.filter(item=>item.issue==="prior")]) {
+    const item=tasks.find(task=>task.id===row.id)??row;
+    const result=pendingEffect(item,getWork(c,item.id).decision);
+    if(result.kind==="income" || result.kind==="cost") totals[result.kind]+=result.value;
+    if(result.kind==="pending") extras[item.issue==="prior"?"cost":"income"]+=result.value;
+  }
+  const simulateTax=(income,cost)=>Math.round(Math.max(0,income-cost)*0.19);
+  return {...totals,tax:simulateTax(totals.income,totals.cost),
+    low:simulateTax(totals.income,totals.cost+extras.cost),
+    high:simulateTax(totals.income+extras.income,totals.cost),
+    partial:unresolved(c).some(item=>item.amountPLN==null)};
+}
+const range = (low,high) => low===high?cash(low):cash(low)+" – "+cash(high);
+function taxEstimate(result) {
+  if(result.partial && !result.income && !result.cost && !result.high) return "Do ustalenia";
+  return range(result.low,result.high);
+}
+const cardExchangeRef = item => item.reference?.startsWith("CARD-")?
+  "CB-CONV-"+item.reference.slice(5):"WYMIANA-"+(item.reference||item.id);
+function proposal(c) {
+  const result=calculation(c);
+  const open=unresolved(c);
+  const minutes=20+Math.max(0,c.selected.length-1)*10+open.reduce((total,item)=>{
+    const proof=item.issue==="prior" ? c.prior?.file : getWork(c,item.id).intake?.file;
+    return total+(proof?12:22);
+  },0);
+  const high=result.high;
+  const plans=[
+    {id:"standard",name:"Rozliczenie standardowe",minutes:45,limit:2500,price:349},
+    {id:"extended",name:"Rozliczenie rozszerzone",minutes:90,limit:10000,price:549}
+  ];
+  const recommended=plans.find(plan=>plan.minutes>=minutes && plan.limit>=high && (!result.partial||plan.id!=="standard"));
+  if(!recommended) {
+    const extra={
+      id:"individual",name:"Rozliczenie z dodatkową kontrolą",
+      minutes:Math.max(120,Math.ceil(minutes/30)*30),
+      limit:Math.max(15000,Math.ceil(high/5000)*5000)
+    };
+    extra.price=549+(extra.minutes-90)*4+Math.max(0,extra.limit-10000)/50;
+    plans.push(extra);
+  }
+  return {plans,recommended:recommended??plans.at(-1),minutes,result,open};
+}
+function assessmentLine(c) {
+  const count = group => c.selected.filter(id=>source(id).group===group).length;
+  const pieces=[];
+  if(count("exchange")) pieces.push(count("exchange")===1?"1 giełda":count("exchange")+" giełdy");
+  if(count("wallet")) pieces.push(count("wallet")===1?"1 sieć portfela":count("wallet")+" sieci portfeli");
+  if(count("other")) pieces.push(count("other")===1?"1 źródło dodatkowe":count("other")+" źródła dodatkowe");
+  const reason=count("wallet")&&count("exchange")
+    ? "Porównamy zapisy giełd i portfeli, żeby rozpoznać transfery między Twoimi źródłami."
+    : count("other") ? "Operacje dodane ręcznie sprawdzimy wraz z ich potwierdzeniami."
+    : count("exchange")>1 ? "Uporządkujemy historię giełd według zakupów, sprzedaży i transferów."
+    : "Ocenimy zakres i kwoty po dodaniu historii.";
+  return {summary:pieces.join(" · "),reason};
+}
+function fees(c) {
+  return c.charges.filter(charge=>charge.year===c.year).reduce((sum,charge)=>sum+charge.amount,0);
+}
+function addEvent(c,title,detail="") {
+  c.events.push({date:today(),title,detail});
+}
+function queueStatus(c) {
+  if(c.approved) return {label:"Zatwierdzona",color:"green",key:"done"};
+  if(!unresolved(c).length) return {label:"Do zatwierdzenia",color:"purple",key:"ready"};
+  if(!readyToWork(c).length) return {label:"Czeka na klienta",color:"amber",key:"waiting"};
+  return {label:"Do sprawdzenia",color:"purple",key:"ready"};
+}
+function taskPill(c,id) {
+  if(getWork(c,id).decision) return pill("Rozstrzygnięte","green");
+  if(waiting(c,id)) return pill("Czeka na klienta","amber");
+  if(lastQuestion(c,id)?.reply) return pill("Klient odpowiedział","purple");
+  return pill("Do sprawdzenia","purple");
+}
+function initialCases() {
+  const marta=baseCase("marta","Marta Wiśniewska","104");
+  const anna=baseCase("anna","Anna Zielińska","101",2024);
+  anna.selected=["kraken"];
+  anna.imports.kraken=imported(anna,"kraken","csv","Kraken_2024.csv");
+  anna.priorAnswer="no";
+  anna.plan={...proposal(anna).recommended,estimate:20};
+  anna.paid={date:"2025-02-12",ref:"KT-P-101"};
+  anna.verified=true;
+  anna.sent="2025-02-13";
+  anna.approved="2025-02-15";
+  anna.stage="submitted";
+  anna.events=[
+    {date:anna.sent,title:"Dane przekazane do biura",detail:"Historia Kraken i odpowiedź o poprzednich latach."},
+    {date:anna.approved,title:"Zatwierdzono rozliczenie",detail:"Zakończono kontrolę operacji i wyliczenia."}
+  ];
+  const piotr=baseCase("piotr","Piotr Nowak","102");
+  piotr.selected=["coinbase","ethereum","card"];
+  piotr.imports.coinbase=imported(piotr,"coinbase","csv","Coinbase_2025.csv");
+  piotr.imports.ethereum=imported(piotr,"ethereum","csv","Ethereum_2025.csv",NETWORKS.ethereum.address);
+  const payment=op("card","KARTA-039","2025-09-12","Płatność kartą krypto","Zakup w sklepie, karta Coinbase",189.90,"outside");
+  piotr.imports.card={method:"manual",rows:[{...payment,issue:"card",reference:"CARD-912-039"}]};
+  piotr.work[payment.id]={intake:{choice:"unknown",note:"Na wyciągu jest kwota w PLN. Potwierdzenie obciążenia salda mogę pobrać w historii karty.",file:"Wyciag_karty_0912.pdf",sample:true},questions:[],decision:null};
+  piotr.priorAnswer="no";
+  const plan=proposal(piotr);
+  piotr.plan={...plan.recommended,estimate:plan.minutes};
+  piotr.paid={date:"2026-02-19",ref:"KT-P-102"};
+  piotr.verified=true;
+  piotr.sent="2026-02-20";
+  piotr.stage="submitted";
+  piotr.events=[{date:piotr.sent,title:"Dane przekazane do biura",detail:"Coinbase, Ethereum i wyciąg płatności kartą."}];
+  return [marta,piotr,anna];
+}
+let cases=initialCases();
+try {
+  const stored=JSON.parse(localStorage.getItem(STORAGE));
+  if(Array.isArray(stored) && stored.length===cases.length) cases=stored;
+} catch {}
+let role="client";
+let clientId="marta";
+let advisorId="";
+let clientView="journey";
+let advisorView="queue";
+let activeSource="";
+let activeTask="";
+let filter="all";
+let queueText="";
+let modalContext=null;
+const byId = id => cases.find(item=>item.id===id);
+const customer = () => byId(clientId);
+const staffCase = () => byId(advisorId);
+const activeCase = () => role==="client"?customer():staffCase();
+const methods = {csv:"Import CSV",api:"Połączenie bezpośrednie",aggregator:"Import przez agregator",manual:"Dodane przez klienta"};
+function save(message="") {
+  try {localStorage.setItem(STORAGE,JSON.stringify(cases));} catch {}
+  render(true,message);
+}
+
+const STEPS = [
+  ["setup","Źródła"],["imports","Historia"],["checks","Uzupełnienia"],
+  ["offer","Plan i płatność"],["identity","Weryfikacja"],["submitted","Rozliczenie"]
+];
+const stepIndex = c => STEPS.findIndex(([key])=>key===c.stage);
+const subject = item => item.sourceId ? source(item.sourceId).name : "Wcześniejsze rozliczenie";
+const hashShort = hash => hash ? hash.slice(0,11)+"…"+hash.slice(-7) : "";
+function valueOf(item) {
+  if(item.network) return safe(item.quantity)+" "+safe(item.asset);
+  return item.amountPLN!=null ? cash(item.amountPLN) : "Do ustalenia";
+}
+function operationFacts(item) {
+  const items=[
+    ["Źródło",safe(subject(item))],
+    ...(item.date?[["Data",dateLabel(item.date)+(item.time?" · "+safe(item.time)+" UTC":"")]]:[]),
+    [item.network?"Ilość":"Kwota",valueOf(item)]
+  ];
+  if(item.network) items.push(
+    ["Sieć",source(item.network).name],["Adres nadawcy",`<span class="kt-hash">${safe(item.from)}</span>`],
+    ["Adres odbiorcy",`<span class="kt-hash">${safe(item.to)}</span>`],["Hash transakcji",`<span class="kt-hash">${safe(item.hash)}</span>`]);
+  if(item.reference) items.push(["Numer operacji w źródle",safe(item.reference)]);
+  return fields(items);
+}
+function operationHeader(item,extended=false) {
+  return `<div class="kt-title"><div><h2>${safe(item.kind)}</h2>
+    <p>${safe(subject(item))}${item.date?" · "+dateLabel(item.date):""} · ${safe(item.reference||item.id)}</p>
+    ${item.description?`<p>${safe(item.description)}</p>`:""}</div><strong class="kt-asset">${valueOf(item)}</strong></div>
+    ${extended?operationFacts(item):item.network?`<details class="kt-disclosure" open><summary>Dane transferu</summary>${operationFacts(item)}</details>`:""}`;
+}
+function setupPage(c) {
+  return report("Źródła historii",`<form data-form="setup">
+    <label class="kt-field"><span>Rok rozliczenia</span><select name="year">${YEARS.map(year=>
+      `<option value="${year}" ${year===c.year?"selected":""}>${year}</option>`).join("")}</select></label>
+    ${GROUPS.map(group=>`<div class="kt-group"><fieldset>
+      <legend>${group.name}</legend><p class="kt-muted">${group.description}</p>
+      <div class="kt-options">${SOURCES.filter(item=>item.group===group.id).map(item=>
+        `<label class="kt-check"><input type="checkbox" name="source" value="${item.id}" ${c.selected.includes(item.id)?"checked":""}>
+        <span>${item.name}</span></label>`).join("")}</div>
+      </fieldset></div>`).join("")}
+    <div class="kt-group"><fieldset><legend>Czy w poprzednich latach rozliczałeś kryptowaluty w PIT-38?</legend>
+      <div class="kt-options">${[["yes","Tak"],["no","Nie"],["unknown","Nie pamiętam"]].map(([key,label])=>
+        `<label class="kt-check"><input type="radio" name="prior" value="${key}" ${c.priorAnswer===key?"checked":""} required><span>${label}</span></label>`).join("")}</div>
+    </fieldset></div>${error}<div class="kt-actions">${submit("Przejdź do dodawania historii →")}</div></form>`);
+}
+function sourceState(c,item) {
+  const info=c.imports[item.id];
+  if(!info) return pill("Do uzupełnienia","amber");
+  if(info.rows.length) return pill("Dodano · "+info.rows.length,"green");
+  return info.noOps?pill("Potwierdzono 0 operacji","green"):pill("Sprawdź pusty import","amber");
+}
+function sourceLabel(item) {
+  return item.group==="wallet"?"Portfel · "+item.name:item.name;
+}
+function sourcesList(c) {
+  return c.selected.map(id=>{
+    const item=source(id);
+    const info=c.imports[id];
+    return `<div class="source ${activeSource===id?"active":""}">
+      <span class="sourceIcon" aria-hidden="true">${item.icon}</span>
+      <div class="source-copy"><b>${sourceLabel(item)}</b>
+        <div class="src-state">${sourceState(c,item)}${info?`<small>${methods[info.method]}</small>`:""}</div>
+      </div>${button(info?"Szczegóły":"Dodaj historię","source-"+id,info?"secondary small":"primary small")}</div>`;
+  }).join("");
+}
+function exchangeImport(c,item) {
+  return `<div class="kt-stack">
+    <div class="kt-method"><div class="kt-line"><h3>Połącz ${item.name}</h3>${pill("Bezpłatnie","green")}</div>
+      <p>Pobierz historię za ${c.year} rok z dostępem do odczytu.</p>
+      <div class="kt-actions">${button("Połącz bezpośrednio","connect-"+item.id)}</div></div>
+    <div class="kt-method"><div class="kt-line"><h3>Wczytaj CSV z ${item.name}</h3>${pill("Bezpłatnie","green")}</div>
+      <form data-form="exchange-file" data-id="${item.id}">
+        <label class="kt-field"><span>Eksport historii za ${c.year} rok</span>
+          <input name="file" type="file" accept=".csv,text/csv" required></label>
+        ${error}<div class="kt-actions">${submit("Wczytaj CSV","secondary")}</div></form></div></div>`;
+}
+function walletImport(c,item) {
+  const info=c.imports[item.id];
+  return `<form data-form="wallet-file" data-id="${item.id}">
+    <label class="kt-field"><span>Publiczny adres portfela na ${item.name}</span>
+      <input name="address" type="text" value="${safe(info?.address||"")}" required spellcheck="false" autocomplete="off">
+      <small>Adres pozwala dopasować wpływy i wypłaty w różnych źródłach.</small></label>
+    <div class="kt-stack">
+      <div class="kt-method"><div class="kt-line"><h3>Wczytaj CSV z portfela</h3>${pill("Bezpłatnie","green")}</div>
+        <label class="kt-field"><span>Eksport historii za ${c.year} rok</span><input name="file" type="file" accept=".csv,text/csv"></label>
+        <div class="kt-actions"><button class="btn primary" type="submit" name="method" value="csv">Wczytaj CSV</button></div></div>
+      <div class="kt-method"><div class="kt-line"><h3>Import przez agregator</h3>${pill(cash(IMPORT_PRICE),"amber")}</div>
+        <p>Agregator pobierze historię tego adresu. Opłatę zobaczysz do akceptacji przed uruchomieniem.</p>
+        <div class="kt-actions"><button class="btn secondary" type="submit" name="method" value="aggregator">Wybierz płatny import</button></div></div>
+    </div>${error}</form>`;
+}
+function manualImport(c,item) {
+  const isCash=item.id==="cash";
+  return `<form data-form="manual" data-id="${item.id}">
+    <div class="kt-fields">
+      <label class="kt-field"><span>Data operacji</span><input type="date" name="date" min="${c.year}-01-01" max="${c.year}-12-31" required></label>
+      <label class="kt-field"><span>${isCash?"Otrzymana kwota":"Kwota płatności"} w PLN</span>
+        <input type="number" name="amount" min=".01" max="1000000" step=".01" inputmode="decimal" required></label>
+    </div>
+    <label class="kt-field"><span>${isCash?"Nazwa kantoru lub operatora bitomatu":"Wystawca karty lub opis płatności"}</span>
+      <input type="text" name="place" maxlength="120" required></label>
+    <label class="kt-field"><span>Numer z potwierdzenia <small>(jeśli masz)</small></span><input type="text" name="ref" maxlength="100"></label>
+    <label class="kt-field"><span>Potwierdzenie <small>(jeśli masz)</small></span><input type="file" name="file" accept=".pdf,.jpg,.jpeg,.png"></label>
+    ${error}<div class="kt-actions">${submit("Dodaj operację")}</div></form>`;
+}
+let importEdit=false;
+function sourceDetail(c,item) {
+  const data=c.imports[item.id];
+  if(!data || importEdit) {
+    const body=item.group==="exchange"?exchangeImport(c,item):item.group==="wallet"?walletImport(c,item):manualImport(c,item);
+    return report(sourceLabel(item),body);
+  }
+  const details=fields([
+    ["Metoda",methods[data.method]],["Operacje",String(data.rows.length)],
+    ...(data.period?[["Zakres importu",data.period]]:[]),
+    ...(data.address?[["Adres",`<span class="kt-hash">${safe(data.address)}</span>`]]:[]),
+    ...(data.file?[["Plik",safe(data.file)]]:[]),
+    ...(data.method==="aggregator"?[["Opłata za import",cash(IMPORT_PRICE)]]:[])
+  ]);
+  return report(sourceLabel(item),details+
+    (data.rows.length?`<div class="kt-actions">${button("Pokaż operacje z tego źródła","ledger-"+item.id,"secondary")}
+      ${item.group==="other"?button("Dodaj kolejną operację","add-manual","secondary"):""}</div>`
+      :note(info.noOps?"Potwierdzono, że w tym zakresie brak operacji.":"Import nie zwrócił operacji dla podanego adresu.")+
+        `<div class="kt-actions">${info.noOps?"":button("Potwierdź brak operacji","confirm-empty","secondary")}
+          ${button("Zmień dane portfela","retry-source","secondary")}</div>`));
+}
+function importsPage(c) {
+  const found=source(activeSource);
+  const selected=found && c.selected.includes(found.id) ? found : null;
+  const assessment=assessmentLine(c);
+  const count=c.selected.length-missingSources(c).length;
+  return `<div class="kt-stack">
+    <div class="kt-hero"><h2>${assessment.summary}</h2><p>${assessment.reason}</p></div>
+    <div class="kt-source-layout">
+      ${report("Źródła danych",`<p class="kt-muted">Uzupełniono ${count} z ${c.selected.length}</p>`+sourcesList(c))}
+      ${selected?sourceDetail(c,selected):report("Dodawanie historii","<p>Otwórz wybrane źródło. Dostępne metody i ich ceny zobaczysz przy tym źródle.</p>")}
+    </div>
+    ${canPrepare(c)?note("Dodano dane ze wszystkich wskazanych źródeł. Operacje w historii · "+ledger(c).length+".","good")
+      :hasHistory(c)?note("Dodaj historię z pozostałych źródeł, aby ocenić kompletność sprawy."):""}
+    <div class="kt-actions">${canPrepare(c)?button("Sprawdź operacje i uzupełnienia →","to-checks"):""}
+      ${button("Zmień listę źródeł","edit-setup","secondary")}</div></div>`;
+}
+function priorForm(c) {
+  return report("Wcześniejszy PIT-38",`<form data-form="prior">
+    <fieldset><legend>Czy masz wcześniejszą deklarację lub kwotę kosztów do sprawdzenia?</legend>
+      <div class="kt-options">${[["cost","Mam dane do sprawdzenia"],["none","Brak kosztów do uwzględnienia"],["unsure","Nie mogę teraz ustalić"]].map(([key,label])=>
+        `<label class="kt-check"><input type="radio" name="choice" value="${key}" required><span>${label}</span></label>`).join("")}</div></fieldset>
+    <label class="kt-field"><span>Kwota kosztów w PLN <small>(jeśli znasz)</small></span><input type="number" name="amount" min=".01" max="1000000" step=".01"></label>
+    <label class="kt-field"><span>Wcześniejszy PIT-38 <small>(jeśli masz)</small></span><input type="file" name="file" accept=".pdf,.jpg,.jpeg,.png"></label>
+    ${error}<div class="kt-actions">${submit("Zapisz odpowiedź")}</div></form>`);
+}
+function intakeForm(c,item) {
+  const guide=spec(c,item);
+  const previous=getWork(c,item.id).intake;
+  return report(guide.question,operationHeader(item)+note(guide.reason)+`
+    <form data-form="intake" data-id="${item.id}" style="margin-top:12px">
+      <fieldset><legend>Twoja odpowiedź</legend><div class="kt-stack">
+        ${guide.options.map(([key,label])=>`<label class="kt-check"><input type="radio" name="choice" value="${key}" ${previous?.choice===key?"checked":""} required><span>${label}</span></label>`).join("")}
+      </div></fieldset>
+      <label class="kt-field"><span>Wyjaśnienie <small>(opcjonalnie)</small></span>
+        <textarea name="note" rows="2" maxlength="1200">${safe(previous?.note||"")}</textarea></label>
+      <label class="kt-field"><span>Dokument potwierdzający <small>(jeśli masz)</small></span>
+        <input name="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.csv"></label>
+      ${previous?.file?`<p class="kt-muted">Dołączono ${safe(previous.file)}</p>`:""}
+      ${error}<div class="kt-actions">${submit("Zapisz odpowiedź")}
+      ${guide.suggested?button("Uzupełnij źródło "+guide.suggested,"edit-setup","secondary"):""}</div></form>`);
+}
+let editIntake="";
+function checksPage(c) {
+  const toExplain = (editIntake && findTask(c,editIntake)) || nextIntake(c);
+  const linked=ledger(c).filter(item=>item.direction==="out" && pairedWith(c,item)).length;
+  if(toExplain) return intakeForm(c,toExplain);
+  if(c.priorAnswer!=="no" && !c.prior) return priorForm(c);
+  const tasks=workItems(c);
+  return report("Podsumowanie historii",fields([
+    ["Dodane źródła",String(c.selected.length)],["Operacje",String(ledger(c).length)],
+    ...(linked?[["Dopasowane transfery między źródłami",String(linked)]]:[]),
+    ["Pozycje do decyzji księgowej",String(tasks.length)]
+  ])+`<div class="kt-stack">${tasks.map(item=>`<div class="kt-line"><div><strong>${safe(item.kind)}</strong><br>
+    <span class="kt-muted">${safe(spec(c,item).title)}</span></div>
+    ${item.issue==="prior"?pill("Zapisano","green"):button("Zobacz odpowiedź","intake-"+item.id,"secondary small")}</div>`).join("")}</div>
+    <div class="kt-actions">${button("Zobacz proponowany plan →","to-offer")}${button("Historia operacji","client-ledger","secondary")}</div>`);
+}
+function calculationFields(c) {
+  const data=calculation(c);
+  return fields([
+    ["Przychody ujęte w wyliczeniu",cash(data.income)],["Koszty ujęte w wyliczeniu",cash(data.cost)],
+    [c.approved?"Zatwierdzony podatek":"Podatek z ujętych pozycji",cash(data.tax)],
+    ...(data.low!==data.high?[["Szacunek po otwartych decyzjach",range(data.low,data.high)]]:[]),
+    ...(data.partial?[["Dane do ustalenia","Otwarta pozycja bez potwierdzonej wartości"]]:[])
+  ]);
+}
+function offerPage(c) {
+  const quote=proposal(c);
+  const ready=c.plan||quote.recommended;
+  return `<div class="kt-stack">
+    ${report("Jak wyliczyliśmy zakres obsługi",fields([
+      ["Szacowany podatek",taxEstimate(quote.result)],
+      ["Szacowany czas księgowej","około "+quote.minutes+" min"],
+      ["Co wpływa na czas",c.selected.length+" źr. · "+quote.open.length+" pozycji do sprawdzenia"]
+    ])+(quote.result.partial?note("Szacunek obejmuje operacje z ustaloną wartością. Księgowa sprawdzi pozycje bez potwierdzonej wartości.","warn"):""))}
+    <div class="kt-grid ${quote.plans.length===3?"three":""}">${quote.plans.map(plan=>{
+      const fits=plan.minutes>=quote.minutes && plan.limit>=quote.result.high && (!quote.result.partial||plan.id!=="standard");
+      const selected=plan.id===ready.id;
+      return `<section class="card kt-pack ${selected?"selected":""}">${plan.id===quote.recommended.id?pill("Rekomendowany","green"):selected?pill("Wybrany"):""}
+        <h3>${plan.name}</h3><div class="kt-price mono">${cash(plan.price)}</div>
+        <ul class="kt-clean"><li>Do ${plan.minutes} min pracy księgowej</li><li>Limit ochrony ${cash(plan.limit)}</li>
+          <li>Weryfikacja tożsamości i przygotowanie PIT-38 przez biuro</li></ul>
+        ${fits?button(selected?"Wybrano":"Wybierz plan","plan-"+plan.id,selected?"secondary":"primary",selected)
+          :pill("Zakres poniżej szacunku","amber")}</section>`;
+    }).join("")}</div>
+    ${fees(c)?note("Opłacone importy przez agregator · "+cash(fees(c))+". Opłata za rozliczenie jest wykazana osobno."):""}
+    ${report("Płatność za rozliczenie","<p>Po opłaceniu zobaczysz wyliczenie robocze i przejdziesz do weryfikacji tożsamości.</p>"+
+      `<div class="kt-actions">${button("Opłać plan · "+cash(ready.price),"buy")}${button("Wróć do historii","back-imports","secondary")}</div>`)}</div>`;
+}
+function identityPage(c) {
+  return `<div class="kt-stack">
+    ${report("Wyliczenie robocze",calculationFields(c))}
+    ${report("Weryfikacja tożsamości i AML",c.verified?
+      note("Tożsamość zweryfikowana. Możesz przekazać historię, dowody i odpowiedzi do kontroli.","good")+
+        `<div class="kt-actions">${button("Przekaż sprawę księgowej →","send")}</div>`
+      :"<p>Weryfikacja jest w cenie opłaconego planu i pozwala biuru rozpocząć obsługę sprawy.</p>"+
+        `<div class="kt-actions">${button("Rozpocznij weryfikację","verify")}</div>`)}</div>`;
+}
+function followUpPage(c,item) {
+  const question=lastQuestion(c,item.id);
+  return report("Uzupełnienie od księgowej",operationHeader(item)+note(safe(question.text))+
+    `<form data-form="reply" data-id="${item.id}" style="margin-top:12px">
+      <label class="kt-field"><span>Odpowiedź</span><textarea name="note" rows="3" maxlength="1500"></textarea></label>
+      <label class="kt-field"><span>Załącznik <small>(jeśli masz)</small></span><input type="file" name="file" accept=".pdf,.jpg,.jpeg,.png,.csv"></label>
+      ${error}<div class="kt-actions">${submit("Wyślij odpowiedź")}</div></form>`);
+}
+function submittedPage(c) {
+  if(c.approved) return `<div class="kt-stack">
+    <div class="ux-wait-card"><div class="ux-wait-main"><h2>Rozliczenie zatwierdzone</h2><p>Księgowa zakończyła kontrolę ${dateLabel(c.approved)}.</p></div></div>
+    ${report("Wynik rozliczenia",calculationFields(c))}
+    ${report("Dokumenty",`<p>Pakiet za ${c.year} jest gotowy. Status złożenia PIT-38 · brak potwierdzenia.</p>
+      <div class="kt-actions">${button("Otwórz pakiet","packet","primary")}${button("Historia operacji","client-ledger","secondary")}</div>`)}</div>`;
+  const item=unresolved(c).find(task=>waiting(c,task.id));
+  if(item) return followUpPage(c,item);
+  return `<div class="kt-stack"><div class="ux-wait-card"><div class="ux-wait-main">
+    <h2>Księgowa sprawdza Twoje rozliczenie</h2><p>Jeśli potrzebne będzie uzupełnienie, pytanie pojawi się tutaj przy konkretnej operacji.</p></div></div>
+    ${report("Przekazane materiały",fields([["Data przekazania",dateLabel(c.sent)],["Źródła",c.selected.map(id=>sourceLabel(source(id))).join(", ")],
+      ["Operacje",String(ledger(c).length)]])+`<div class="kt-actions">${button("Historia operacji","client-ledger","secondary")}${button("Historia sprawy","client-events","secondary")}</div>`)}</div>`;
+}
+function clientContent(c) {
+  if(clientView==="ledger") return `<div class="kt-actions" style="margin-bottom:12px">${button("← Wróć do rozliczenia","client-home","secondary")}</div>`+ledgerView(c);
+  if(clientView==="events") return `<div class="kt-actions" style="margin-bottom:12px">${button("← Wróć do rozliczenia","client-home","secondary")}</div>`+eventView(c);
+  if(clientView==="documents") return `<div class="kt-actions" style="margin-bottom:12px">${button("← Wróć do rozliczenia","client-home","secondary")}</div>`+documentView(c);
+  const index=stepIndex(c);
+  const screens={
+    setup:["Wskaż źródła i rok rozliczenia","Bezpłatne rozpoznanie sprawy.",setupPage],
+    imports:["Dodaj historię z wybranych źródeł","Każde źródło możesz uzupełnić osobno.",importsPage],
+    checks:["Sprawdź zebrane dane","Jeśli brakuje informacji, zobaczysz pytanie przy konkretnej pozycji.",checksPage],
+    offer:["Wybierz zakres rozliczenia","Plan uwzględnia szacowany podatek i przewidywany czas pracy księgowej.",offerPage],
+    identity:["Wyliczenie i weryfikacja","Po sprawdzeniu tożsamości przekaż dane do biura.",identityPage],
+    submitted:["Twoje rozliczenie","",submittedPage]
+  };
+  const [title,description,page]=screens[c.stage];
+  return `<section class="wizard-intro"><div class="wizard-meta">
+    <span class="eyebrow">PIT-38 · ${caseRef(c)}</span><span class="wizard-count">Krok <strong>${index+1}</strong> z ${STEPS.length}</span></div>
+    <div class="wizard-track" role="progressbar" aria-label="Etap rozliczenia" aria-valuemin="1" aria-valuemax="${STEPS.length}" aria-valuenow="${index+1}">
+      ${STEPS.map((_,i)=>`<span class="${i<=index?"filled":""}"></span>`).join("")}</div>
+    <div class="wizard-heading"><div><h1 tabindex="-1">${title}</h1>${description?`<p>${description}</p>`:""}</div>
+      <span class="year-tag">PIT-38 <strong>${c.year}</strong></span></div></section><div class="wizard-body">${page(c)}</div>`;
+}
+
+let tx = {query:"",source:"all",status:"all",view:"groups"};
+const resetTx = (sourceName="all") => {tx={query:"",source:sourceName,status:"all",view:sourceName==="all"?"groups":"list"};};
+function ledgerStatus(c,item) {
+  if(item.network && pairedWith(c,item)) return ["Transfer dopasowany","green"];
+  const task=findTask(c,item.id);
+  const decision=task ? getWork(c,item.id).decision : null;
+  if(task && !decision) return ["Do wyjaśnienia","amber"];
+  const kind=decision?.code??item.effect;
+  return kind==="income"?["Przychód","green"]:kind==="cost"?["Koszt","green"]:["Poza wyliczeniem","purple"];
+}
+function filteredRows(c) {
+  const query=tx.query.trim().toLocaleLowerCase("pl");
+  return ledger(c).filter(row=>
+    (tx.source==="all"||subject(row)===tx.source) && (tx.status==="all"||ledgerStatus(c,row)[0]===tx.status)
+    && (!query||[row.id,row.date,row.kind,subject(row),row.description,row.hash,valueOf(row)].join(" ").toLocaleLowerCase("pl").includes(query))
+  );
+}
+function ledgerResults(c) {
+  const rows=filteredRows(c);
+  const count=ledger(c).length;
+  const summary=`<div class="tx-results-head"><span><strong>${rows.length}</strong> z ${count} operacji</span>
+    ${button("Wyczyść filtry","tx-clear","secondary small")}</div>`;
+  if(!rows.length) return summary+`<div class="empty-state compact"><h3>${count?"Brak pasujących operacji":"Historia jest pusta"}</h3></div>`;
+  const groups = new Map();
+  for(const item of rows) {
+    const key=subject(item)+"|"+item.kind;
+    if(!groups.has(key)) groups.set(key,{source:subject(item),kind:item.kind,rows:[]});
+    groups.get(key).rows.push(item);
+  }
+  const grouped = `<div class="table-scroll"><table class="tx-table"><thead><tr><th>Źródło i rodzaj</th>
+    <th>Operacje</th><th>Zakres dat</th><th></th></tr></thead><tbody>${[...groups.values()].map(group=>
+      `<tr><td><strong>${safe(group.source)}</strong><small>${safe(group.kind)}</small></td>
+        <td><span class="group-count">${group.rows.length}</span></td>
+        <td>${dateLabel(group.rows[0].date)} – ${dateLabel(group.rows.at(-1).date)}</td>
+        <td><button type="button" class="btn secondary small" data-group-source="${safe(group.source)}" data-group-kind="${safe(group.kind)}">Zobacz operacje</button></td></tr>`).join("")}
+    </tbody></table></div>`;
+  const list=`<div class="table-scroll"><table class="tx-table"><thead><tr><th>Data</th><th>Źródło</th><th>Operacja</th>
+    <th class="right">Kwota lub ilość</th><th>Ujęcie w sprawie</th></tr></thead><tbody>${rows.map(item=>{
+      const [label,color]=ledgerStatus(c,item);
+      return `<tr><td class="mono">${dateLabel(item.date)}</td><td>${safe(subject(item))}</td>
+        <td><button type="button" class="btn secondary small" data-action="op-${safe(item.id)}">${safe(item.kind)}</button>
+          <small>${safe(item.hash?hashShort(item.hash):item.reference||item.id)}</small></td>
+        <td class="right kt-asset">${valueOf(item)}</td><td>${pill(label,color)}</td></tr>`;
+    }).join("")}</tbody></table></div>`;
+  return summary+(tx.view==="groups"?grouped:list);
+}
+function ledgerView(c) {
+  const all=ledger(c);
+  const labels=[...new Set(all.map(subject))];
+  const statuses=[...new Set(all.map(item=>ledgerStatus(c,item)[0]))];
+  const linked=all.filter(item=>item.direction==="out"&&pairedWith(c,item,all)).length;
+  return `<div class="kt-stack">
+    ${report("Historia operacji",`<div class="stats">
+      ${stat("Operacje",all.length,"Z dodanych źródeł")}
+      ${stat("Dopasowane transfery",linked,"Pary zapisów z dwóch źródeł")}
+      ${stat("Do sprawdzenia",unresolved(c).filter(item=>item.issue!=="prior").length,"Operacje wymagające decyzji")}
+    </div>`)}
+    <section class="card tx-workspace"><div class="tx-toolbar">
+      <label class="tx-search"><span class="field-label">Szukaj w historii</span><input id="txSearch" type="search"
+        value="${safe(tx.query)}" placeholder="Opis, data, hash lub kwota"></label>
+      <div class="tx-view-switch">
+        <button type="button" data-action="tx-groups" class="${tx.view==="groups"?"active":""}" aria-pressed="${tx.view==="groups"}">Grupy</button>
+        <button type="button" data-action="tx-list" class="${tx.view==="list"?"active":""}" aria-pressed="${tx.view==="list"}">Lista operacji</button></div>
+    </div><div class="tx-filters">${filterSelect("txSource","Źródło",labels,tx.source)}${filterSelect("txStatus","Ujęcie",statuses,tx.status)}</div>
+    <div id="txResults">${ledgerResults(c)}</div></section></div>`;
+}
+function eventView(c) {
+  return report("Historia sprawy",c.events.length?`<div class="timeline">${[...c.events].reverse().map(entry=>
+    `<div class="event"><b>${safe(entry.title)}</b><p>${safe(entry.detail)}</p><small>${dateLabel(entry.date)}</small></div>`).join("")}</div>`
+    :'<p>Historia pojawi się po zapisaniu danych.</p>');
+}
+function documentView(c) {
+  const sources=c.selected.filter(id=>c.imports[id]?.file);
+  const attachments=workItems(c).flatMap(item=>{
+    const info=getWork(c,item.id);
+    const files=[];
+    if(info.intake?.file) files.push([item.id,"intake",info.intake.file]);
+    for(const [index,question] of info.questions.entries()) if(question.reply?.file) files.push([item.id,"reply-"+index,question.reply.file]);
+    return files;
+  });
+  return report("Dokumenty w sprawie",
+    (c.approved?`<div class="docrow"><span class="docicon" aria-hidden="true">▤</span><div class="source-copy"><b>Pakiet rozliczenia PIT-38</b>
+      <p>Za ${c.year} rok · zatwierdzony</p></div>${button("Podgląd","packet","secondary small")}</div>`:"")+
+    sources.map(id=>`<div class="docrow"><span class="docicon" aria-hidden="true">▤</span><div class="source-copy"><b>${safe(c.imports[id].file)}</b>
+      <p>${sourceLabel(source(id))}</p></div>${button("Podgląd źródła","import-doc-"+id,"secondary small")}</div>`).join("")+
+    attachments.map(([id,mode,file])=>`<div class="docrow"><span class="docicon" aria-hidden="true">▤</span><div class="source-copy"><b>${safe(file)}</b>
+      <p>${safe(id)}</p></div>${button("Podgląd","file:"+id+":"+mode,"secondary small")}</div>`).join("")+
+    (!c.approved&&!sources.length&&!attachments.length?'<p>W sprawie nie dodano załączników.</p>':""));
+}
+const submittedCases = () => cases.filter(c=>c.sent);
+function nextAdvisorStep(c) {
+  const item=readyToWork(c)[0]??unresolved(c)[0];
+  return c.approved?"Kontrola zakończona":item?spec(c,item).title:"Sprawdzenie sum i zatwierdzenie";
+}
+function advisorQueueResults() {
+  const q=queueText.trim().toLocaleLowerCase("pl");
+  const result=submittedCases().filter(c=>(filter==="all"||queueStatus(c).key===filter)
+    && (c.name+" "+caseRef(c)).toLocaleLowerCase("pl").includes(q));
+  return `<div class="table-scroll"><table class="clients-table"><thead><tr><th>Klient i rozliczenie</th>
+    <th>Status</th><th>Następna decyzja</th><th>Przekazano</th><th></th></tr></thead><tbody>${result.map(c=>{
+      const state=queueStatus(c);
+      return `<tr class="client-row"><td><button class="client-expand" type="button" data-action="case-${c.id}">
+        <span class="table-avatar">${safe(nameInitials(c.name))}</span><span><strong>${safe(c.name)}</strong>
+        <small>${caseRef(c)} · PIT-38</small></span></button></td><td>${pill(state.label,state.color)}</td>
+        <td>${safe(nextAdvisorStep(c))}</td><td class="mono">${dateLabel(c.sent)}</td>
+        <td>${button("Otwórz sprawę","case-"+c.id,"secondary small")}</td></tr>`;
+    }).join("")||'<tr><td colspan="5">Brak spraw pasujących do filtrów.</td></tr>'}</tbody></table></div>`;
+}
+function advisorQueue() {
+  const records=submittedCases();
+  const count=key=>records.filter(c=>queueStatus(c).key===key).length;
+  return `<div class="kt-title"><div><h1 tabindex="-1">Klienci i rozliczenia</h1><p>Sprawy przekazane do biura.</p></div></div>
+    <div class="advisor-metrics">
+      <div><strong>${count("ready")}</strong><span>do sprawdzenia</span></div>
+      <div><strong>${count("waiting")}</strong><span>czeka na klienta</span></div>
+      <div><strong>${count("done")}</strong><span>zatwierdzone</span></div>
+    </div>
+    <section class="card client-table-card"><div class="client-table-toolbar">
+      <label class="tx-search"><span class="field-label">Znajdź klienta lub sprawę</span>
+        <input id="queueSearch" type="search" value="${safe(queueText)}" placeholder="Nazwisko lub numer sprawy"></label>
+      ${filterSelect("caseFilter","Status",["Do sprawdzenia","Czeka na klienta","Zatwierdzone"],
+        {ready:"Do sprawdzenia",waiting:"Czeka na klienta",done:"Zatwierdzone"}[filter]||"all")}
+    </div><div id="queueResults">${advisorQueueResults()}</div></section>`;
+}
+function advisorTasks() {
+  const entries=submittedCases().flatMap(c=>unresolved(c).map(task=>[c,task]));
+  return `<div class="kt-title"><div><h1 tabindex="-1">Zadania do sprawdzenia</h1>
+    <p>Otwarte decyzje i odpowiedzi ze spraw przekazanych do biura.</p></div></div>
+    <section class="card"><div class="table-scroll"><table class="problems-table"><thead><tr>
+      <th>Sprawa</th><th>Problem / zadanie</th><th>Po czyjej stronie</th><th></th>
+    </tr></thead><tbody>${entries.map(([c,task])=>`<tr><td><strong>${safe(c.name)}</strong><br><small>${caseRef(c)}</small></td>
+      <td>${safe(spec(c,task).title)}<br><small>${safe(task.reference||task.id)}</small></td>
+      <td>${waiting(c,task.id)?pill("Klient","amber"):pill("Księgowa")}</td>
+      <td>${button("Otwórz zadanie","case-task:"+c.id+":"+task.id,"secondary small")}</td></tr>`).join("")
+      ||'<tr><td colspan="4">Brak otwartych zadań.</td></tr>'}</tbody></table></div></section>`;
+}
+function workEvidence(c,item) {
+  const work=getWork(c,item.id);
+  const details=spec(c,item);
+  const choice=details.options?.find(([id])=>id===work.intake?.choice)?.[1];
+  const answer=work.intake;
+  return `<div class="kt-stack"><div class="kt-copy"><h3>Co przekazał klient</h3>
+    ${choice?`<p><strong>${safe(choice)}</strong></p>`:""}
+    ${answer?.note?`<p class="kt-wrap">${safe(answer.note)}</p>`:""}
+    ${answer?.file?`<div class="kt-actions">${button(safe(answer.file)+" · Podgląd","file:"+item.id+":intake","secondary small")}</div>`
+      :'<p class="kt-muted">Brak załącznika.</p>'}</div>
+    ${work.questions.map((question,index)=>`<div class="kt-reply"><small>${dateLabel(question.date)} · Pytanie księgowej</small>
+      <p>${safe(question.text)}</p>${question.reply?`<small>${dateLabel(question.reply.date)} · Odpowiedź klienta</small>
+        <p>${safe(question.reply.text||"Dodano załącznik.")}</p>
+        ${question.reply.file?button(safe(question.reply.file)+" · Podgląd","file:"+item.id+":reply-"+index,"secondary small"):""}`
+        :pill("Czeka na odpowiedź","amber")}</div>`).join("")}</div>`;
+}
+function taskDetail(c,item) {
+  const work=getWork(c,item.id);
+  const details=spec(c,item);
+  const decision=work.decision;
+  const outcome=details.outcomes.find(([code])=>code===decision?.code)?.[1];
+  return `<section class="card kt-stack">${operationHeader(item)}
+    ${note("<strong>"+safe(details.title)+"</strong><p>"+safe(details.reason)+"</p>")}
+    ${workEvidence(c,item)}
+    ${decision?`<div class="kt-copy"><h3>Decyzja księgowej</h3><p><strong>${safe(outcome)}</strong> · ${dateLabel(decision.date)}</p>
+      <p>${safe(decision.note)}</p></div>`:waiting(c,item.id)?note("Odpowiedź klienta pojawi się przy tej pozycji.","warn")
+      :`<div class="kt-actions">${button("Zapisz decyzję","decide-"+item.id)}${button("Poproś o uzupełnienie","ask-"+item.id,"secondary")}</div>`}
+  </section>`;
+}
+function advisorReview(c) {
+  const tasks=workItems(c);
+  const item=tasks.find(task=>task.id===activeTask)??readyToWork(c)[0]??unresolved(c)[0]??tasks[0];
+  const done=!unresolved(c).length;
+  const message=done ? note((c.approved?"Kontrola zakończona.":"Możesz sprawdzić końcowe wyliczenie.")+
+    ` <span style="margin-left:6px">${button(c.approved?"Rozliczenie":"Kontrola końcowa","atab-approval","secondary small")}</span>`,"good") : "";
+  if(!item) return report("Zadania w sprawie",message);
+  return `<div class="kt-stack">${message}<div class="kt-task-layout">
+    <section class="card kt-task-list">${cardhead("Zadania w sprawie")}
+      ${tasks.map(task=>`<button type="button" class="btn secondary" data-action="task-${task.id}" aria-pressed="${task.id===item.id}">
+        <strong>${safe(spec(c,task).title)}</strong><small>${safe(task.reference||task.id)} · ${valueOf(task)}</small>${taskPill(c,task.id)}</button>`).join("")}</section>
+    ${taskDetail(c,item)}</div></div>`;
+}
+function advisorSources(c) {
+  return report("Źródła w sprawie",fields(c.selected.map(id=>{
+    const entry=c.imports[id];
+    return [sourceLabel(source(id)),entry?methods[entry.method]+" · "+entry.rows.length+" operacji":"Do uzupełnienia"];
+  })));
+}
+function advisorApproval(c) {
+  const checks=[
+    ["Dane przekazane przez klienta",Boolean(c.sent)],
+    ["Plan opłacony",Boolean(c.paid)],
+    ["Weryfikacja tożsamości i AML",c.verified],
+    ["Historia z deklarowanych źródeł",canPrepare(c)],
+    ["Otwarte decyzje",!unresolved(c).length]
+  ];
+  return `<div class="kt-grid">
+    ${report("Kontrola końcowa",checks.map(([label,ok])=>`<div class="kt-line"><strong>${label}</strong>
+      ${ok?pill("Gotowe","green"):pill("Do uzupełnienia","amber")}</div>`).join("")+
+      `<div class="kt-actions">${c.approved?pill("Zatwierdzono "+dateLabel(c.approved),"green"):
+        canApprove(c)?button("Zatwierdź rozliczenie","approve"):button("Wróć do zadań","atab-review","secondary")}</div>`)}
+    ${report(c.approved?"Zatwierdzone wyliczenie":"Wyliczenie do kontroli",calculationFields(c)+
+      (c.approved?note("Status złożenia PIT-38 · brak potwierdzenia.")+`<div class="kt-actions">${button("Otwórz pakiet","packet","secondary")}</div>`:""))}
+    ${advisorSources(c)}
+    ${report("Zakres opłaconego planu",fields([["Plan",c.plan.name],["Praca księgowej","do "+c.plan.minutes+" min"],
+      ["Limit ochrony",cash(c.plan.limit)],["Płatność",cash(c.plan.price)+" · "+dateLabel(c.paid.date)],
+      ...(fees(c)?[["Opłaty za import",cash(fees(c))]]:[])]))}</div>`;
+}
+let advisorTab="review";
+function advisorCaseView(c) {
+  const state=queueStatus(c);
+  const tabs=[["review","Zadania"],["ledger","Operacje"],["approval","Rozliczenie"],["documents","Dokumenty"],["events","Historia sprawy"]];
+  const content={review:advisorReview,ledger:ledgerView,approval:advisorApproval,documents:documentView,events:eventView}[advisorTab];
+  const tax=calculation(c);
+  return `<div class="kt-actions" style="margin-bottom:10px">${button("← Klienci i rozliczenia","aqueue","secondary small")}</div>
+    <div class="kt-title"><div><h1 tabindex="-1">${safe(c.name)}</h1><p>${caseRef(c)} · PIT-38 za ${c.year}</p></div>${pill(state.label,state.color)}</div>
+    <div class="stats">
+      ${stat(c.approved?"Zatwierdzony podatek":"Szacowany podatek",taxEstimate(tax),tax.partial?"Do ustalenia są pozycje bez potwierdzonej wartości":"Na podstawie zebranych danych")}
+      ${stat("Czas pracy w planie","do "+c.plan.minutes+" min","Limit ochrony "+cash(c.plan.limit))}
+      ${stat("Materiały",ledger(c).length+" operacji",c.selected.length+" źr. · tożsamość zweryfikowana")}
+    </div>
+    <nav class="kt-tabs kt-client-tabs" aria-label="Sekcje sprawy">
+      ${tabs.map(([id,label])=>`<button type="button" class="btn secondary small" data-action="atab-${id}"
+        ${advisorTab===id?'aria-current="page"':""}>${label}${id==="review"?" · "+unresolved(c).length:""}</button>`).join("")}</nav>
+    ${content(c)}`;
+}
+
+function clientSidebar(c) {
+  const index=stepIndex(c);
+  const hints=[
+    c.selected.length?c.selected.length+" źr.":"Wybierz źródła",
+    c.selected.length?(c.selected.length-missingSources(c).length)+" z "+c.selected.length+" źródeł":"Dodaj historię",
+    index>2?"Zebrano odpowiedzi":"Sprawdź braki",
+    c.paid?"Opłacono":"Sprawdź ofertę",
+    c.verified?"Zweryfikowano":"Weryfikacja tożsamości",
+    c.approved?"Zatwierdzono":c.sent?"W biurze":"Przekaż sprawę"
+  ];
+  const steps=STEPS.map(([key,label],i)=>{
+    const editable = !c.paid && (key==="setup" || key==="imports" && c.selected.length || key==="checks" && canPrepare(c));
+    const current=index===i && clientView==="journey";
+    return `<li><button type="button" data-action="step-${key}" class="wizard-nav-step ${current?"active":""} ${i<index?"is-done":""}"
+      ${current?'aria-current="step"':""} ${i===index || editable?"":"disabled"}>
+      <span class="wizard-number" aria-hidden="true">${i<index?"✓":i+1}</span>
+      <span class="wizard-nav-copy"><strong>${label}</strong><small>${hints[i]}</small></span>
+      ${current?'<span class="current-dot" aria-hidden="true"></span>':""}</button></li>`;
+  }).join("");
+  return `<div class="side-case"><span>Twoje rozliczenie</span><strong>PIT-38 <span>${c.year}</span></strong>
+    <small>${safe(c.name)} · ${caseRef(c)}</small></div>
+    <div class="journey"><nav class="wizard-nav" aria-label="Kroki rozliczenia"><ol>${steps}</ol></nav></div>
+    ${hasHistory(c)?`<div class="side-tools"><nav class="navigation" aria-label="Dane sprawy">
+      ${sideLink("Historia operacji","client-ledger",clientView==="ledger")}
+      ${sideLink("Dokumenty","client-docs",clientView==="documents")}
+      ${sideLink("Historia sprawy","client-events",clientView==="events")}</nav></div>`:""}`;
+}
+function sideLink(label,action,active) {
+  return `<button type="button" data-action="${action}" class="${active?"active":""}" ${active?'aria-current="page"':""}>${label}</button>`;
+}
+function staffSidebar() {
+  return `<div class="side-case"><span>Obszar roboczy</span><strong>Sprawy klientów</strong>
+    <small>Weryfikacja · rozliczenia</small></div><nav class="navigation" aria-label="Panel biura">
+    ${sideLink("Klienci i rozliczenia","aqueue",advisorView!=="tasks")}
+    ${sideLink("Zadania do sprawdzenia","atasks",advisorView==="tasks")}</nav>`;
+}
+function scaffold(c) {
+  const staff=role==="advisor";
+  const owner=staff?"Magdalena Sokołowska":c.name;
+  const content=staff ? (advisorView==="tasks"?advisorTasks():c && advisorView==="case"?advisorCaseView(c):advisorQueue()) : clientContent(c);
+  return `<div class="shell wizard-shell ${staff?"advisor-shell":""}">
+    <aside class="sidebar"><div class="logo"><div class="logo-symbol" aria-hidden="true">◈</div><div class="logo-text">kryptotax
+      <small>${staff?"PANEL BIURA":"MOJE ROZLICZENIE"}</small></div></div>
+      ${staff?staffSidebar():clientSidebar(c)}</aside>
+    <main class="main"><div class="top"><div class="breadcrumb">${staff?"Panel biura":"Portal klienta"}
+      ${c?` <span>/</span> <strong>${caseRef(c)}</strong>`:""}</div>
+      <div class="head-right"><span class="save-state">${safe(owner)}</span><div class="avatar" aria-hidden="true">${safe(nameInitials(owner))}</div></div>
+    </div><div class="content ${staff?"advisor-content":""}">${content}</div></main></div>`;
+}
+function render(focus=false,message="") {
+  app.innerHTML=scaffold(activeCase());
+  document.querySelectorAll(".presentation button[data-action^='role-']").forEach(element=>
+    element.setAttribute("aria-pressed",String(element.dataset.action==="role-"+role)));
+  const picker=document.querySelector("#presentation-case");
+  picker.innerHTML=cases.map(c=>`<option value="${c.id}" ${c.id===clientId?"selected":""}>${safe(c.name)}</option>`).join("");
+  document.querySelector("#presentation-case-label").hidden=role!=="client";
+  document.querySelector("#presentation-sample").hidden=role!=="client" || !app.querySelector("form[data-form]");
+  document.querySelector("#feedback").textContent=message;
+  if(focus) {
+    window.scrollTo(0,0);
+    (app.querySelector("h1")||app.querySelector("h2"))?.focus({preventScroll:true});
+  }
+}
+function openModal(title,body,context={}) {
+  modalContext=context;
+  dialog.innerHTML=`<section class="kt-dialog-inner"><div class="kt-dialog-head">
+    <h2 id="dialog-title">${safe(title)}</h2>${button("Zamknij","close","secondary small")}</div>${body}</section>`;
+  dialog.showModal();
+}
+function closeModal() {
+  dialog.close();
+  modalContext=null;
+}
+function confirmModal(title,body,label,context) {
+  openModal(title,`<form data-form="confirm"><p>${body}</p>
+    <div class="kt-actions">${submit(label)}${button("Anuluj","close","secondary")}</div></form>`,context);
+}
+function gotoClient(stage,c) {
+  c.stage=stage;
+  clientView="journey";
+  if(stage!=="checks") editIntake="";
+  save();
+}
+function gotoCase(id,task="") {
+  const c=byId(id);
+  if(!c?.sent) return;
+  advisorId=id;
+  clientId=id;
+  clientView="journey";
+  advisorView="case";
+  advisorTab=task || unresolved(c).length?"review":"approval";
+  activeTask=task;
+  resetTx();
+  render(true);
+}
+function planFits(c,plan) {
+  const quote=proposal(c);
+  return plan && plan.minutes>=quote.minutes && plan.limit>=quote.result.high &&
+    (!quote.result.partial||plan.id!=="standard");
+}
+function opPreview(c,item) {
+  const linked=pairedWith(c,item);
+  const [label,color]=ledgerStatus(c,item);
+  const task=findTask(c,item.id);
+  openModal("Szczegóły operacji",operationHeader(item,true)+`<p>${pill(label,color)}</p>`+
+    (linked?note("Zgodny hash, adresy i ilość w źródle <strong>"+safe(subject(linked))+
+      "</strong> · zapis "+safe(linked.id)+". Adres odbiorcy jest przypisany do portfela klienta.","good"):"")+
+    (task?`<p>${safe(spec(c,task).reason)}</p>`:""));
+}
+function packet(c) {
+  if(!c.approved) return;
+  openModal("Pakiet rozliczenia",`<div class="paper"><h3>PIT-38 za ${c.year}</h3>
+    <p>${safe(c.name)} · ${caseRef(c)}</p>${calculationFields(c)}
+    <p>Zatwierdzono ${dateLabel(c.approved)}. Status złożenia · brak potwierdzenia.</p></div>`);
+}
+function importDoc(c,id) {
+  const info=c.imports[id];
+  if(!info?.file) return;
+  openModal("Dane ze źródła",`<div class="paper"><h3>${safe(info.file)}</h3>
+    <p>${sourceLabel(source(id))} · ${safe(info.period||"")}</p>
+    ${fields(info.rows.map(row=>[dateLabel(row.date)+" · "+safe(row.kind),valueOf(row)]))}</div>`);
+}
+function documentPreview(c,id,mode) {
+  const item=findTask(c,id);
+  if(!item) return;
+  const work=getWork(c,id);
+  const proof=mode==="intake"?work.intake:work.questions[Number(mode.slice(6))]?.reply;
+  if(!proof?.file) return;
+  const data=proof.sample ? fields([
+    ["Dokument",item.issue==="prior"?"PIT-38 z wcześniejszego roku":mode==="intake"?
+      (item.issue==="card"?"Potwierdzenie płatności":"Potwierdzenie operacji"):"Uzupełnienie do pozycji"],
+    ...(item.date?[["Data operacji",dateLabel(item.date)]]:[]),
+    [item.network?"Ilość":"Kwota",valueOf(item)],
+    ...(item.issue==="card"?(mode==="intake"?[["Źródło środków","Brak w tym potwierdzeniu"]]:
+      [["Obciążenie salda","Saldo BTC"],["Identyfikator wymiany",safe(cardExchangeRef(item))]]):[]),
+    ...(item.network?[["Sieć",source(item.network).name],
+      ["Hash transakcji",`<span class="kt-hash">${safe(item.hash)}</span>`],
+      ["Adres odbiorcy",`<span class="kt-hash">${safe(item.to)}</span>`]]:[]),
+    ...(item.reference?[["Numer operacji",safe(item.reference)]]:[])
+  ]):"<p>Zapisano nazwę załącznika. W makiecie podgląd zawartości jest dostępny dla dokumentów przykładowych.</p>";
+  openModal("Załącznik w sprawie",`<div class="paper"><h3>${safe(proof.file)}</h3>
+    <p>${caseRef(c)} · ${safe(item.reference||item.id)}</p>${data}</div>`);
+}
+function requestModal(c,item) {
+  openModal("Poproś klienta o uzupełnienie",operationHeader(item)+`<form data-form="ask">
+    <label class="kt-field"><span>Pytanie widoczne dla klienta przy tej pozycji</span>
+      <textarea name="text" rows="4" maxlength="1500" required>${safe(spec(c,item).request)}</textarea></label>
+    ${error}<div class="kt-actions">${submit("Wyślij pytanie")}${button("Anuluj","close","secondary")}</div></form>`,{caseId:c.id,itemId:item.id});
+}
+function decisionModal(c,item) {
+  const specForItem=spec(c,item);
+  const current=calculation(c);
+  const confirmValue=item.amountPLN==null;
+  openModal("Decyzja o ujęciu operacji",operationHeader(item)+`<form data-form="decide">
+    <fieldset><legend>Jak ująć pozycję w rozliczeniu?</legend>${specForItem.outcomes.map(([key,label])=>{
+      const visible=key==="outside"||!confirmValue;
+      const rec=getWork(c,item.id);
+      const calc=visible?calculation({...c,work:{...c.work,[item.id]:{...rec,decision:{code:key}}}}):null;
+      return `<label class="kt-check"><input name="decision" type="radio" value="${key}" required><span>
+        <strong>${safe(label)}</strong>${calc?`<small>Podatek z ujętych pozycji · ${cash(calc.tax)}</small>`:""}</span></label>`;
+    }).join("")}</fieldset>
+    ${confirmValue?`<label class="kt-field"><span>Potwierdzona kwota w PLN <small>(jeśli ujmujesz pozycję)</small></span>
+      <input type="number" min=".01" max="1000000" step=".01" name="amount"></label>`:""}
+    <label class="kt-field"><span>Podstawa decyzji</span><textarea name="note" rows="2" maxlength="1500" required
+      placeholder="Wskaż dokument lub informację, na której opierasz decyzję"></textarea></label>
+    <p class="kt-muted">Obecny podatek z ujętych pozycji · ${cash(current.tax)}</p>
+    ${error}<div class="kt-actions">${submit("Zapisz decyzję")}${button("Anuluj","close","secondary")}</div></form>`,{caseId:c.id,itemId:item.id});
+}
+function approvalModal(c) {
+  openModal("Zatwierdź rozliczenie",calculationFields(c)+`<form data-form="approve">
+    <label class="kt-check"><input type="checkbox" name="approved" required><span>Potwierdzam kontrolę danych, decyzji i końcowego wyliczenia.</span></label>
+    ${error}<div class="kt-actions">${submit("Potwierdź zatwierdzenie")}${button("Anuluj","close","secondary")}</div></form>`,{caseId:c.id});
+}
+function setFormError(form,message) {
+  const el=form.querySelector(".kt-error");
+  if(el) {
+    el.textContent=message;
+    el.hidden=false;
+  }
+}
+function sampleFile(input,form,name,csv=false) {
+  if(!input) return;
+  const transfer=new DataTransfer();
+  transfer.items.add(new File([csv?"Date,Type,Amount\n":"Załącznik z przykładowej sprawy KryptoTax"],name,
+    {type:csv?"text/csv":"application/pdf"}));
+  input.files=transfer.files;
+  form.dataset.sampleFile=name;
+}
+function fillSample(c) {
+  const form=app.querySelector("form[data-form]");
+  if(!form) return;
+  const kind=form.dataset.form;
+  const item=form.dataset.id?findTask(c,form.dataset.id):null;
+  const pick=(key,value)=>{const field=form.elements.namedItem(key);if(field) field.value=String(value);};
+  const file=(name,csv=false)=>sampleFile(form.elements.namedItem("file"),form,name,csv);
+  if(kind==="setup") {
+    form.querySelectorAll('[name="source"]').forEach(input=>{input.checked=["coinbase","ethereum","cash"].includes(input.value);});
+    pick("prior","no");
+  }
+  if(kind==="exchange-file") file(source(form.dataset.id).name+"_"+c.year+".csv",true);
+  if(kind==="wallet-file") {
+    pick("address",NETWORKS[form.dataset.id].address);
+    file(source(form.dataset.id).name+"_"+c.year+".csv",true);
+  }
+  if(kind==="manual") {
+    const isCash=form.dataset.id==="cash";
+    pick("date",c.year+(isCash?"-10-04":"-09-12"));
+    pick("amount",isCash?8400:189.90);
+    pick("place",isCash?"Kantor Kraków":"Karta Coinbase · zakupy w sklepie");
+    pick("ref",isCash?"KW-104/10":"CARD-912-039");
+    file(isCash?"Potwierdzenie_wyplaty_KW-104.pdf":"Wyciag_karty_0912.pdf");
+  }
+  if(kind==="prior") {
+    pick("choice","cost");
+    pick("amount",1200);
+    file("PIT-38_"+(c.year-1)+".pdf");
+  }
+  if(kind==="intake" && item) {
+    const examples={
+      cash:["sale","W kantorze wymieniłam BTC na gotówkę. Mam potwierdzenie wypłaty.", "Potwierdzenie_wyplaty.pdf"],
+      card:["unknown","Widać płatność w PLN. Potwierdzenie obciążenia salda jest w historii karty.", "Potwierdzenie_platnosci.pdf"],
+      transfer:["own","To był transfer między moją giełdą a portfelem.", "Potwierdzenie_transferu.pdf"]
+    };
+    const [choice,text,name]=examples[item.issue];
+    pick("choice",choice);pick("note",text);file(name);
+  }
+  if(kind==="reply" && item) {
+    const examples={
+      cash:["Potwierdzenie "+(item.reference||item.id)+" dokumentuje osobną wymianę BTC na gotówkę.","Potwierdzenie_wymiany.pdf"],
+      card:["W historii karty widnieje odrębna wymiana z salda BTC. ID "+cardExchangeRef(item)+", wartość "+cash(item.amountPLN)+".","Potwierdzenie_wymiany_karta.pdf"],
+      transfer:["To mój portfel. Załącznik zawiera ten sam hash w historii drugiego źródła.","Potwierdzenie_transferu.pdf"],
+      prior:["W poprzednim PIT-38 jest kwota kosztów do sprawdzenia.","Wczesniejszy_PIT-38.pdf"]
+    };
+    const [text,name]=examples[item.issue];
+    pick("note",text);file(name);
+  }
+  document.querySelector("#feedback").textContent="Wstawiono dane przykładowe.";
+}
+const num = value => {
+  const result=Number(value);
+  return Number.isFinite(result) && result>=.01 && result<=1000000 ? rounded(result) : null;
+};
+const readFile = data => data.get("file")?.name??"";
+function storedProof(form,data,fallback={}) {
+  const file=readFile(data);
+  return file?{file,sample:form.dataset.sampleFile===file}:{file:fallback.file||"",sample:Boolean(fallback.sample)};
+}
+function importComplete(c,id,data) {
+  c.imports[id]=data;
+  importEdit=false;
+  c.plan=null;
+  addEvent(c,"Dodano źródło",sourceLabel(source(id))+" · "+methods[data.method]+" · "+data.rows.length+" operacji");
+}
+function clientForm(c,form,data,submitter) {
+  const kind=form.dataset.form;
+  const id=form.dataset.id;
+  switch(kind) {
+    case "setup": {
+      if(c.paid) return;
+      const selected=SOURCES.filter(item=>data.getAll("source").includes(item.id)).map(item=>item.id);
+      const year=Number(data.get("year"));
+      const prior=data.get("prior");
+      if(!selected.length || !YEARS.includes(year) || !["yes","no","unknown"].includes(prior)) {
+        return setFormError(form,"Wybierz źródło, rok i odpowiedź o wcześniejszym PIT-38.");
+      }
+      if(c.year!==year) {
+        c.year=year;
+        c.imports={};
+        c.work={};
+        c.prior=null;
+        c.events=[];
+      }
+      if(c.priorAnswer!==prior) {
+        c.prior=null;
+        delete c.work["PIT-"+(c.year-1)];
+      }
+      c.priorAnswer=prior;
+      c.selected=selected;
+      c.plan=null;
+      activeSource="";
+      importEdit=false;
+      gotoClient("imports",c);
+      return;
+    }
+    case "exchange-file": {
+      if(c.paid || !c.selected.includes(id) || source(id).group!=="exchange") return;
+      const file=readFile(data);
+      if(!file.toLowerCase().endsWith(".csv")) return setFormError(form,"Wybierz plik CSV.");
+      importComplete(c,id,imported(c,id,"csv",file));
+      break;
+    }
+    case "wallet-file": {
+      if(c.paid || !c.selected.includes(id) || !NETWORKS[id]) return;
+      const address=String(data.get("address")||"").trim();
+      if(!NETWORKS[id].pattern.test(address)) return setFormError(form,"Podaj publiczny adres w sieci "+source(id).name+".");
+      if(submitter?.value==="aggregator") {
+        if(!c.charges.some(charge=>charge.year===c.year&&charge.id===id&&equalAddress(id,charge.address,address))) {
+          confirmModal("Płatny import portfela",`Za historię adresu w sieci ${source(id).name} zapłacisz <strong>${cash(IMPORT_PRICE)}</strong>.
+            Opłata dotyczy uruchomienia agregatora.`, "Zapłać i uruchom import",{type:"aggregator",caseId:c.id,id,address});
+          return;
+        }
+        importComplete(c,id,imported(c,id,"aggregator","",address));
+        break;
+      }
+      const file=readFile(data);
+      if(!file.toLowerCase().endsWith(".csv")) return setFormError(form,"Wybierz plik CSV z historią tego portfela.");
+      importComplete(c,id,imported(c,id,"csv",file,address));
+      break;
+    }
+    case "manual": {
+      if(c.paid || !c.selected.includes(id) || source(id).group!=="other") return;
+      const amount=num(data.get("amount"));
+      const date=String(data.get("date")||"");
+      const place=String(data.get("place")||"").trim();
+      if(!amount || !date.startsWith(c.year+"-") || Number.isNaN(Date.parse(date)) || !place) {
+        return setFormError(form,"Podaj datę w rozliczanym roku, kwotę i źródło operacji.");
+      }
+      const rows=c.imports[id]?.rows??[];
+      const row=op(id,(id==="cash"?"KANTOR-":"KARTA-")+(rows.length+1),date,
+        id==="cash"?"Wypłata w kantorze lub bitomacie":"Płatność kartą krypto",place,amount,"outside");
+      row.issue=id;
+      row.reference=String(data.get("ref")||"").trim();
+      row.proof=storedProof(form,data);
+      importComplete(c,id,{method:"manual",rows:[...rows,row]});
+      break;
+    }
+    case "intake": {
+      if(c.paid) return;
+      const item=findTask(c,id);
+      const choice=data.get("choice");
+      if(!item || !spec(c,item).options?.some(([key])=>key===choice)) return setFormError(form,"Wybierz odpowiedź.");
+      const work=ensureWork(c,id);
+      work.intake={choice,note:String(data.get("note")||"").trim(),
+        ...storedProof(form,data,work.intake||item.proof)};
+      c.plan=null;
+      editIntake="";
+      addEvent(c,"Zapisano odpowiedź",item.reference||item.id);
+      break;
+    }
+    case "prior": {
+      if(c.paid || c.priorAnswer==="no") return;
+      const choice=data.get("choice");
+      const amount=num(data.get("amount"));
+      const proof=storedProof(form,data);
+      if(!["cost","none","unsure"].includes(choice)) return setFormError(form,"Wybierz odpowiedź.");
+      if(choice==="cost" && amount==null && !proof.file) return setFormError(form,"Podaj kwotę lub dołącz deklarację. Możesz też wybrać „Nie mogę teraz ustalić”.");
+      c.prior={choice,amount:choice==="none"?null:amount,...proof};
+      const work=ensureWork(c,"PIT-"+(c.year-1));
+      work.intake={...proof,note:choice==="unsure"?"Klient nie mógł ustalić kosztów.":"Klient zgłosił wcześniejsze rozliczenie do sprawdzenia."};
+      c.plan=null;
+      addEvent(c,"Zapisano dane o wcześniejszym PIT-38");
+      break;
+    }
+    case "reply": {
+      if(!c.sent || !findTask(c,id) || !waiting(c,id)) return;
+      const text=String(data.get("note")||"").trim();
+      const proof=storedProof(form,data);
+      if(!text && !proof.file) return setFormError(form,"Dodaj odpowiedź lub dokument.");
+      lastQuestion(c,id).reply={date:today(),text,...proof};
+      addEvent(c,"Klient przekazał uzupełnienie",id);
+      break;
+    }
+    default:return;
+  }
+  save("Dane zapisane.");
+}
+function dialogConfirm(context) {
+  if(!context) return;
+  if(context.type==="reset") {
+    closeModal();
+    cases=initialCases();
+    role="client";clientId="marta";advisorId="";clientView="journey";advisorView="queue";
+    activeSource="";activeTask="";importEdit=false;editIntake="";resetTx();filter="all";queueText="";
+    save("Przywrócono dane makiety.");
+    return;
+  }
+  const c=byId(context.caseId);
+  if(!c) return;
+  switch(context.type) {
+    case "connect":
+      if(c.paid || !c.selected.includes(context.id)) return;
+      importComplete(c,context.id,imported(c,context.id,"api"));
+      break;
+    case "aggregator":
+      if(c.paid || !c.selected.includes(context.id)) return;
+      if(!c.charges.some(charge=>charge.year===c.year&&charge.id===context.id&&equalAddress(context.id,charge.address,context.address))) {
+        c.charges.push({year:c.year,id:context.id,address:context.address,amount:IMPORT_PRICE});
+      }
+      importComplete(c,context.id,imported(c,context.id,"aggregator","",context.address));
+      break;
+    case "buy": {
+      if(c.paid || !canQuote(c)) return;
+      const quote=proposal(c);
+      const plan=c.plan||quote.recommended;
+      if(!planFits(c,plan)) return;
+      c.plan={...plan,estimate:quote.minutes};
+      c.paid={date:today(),ref:"KT-P-"+c.number};
+      c.stage="identity";
+      addEvent(c,"Opłacono rozliczenie",plan.name+" · "+cash(plan.price));
+      break;
+    }
+    case "verify":
+      if(!c.paid || c.verified) return;
+      c.verified=true;
+      addEvent(c,"Tożsamość zweryfikowana","Zakończono weryfikację tożsamości i AML.");
+      break;
+    default:return;
+  }
+  closeModal();
+  save("Zapisano.");
+}
+function handleClient(action,c) {
+  if(action==="client-home") {clientView="journey";render(true);return;}
+  if(action==="client-ledger" || action.startsWith("ledger-")) {
+    const id=action.startsWith("ledger-")?action.slice(7):"";
+    clientView="ledger";resetTx(source(id)?.name);render(true);return;
+  }
+  if(action==="client-docs" || action==="client-events") {
+    clientView=action==="client-docs"?"documents":"events";render(true);return;
+  }
+  if(action.startsWith("step-")) {
+    const stage=action.slice(5);
+    if(stage===c.stage) {clientView="journey";render(true);return;}
+    if(!c.paid && (stage==="setup" || stage==="imports"&&c.selected.length || stage==="checks"&&canPrepare(c))) {
+      gotoClient(stage,c);
+    }
+    return;
+  }
+  if(action.startsWith("source-") && c.selected.includes(action.slice(7))) {
+    activeSource=action.slice(7);importEdit=false;render(true);return;
+  }
+  if(action.startsWith("connect-")) {
+    const id=action.slice(8);
+    if(c.paid || !c.selected.includes(id) || source(id).group!=="exchange") return;
+    confirmModal("Połącz "+source(id).name,`Pobierzemy historię za ${c.year} rok z dostępem do odczytu. Połączenie jest bezpłatne.`,
+      "Połącz i pobierz historię",{type:"connect",caseId:c.id,id});
+    return;
+  }
+  if(action.startsWith("intake-") && !c.paid) {
+    editIntake=action.slice(7);render(true);return;
+  }
+  if(action.startsWith("plan-") && !c.paid && c.stage==="offer") {
+    const plan=proposal(c).plans.find(item=>item.id===action.slice(5));
+    if(planFits(c,plan)) {c.plan=plan;save();}
+    return;
+  }
+  switch(action) {
+    case "edit-setup": if(!c.paid) gotoClient("setup",c);return;
+    case "back-imports": if(!c.paid) gotoClient("imports",c);return;
+    case "add-manual": case "retry-source": if(!c.paid) {importEdit=true;render(true);}return;
+    case "confirm-empty": {
+      const data=c.imports[activeSource];
+      if(!c.paid && data && !data.rows.length) {data.noOps=true;save("Potwierdzono brak operacji.");}
+      return;
+    }
+    case "to-checks": if(canPrepare(c)) gotoClient("checks",c);return;
+    case "to-offer": if(canQuote(c)) gotoClient("offer",c);return;
+    case "buy": {
+      if(c.paid || !canQuote(c)) return;
+      const plan=c.plan||proposal(c).recommended;
+      if(planFits(c,plan)) confirmModal("Płatność za rozliczenie",`${safe(plan.name)} · <strong>${cash(plan.price)}</strong>.
+        Po opłaceniu zobaczysz wyliczenie i przejdziesz do weryfikacji tożsamości.`,"Potwierdź płatność",{type:"buy",caseId:c.id});
+      return;
+    }
+    case "verify":
+      if(c.paid && !c.verified) confirmModal("Weryfikacja tożsamości i AML",
+        "Operator zweryfikuje tożsamość w ramach opłaconej usługi.","Rozpocznij weryfikację",{type:"verify",caseId:c.id});
+      return;
+    case "send":
+      if(c.paid && c.verified && canQuote(c) && !c.sent) {
+        c.sent=today();
+        addEvent(c,"Dane przekazane do biura",ledger(c).length+" operacji · "+c.selected.length+" źr.");
+        gotoClient("submitted",c);
+      }
+      return;
+  }
+}
+function handleAdvisor(action,c) {
+  if(action==="aqueue" || action==="atasks") {
+    advisorView=action==="aqueue"?"queue":"tasks";
+    advisorId="";
+    render(true);
+    return;
+  }
+  if(action.startsWith("case-task:")) {
+    const [,id,task]=action.split(":");
+    gotoCase(id,task);return;
+  }
+  if(action.startsWith("case-")) {gotoCase(action.slice(5));return;}
+  if(!c) return;
+  if(action.startsWith("atab-")) {
+    advisorTab=action.slice(5);resetTx();render(true);return;
+  }
+  if(action.startsWith("task-")) {activeTask=action.slice(5);render(true);return;}
+  if(action==="approve" && canApprove(c) && !c.approved) {approvalModal(c);return;}
+  if(action.startsWith("ask-") || action.startsWith("decide-")) {
+    const request=action.startsWith("ask-");
+    const task=findTask(c,action.slice(request?4:7));
+    if(!task || waiting(c,task.id) || getWork(c,task.id).decision || c.approved) return;
+    if(request) requestModal(c,task);
+    else decisionModal(c,task);
+  }
+}
+document.addEventListener("click",event=>{
+  const control=event.target.closest("button");
+  if(!control) return;
+  const action=control.dataset.action||"";
+  const group=control.dataset.groupSource;
+  const c=activeCase();
+  if(group && c) {
+    tx.source=group;tx.query=control.dataset.groupKind;tx.view="list";render();return;
+  }
+  if(action==="role-client" || action==="role-advisor") {
+    role=action==="role-client"?"client":"advisor";
+    if(role==="advisor" && advisorId!==clientId) {advisorId="";advisorView="queue";}
+    if(role==="client") clientView="journey";
+    resetTx();
+    render(true);
+    return;
+  }
+  if(action==="close") {closeModal();return;}
+  if(action==="reset") {
+    confirmModal("Przywróć dane makiety","Zmiany w przykładowych sprawach zostaną zastąpione stanem początkowym.",
+      "Przywróć dane",{type:"reset"});return;
+  }
+  if(action==="sample" && role==="client") {fillSample(c);return;}
+  if(c && action.startsWith("tx-")) {
+    if(action==="tx-clear") resetTx();
+    if(action==="tx-groups" || action==="tx-list") tx.view=action.slice(3);
+    render();app.querySelector(`[data-action="${action}"]`)?.focus();return;
+  }
+  if(c && action.startsWith("op-")) {
+    const item=ledger(c).find(row=>row.id===action.slice(3));if(item) opPreview(c,item);return;
+  }
+  if(c && action.startsWith("file:")) {const [,id,mode]=action.split(":");documentPreview(c,id,mode);return;}
+  if(c && action.startsWith("import-doc-")) {importDoc(c,action.slice(11));return;}
+  if(c && action==="packet") {packet(c);return;}
+  if(role==="client") handleClient(action,c);
+  else handleAdvisor(action,c);
+});
+document.querySelector("#presentation-case").addEventListener("change",event=>{
+  const id=event.target.value;
+  if(!byId(id)) return;
+  clientId=id;clientView="journey";activeSource="";editIntake="";importEdit=false;resetTx();render(true);
+});
+dialog.addEventListener("close",()=>{modalContext=null;});
+document.addEventListener("input",event=>{
+  if(event.target.id==="txSearch" && activeCase()) {
+    tx.query=event.target.value;
+    document.querySelector("#txResults").innerHTML=ledgerResults(activeCase());
+  }
+  if(event.target.id==="queueSearch") {
+    queueText=event.target.value;
+    document.querySelector("#queueResults").innerHTML=advisorQueueResults();
+  }
+});
+document.addEventListener("change",event=>{
+  if(event.target.id==="caseFilter") {
+    filter={"Do sprawdzenia":"ready","Czeka na klienta":"waiting","Zatwierdzone":"done"}[event.target.value]||"all";
+    document.querySelector("#queueResults").innerHTML=advisorQueueResults();
+  }
+  if(event.target.id==="txSource" || event.target.id==="txStatus") {
+    tx[event.target.id==="txSource"?"source":"status"]=event.target.value;
+    document.querySelector("#txResults").innerHTML=ledgerResults(activeCase());
+  }
+});
+document.addEventListener("submit",event=>{
+  const form=event.target;
+  const kind=form.dataset.form;
+  if(!kind) return;
+  event.preventDefault();
+  const data=new FormData(form);
+  if(kind==="confirm") {dialogConfirm(modalContext);return;}
+  if(kind==="approve") {
+    const c=byId(modalContext?.caseId);
+    if(!c || !canApprove(c) || c.approved || !data.has("approved")) return;
+    c.approved=today();
+    addEvent(c,"Zatwierdzono rozliczenie","Księgowa potwierdziła ujęcie operacji i końcowe wyliczenie.");
+    closeModal();save("Rozliczenie zatwierdzone.");return;
+  }
+  if(kind==="ask" || kind==="decide") {
+    const c=byId(modalContext?.caseId);
+    const item=c&&findTask(c,modalContext?.itemId);
+    if(!item || c.approved || waiting(c,item.id) || getWork(c,item.id).decision) return;
+    const info=ensureWork(c,item.id);
+    if(kind==="ask") {
+      const text=String(data.get("text")||"").trim();
+      if(!text) return setFormError(form,"Wpisz pytanie.");
+      info.questions.push({date:today(),text,reply:null});
+      addEvent(c,"Księgowa poprosiła o uzupełnienie",item.reference||item.id);
+    } else {
+      const code=data.get("decision");
+      const note=String(data.get("note")||"").trim();
+      if(!spec(c,item).outcomes.some(([key])=>key===code)||!note) return setFormError(form,"Wybierz ujęcie i podaj podstawę decyzji.");
+      const amountPLN=code==="outside"?null:item.amountPLN??num(data.get("amount"));
+      if(code!=="outside" && amountPLN==null) return setFormError(form,"Podaj udokumentowaną kwotę w PLN.");
+      info.decision={code,note,amountPLN,date:today()};
+      addEvent(c,"Zapisano decyzję księgowej",item.reference||item.id);
+    }
+    closeModal();save("Dane zapisane.");return;
+  }
+  if(role==="client") clientForm(customer(),form,data,event.submitter);
+});
+window.addEventListener("storage",event=>{
+  if(event.key!==STORAGE || !event.newValue) return;
+  try {
+    const stored=JSON.parse(event.newValue);
+    if(Array.isArray(stored) && stored.length===cases.length) {cases=stored;render();}
+  } catch {}
+});
+render();
+
+</script>
+</body>
+</html>
