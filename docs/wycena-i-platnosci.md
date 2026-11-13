@@ -1,6 +1,6 @@
 # Wycena, płatności i weryfikacja
 
-Pierwsza ocena pojawia się na ekranie **Historia** i opisuje zakres według typów źródeł. Szacowany podatek i czas pracy pojawiają się po zebraniu historii i zapisaniu odpowiedzi wymaganych w kroku **Uzupełnienia**. Na tej podstawie system proponuje plan. Liczba operacji pomaga zrozumieć zakres historii. Obecny wzór na czas używa liczby źródeł i otwartych pozycji. [Kolejność kroków](portal-klienta.md) · [Założenia cenowe projektu](../AGENTS.md)
+Pierwsza ocena pojawia się na ekranie **Historia** i opisuje zakres według typów źródeł. Szacowany podatek i czas pracy pojawiają się po zebraniu historii i zapisaniu odpowiedzi wymaganych w kroku **Uzupełnienia**. Na tej podstawie system proponuje plan. Liczba operacji pomaga zrozumieć zakres historii. Obecny wzór na czas używa liczby źródeł i otwartych pozycji. [Kolejność kroków](portal-klienta.md) · [Założenia cenowe projektu](zalozenia-projektu.md#wycena)
 
 ## Szacunek podatku
 

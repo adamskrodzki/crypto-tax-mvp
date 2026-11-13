@@ -1,6 +1,6 @@
 # Dokumentacja makiety KryptoTax
 
-Makieta przedstawia usługę rozliczenia kryptowalut w PIT-38. Klient przekazuje dane, system porządkuje historię i wskazuje braki, a księgowa rozstrzyga otwarte pozycje i zatwierdza wynik. Biuro jest właścicielem aplikacji, świadczy usługę i odpowiada za rozliczenie. Dokumentacja opisuje wersję makiety z commita `2867e72`. Import, wyliczenia, ceny, płatności, weryfikacja i dokumenty są symulowane. [Makieta](../working/kryptotax-mockupy.html) · [Wersja źródłowa](https://github.com/adamskrodzki/crypto-tax-mvp/blob/2867e726aef7a66ea0392bff90f67d8fc96e284b/working/kryptotax-mockupy.html) · [Założenia projektu](../AGENTS.md)
+Makieta przedstawia usługę rozliczenia kryptowalut w PIT-38. Klient przekazuje dane, system porządkuje historię i wskazuje braki, a księgowa rozstrzyga otwarte pozycje i zatwierdza wynik. Biuro jest właścicielem aplikacji, świadczy usługę i odpowiada za rozliczenie. Dokumentacja opisuje wersję makiety z commita `2867e72`. Import, wyliczenia, ceny, płatności, weryfikacja i dokumenty są symulowane. [Makieta](../working/kryptotax-mockupy.html) · [Wersja źródłowa](https://github.com/adamskrodzki/crypto-tax-mvp/blob/2867e726aef7a66ea0392bff90f67d8fc96e284b/working/kryptotax-mockupy.html) · [Założenia projektu](zalozenia-projektu.md)
 
 | Obszar | Co opisuje |
 | --- | --- |

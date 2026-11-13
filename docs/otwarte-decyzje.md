@@ -1,12 +1,12 @@
 # Otwarte decyzje i ograniczenia
 
-Makieta pozwala przejść przez rozliczenie i omówić decyzje z biurem. Jej ceny, limity, czasy i uproszczone wyliczenie ilustrują przepływ. Założenia projektu i otwarte kwestie opisuje [AGENTS.md](../AGENTS.md).
+Makieta pozwala przejść przez rozliczenie i omówić decyzje z biurem. Jej ceny, limity, czasy i uproszczone wyliczenie ilustrują przepływ. [Założenia projektu](zalozenia-projektu.md)
 
 ## Decyzje produktowe do ustalenia
 
 | Temat | Wybór pokazany w makiecie | Co wymaga ustalenia |
 | --- | --- | --- |
-| Moment płatności za agregator | Osobne 79 zł za historię adresu w danym roku. Można zapłacić przed wyborem planu, po rozpoznaniu typów źródeł. | `AGENTS.md` opisuje płatny agregator w ramach płatnego planu. Trzeba ustalić model opłaty, moment dostępu do agregatora i zakres wstępnej oceny potrzebnej przed uruchomieniem kosztownego importu. |
+| Moment płatności za agregator | Osobne 79 zł za historię adresu w danym roku. Można zapłacić przed wyborem planu, po rozpoznaniu typów źródeł. | Założeniem projektu jest dostęp do agregatora w płatnym planie. Trzeba ustalić model opłaty, moment dostępu i zakres wstępnej oceny przed uruchomieniem kosztownego importu. |
 | Zakres bezpłatnej oceny i płatnej usługi | Typy źródeł i kompletność historii widać na etapie importu. Szacunek podatku i czasu jest przed zakupem, robocze sumy po zakupie. | Czy klient ma dostać przybliżenie kosztu lub pracochłonności także przed płatnym importem i co dokładnie biuro udostępnia bezpłatnie. |
 | Limity i cena | Czas pracy księgowej i limit ochrony wyznaczają dostępne plany. Każdy plan obejmuje weryfikację i przygotowanie PIT-38. | Jak ustalać cenę, limit odpowiedzialności i warunki ochrony. Ile czasu obejmuje obsługa sprawy, ile konsultacje dla klienta i jakie czynności wchodzą do pakietu. |
 | Sprawa wykracza poza kupiony plan | Dodatkowa kontrola jest dostępna w ofercie przed zakupem. Późniejsze decyzje zmieniają wynik, a zakres zakupionego planu pozostaje zapisany. Zgodność z limitami jest warunkiem zakupu. Kontrola końcowa ma odrębne warunki. | Czy biuro proponuje dopłatę, zmianę planu lub dodatkową konsultację, kto podejmuje decyzję i kiedy klient ją akceptuje. |
